@@ -37,7 +37,8 @@
                 <img src="imagenes/categorias/accesorios0.jpg" alt="">
                 <div class="hover-1-content px-5 py-4">
                     <h3 class="hover-1-title text-uppercase mb-0">
-                        <span class="font-weight-light fw-bold">ACCESORIOS</span>
+                        <center>
+                            <span class="font-weight-light fw-bold">ACCESORIOS</span>
                     </h3>
                 </div>
             </div>
@@ -51,7 +52,8 @@
                 <img src="imagenes/categorias/postres0.jpg" alt="">
                 <div class="hover-1-content px-5 py-4">
                     <h3 class="hover-1-title text-uppercase mb-0">
-                        <span class="font-weight-light fw-bold">POSTRES Y COMIDA</span>
+                        <center>
+                            <span class="font-weight-light fw-bold">POSTRES Y COMIDA</span>
                     </h3>
                 </div>
             </div>
@@ -65,7 +67,8 @@
                 <img src="imagenes/categorias/ropa.jpg" alt="">
                 <div class="hover-1-content px-5 py-4">
                     <h3 class="hover-1-title text-uppercase mb-0">
-                        <span class="font-weight-light fw-bold">ROPA</span>
+                        <center>
+                            <span class="font-weight-light fw-bold">ROPA</span>
                     </h3>
                 </div>
             </div>
@@ -79,7 +82,8 @@
                 <img src="imagenes/categorias/artesanias.jpg" alt="">
                 <div class="hover-1-content px-5 py-4">
                     <h3 class="hover-1-title text-uppercase mb-0">
-                        <span class="font-weight-light fw-bold">ARTESANÍAS</span>
+                        <center>
+                            <span class="font-weight-light fw-bold">ARTESANÍAS</span>
                     </h3>
                 </div>
             </div>
@@ -95,7 +99,8 @@
                 <img src="imagenes/categorias/plantas.jpg" alt="">
                 <div class="hover-1-content px-5 py-4">
                     <h3 class="hover-1-title text-uppercase mb-0">
-                        <span class="font-weight-light fw-bold">PLANTAS</span>
+                        <center>
+                            <span class="font-weight-light fw-bold">PLANTAS</span>
                     </h3>
                 </div>
             </div>
@@ -109,7 +114,8 @@
                 <img src="imagenes/categorias/personal.jpg" alt="">
                 <div class="hover-1-content px-5 py-4">
                     <h3 class="hover-1-title text-uppercase mb-0">
-                        <span class="font-weight-light fw-bold">CUIDADO PERSONAL</span>
+                        <center>
+                            <span class="font-weight-light fw-bold">CUIDADO PERSONAL</span>
                     </h3>
                 </div>
             </div>
@@ -123,7 +129,8 @@
                 <img src="imagenes/categorias/servicios.jpg" alt="">
                 <div class="hover-1-content px-5 py-4">
                     <h3 class="hover-1-title text-uppercase mb-0">
-                        <span class="font-weight-light fw-bold">SERVICIOS</span>
+                        <center>
+                            <span class="font-weight-light fw-bold">SERVICIOS</span>
                     </h3>
                 </div>
             </div>
@@ -137,7 +144,8 @@
                 <img src="imagenes/categorias/garaje.jpg" alt="">
                 <div class="hover-1-content px-5 py-4">
                     <h3 class="hover-1-title text-uppercase mb-0">
-                        <span class="font-weight-light fw-bold">VENTA DE GARAJE</span>
+                        <center>
+                            <span class="font-weight-light fw-bold">VENTA DE GARAJE</span>
                     </h3>
                 </div>
             </div>

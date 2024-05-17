@@ -13,21 +13,22 @@
     <nav>   
         <div class="Navbar container-fluid ">    
             <div class="row ">
-                <div class="Logo col-lg-2 ms-sm-4 col-sm-2 me-sm-5 pe-sm-5 mb-sm-4">
-                    <img src="imagenes/logo.png" alt="">
+                <div class="Logo col-lg-2 ms-sm-4 col-sm-2 me-sm-2 pe-sm-5 mb-sm-4 col-md-1 col-xs-1 me-xs-5">
+                    <a href="/" class="fw-bold">
+                    <img src="imagenes/logo.png"  alt="">
+                    </a>
                 </div>
-                <div class="Caja_Busqueda col-lg-5 ms-lg-5 me-lg-5 ms-sm-5 ps-sm-5  col-sm-7  mb-sm-4 ">
+                <div class="Caja_Busqueda col-lg-5 ms-lg-5 me-lg-1  ms-sm-5 ps-sm-5  col-sm-7  mb-sm-4 col-md-4 offset-sm-2">
                     <input type="text" placeholder="Buscar un emprendedor o producto... "></input>
-                    <i class="fas fa-magnifying-glass"></i>
+                   
                 </div>
-                <div class="Inicio_Sesion col-lg-2 offset-sm-3 col-sm-4 ms-lg-5 mb-sm-4   ">
+                <div class="Inicio_Sesion col-lg-2 offset-sm-3 col-sm-4 ms-lg-4 mb-sm-4  col-md-3 ">
                 <div class="Usuario col">
                 <img src="imagenes/usuario.png" alt="" srcset="">
                     <a href="/login" class="fw-bold">Iniciar Sesion</a>
                 </div>
                 </div>
-
-                <div class="Inicio_Sesion col-lg-1 col-sm-5 mb-sm-4 ">
+                <div class="Inicio_Sesion col-lg-2 col-sm-5 mb-sm-4 ">
                     <div class="Usuario col">
                             <img src="imagenes/carrito.png" alt="" srcset="">
                             <a href="/productos" class="fw-bold ms-1">Productos</a>

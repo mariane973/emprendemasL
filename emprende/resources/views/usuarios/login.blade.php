@@ -14,7 +14,9 @@
             <div class="Contenedor row">
                 <div class="Logo_Use col-5">
                     <div class="Iso_Log col">
-                        <img src="imagenes/tucan.png" alt="">
+                    <a href="/" class="fw-bold">
+                    <img src="imagenes/tucan.png" alt="">
+                    </a>
                         <div class="Text">
                             <h1 class="emprende">EMPRENDE</h1>
                             <h1 class="mas">MAS</h1>

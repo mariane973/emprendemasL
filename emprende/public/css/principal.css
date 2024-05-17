@@ -78,33 +78,37 @@ section .Section_Nav img{
     height: 30px;
     width: 30px;
 }
-section .Section_Nav .Sec_Pro a{
-    margin-left: 15px;
-    font-size: 15px;
-    text-decoration: none;
-    color: #000000cb;
-    font-weight: 700;
-}
+
 section .Section_Nav .Sec_Pro hr{
     margin: 5px;
     border: 1px solid #000;
 } 
+
+section .Section_Nav .Sec_Emp hr{
+    margin: 5px;
+    border: 1px solid #000;
+} 
+
 section .Section_Nav a{
     margin-left: 15px;
-    font-size: 15px;
+    font-size: 13px;
     text-decoration: none;
     color: #000;
-    font-weight: 400;
+    font-weight: 600;
 } 
 
 section .Carrusel img {
     display: block;
     max-width: 100%;
-    height: auto;
     margin: 0 auto;
 }
 section .Carrusel .container {
-    max-width: 960px;
+    max-width: 500px;
+    max-height: 70%;
     padding: 0 15px;
     margin: 0 auto;
+}
+
+section .carousel-inner{
+    max-height: 60vh;
 }
