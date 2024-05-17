@@ -1,0 +1,110 @@
+/* Body */
+body{
+    background: linear-gradient( white 70%, #8FDABA 80%);
+}
+
+/* Navegador */
+nav .Navbar .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 25px;
+}
+
+.Caja_Busqueda .fa-magnifying-glass {
+    position: absolute;
+    margin-left: 33%;
+    font-size: 25px;
+    color:rgba(255, 255, 255, 0.678);
+}
+
+nav .Navbar .Logo img{
+    height: 45px;
+    width: 250px;
+    margin-left: 15px;
+}
+
+nav .Navbar .Caja_Busqueda {
+    display: flex;
+    align-items: center;
+    padding-left: 0px;
+}
+nav .Navbar .Caja_Busqueda input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #8FDABA;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #8FDABA;
+    width: 700px;
+} 
+nav .Navbar .Caja_Busqueda input[type="text"] {
+    color: #ffffff;
+    font-weight: bolder;
+    font-size: 20px;
+    text-align: center;
+}
+nav .Navbar .Caja_Busqueda input[type="text"]::placeholder {
+    color: #fff;
+}
+nav .Navbar .Caja_Busqueda input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+nav .Navbar .Inicio_Sesion{
+    padding: 0px;
+}
+nav .Navbar .Inicio_Sesion a{
+    font-size: 18px;
+    text-decoration: none;
+    color: #33B66C;
+    font-family:Segoe UI;
+
+} 
+
+nav .Navbar .Carrito img{
+    height: 30px;
+    width: 30px;
+}
+
+nav .Navbar .Usuario img{
+    height: 30px;
+    width: 30px;
+} 
+
+/* Seccion de Navegacion */
+
+section .Section_Nav img{
+    height: 30px;
+    width: 30px;
+}
+section .Section_Nav .Sec_Pro a{
+    margin-left: 15px;
+    font-size: 15px;
+    text-decoration: none;
+    color: #000000cb;
+    font-weight: 700;
+}
+section .Section_Nav .Sec_Pro hr{
+    margin: 5px;
+    border: 1px solid #000;
+} 
+section .Section_Nav a{
+    margin-left: 15px;
+    font-size: 15px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+} 
+
+section .Carrusel img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+section .Carrusel .container {
+    max-width: 960px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
