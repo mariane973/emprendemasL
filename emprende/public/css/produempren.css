@@ -1,6 +1,6 @@
 .image-product {
-    width: 220px;
-    height: 220px;
+    width: 200px;
+    height: 200px;
     border-radius: 15%;
     margin-right: 30px;
     object-fit: cover;
@@ -10,16 +10,32 @@
 .box{
     margin-right: 25px;
     min-width: none;
-    
-    
 }
-
 .image-empren {
-    width: 210px;
-    height: 210px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     margin-right: 30px;
     object-fit: cover;
     box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.15);
     
+}
+
+/* Ofertas */
+.card-text-descuento{
+    font-size: 20px;
+}
+.card-text{
+    font-size: 20px;
+    color: #898787;
+}
+.descuento{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.5rem;
+    background-color:#E51A1A;
+    color: aliceblue;
+    border-top-left-radius: 0.25rem;
+    width: 65px;
 }

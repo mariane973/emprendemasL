@@ -15,7 +15,7 @@
             </div>
             <div class="Sec_Ofe col-lg-2  col-sm-6 mb-sm-5">
                 <img src="imagenes/oferta.png" alt="">
-                <a href="">Ofertas</a>
+                <a href="/ofertas">Ofertas</a>
             </div>
             <div class="Sec_Zona col-lg-2  col-sm-6 mb-sm-5">
                 <img src="imagenes/mapa.png" alt="">
@@ -26,9 +26,9 @@
 </section>
 
 <div class="container">
-    <div class="row">
+    <div class="row ms-4">
         @foreach($vendedorCont as $vendedorVista)
-        <div class="col-lg-6 md-6 mb-4 m-auto">
+        <div class="col-lg-6 md-6 mb-4">
             <div class="d-flex align-items-center justify-content-center">
                 <img src="imagenes/emprendimientos/{{$vendedorVista->logo}}" class="image-empren" alt="">
                 <div class="box">

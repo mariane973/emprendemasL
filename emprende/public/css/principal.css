@@ -89,6 +89,11 @@ section .Section_Nav .Sec_Emp hr{
     border: 1px solid #000;
 } 
 
+section .Section_Nav .Sec_Ofe  hr{
+    margin: 5px;
+    border: 1px solid #000;
+}
+
 section .Section_Nav a{
     margin-left: 15px;
     font-size: 13px;

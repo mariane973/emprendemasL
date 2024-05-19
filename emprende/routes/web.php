@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\VendedorController;
+use App\Http\Controllers\OfertaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,5 @@ Route::get('/register', function(){
 Route::resource('/productos', ProductoController::class);
 
 Route::resource('/emprendimientos', VendedorController::class);
+
+Route::resource('/ofertas', OfertaController::class);
