@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\VendedorController;
 use App\Http\Controllers\OfertaController;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,11 +21,11 @@ Route::get('/', function(){
 });
 
 Route::get('/login', function(){
-    return view('usuarios/login');
+    return view('usuarios.login');
 });
 
 Route::get('/register', function(){
-    return view('usuarios/register');
+    return view('usuarios.register');
 });
 
 Route::resource('/productos', ProductoController::class);
@@ -33,6 +33,12 @@ Route::resource('/productos', ProductoController::class);
 Route::resource('/emprendimientos', VendedorController::class);
 
 Route::resource('/ofertas', OfertaController::class);
+
+Route::resource('/users', UserController::class);
+Route::get('/users/{usuario}/confirmar',[UserController::class, 'eliminar']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/profile', [UserController::class, 'index'])->name('profile');

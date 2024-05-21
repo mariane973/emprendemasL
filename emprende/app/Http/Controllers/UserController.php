@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Nodels\User;
+use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -13,9 +15,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+    $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        return view('users.index', [
+            'usuario' => Auth::user()
+        ]);
     }
 
     /**
@@ -25,7 +34,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view ('users.create');
+        //
     }
 
     /**
@@ -36,9 +45,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validacionUser = $request->validate([
-
-        ]);
+        //
     }
 
     /**
@@ -60,7 +67,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuarioEditar = User::findOrFail($id);
+        return view('users.edit', [
+            'usuEditar' => $usuarioEditar
+        ]);
     }
 
     /**
@@ -72,7 +82,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $editarUsuario = User::findOrFail($id);
+
+        $editarUsuario -> name = $request-> get('nameEdit');
+        $editarUsuario -> email = $request-> get('correoEdit');
+
+        $editarUsuario -> save();
+        return redirect('/users');
     }
 
     /**
@@ -83,6 +99,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $eliminarUsuario = User::findOrFail($id);
+        $eliminarUsuario -> delete();
+        return redirect('/');
+    }
+
+    public function eliminar($id)
+    {
+        $eliminarUsuario = User::findOrFail($id);
+
+        return view('users.delete', [
+            'usuarioEliminar' => $eliminarUsuario
+        ]);
+
     }
 }
