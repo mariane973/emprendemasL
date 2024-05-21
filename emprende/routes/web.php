@@ -33,3 +33,6 @@ Route::resource('/productos', ProductoController::class);
 Route::resource('/emprendimientos', VendedorController::class);
 
 Route::resource('/ofertas', OfertaController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
