@@ -20,13 +20,13 @@ Route::get('/', function(){
     return view('emprendemas');
 });
 
-Route::get('/login', function(){
-    return view('usuarios.login');
-});
+// Route::get('/login', function(){
+//     return view('usuarios.login');
+// });
 
-Route::get('/register', function(){
-    return view('usuarios.register');
-});
+// Route::get('/registerPrueva', function(){
+//     return view('usuarios.register');
+// });
 
 Route::resource('/productos', ProductoController::class);
 
