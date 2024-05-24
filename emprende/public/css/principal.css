@@ -3,6 +3,10 @@ body{
     background: linear-gradient( white 70%, #8FDABA 80%);
 }
 
+.no-bg {
+    background-color: transparent !important; /* Asegúrate de que la regla tenga prioridad */
+    /* Otras reglas de estilo si es necesario */
+}
 /* Navegador */
 nav .Navbar .row {
     display: flex;
@@ -54,13 +58,22 @@ nav .Navbar .Caja_Busqueda input:focus {
 nav .Navbar .Inicio_Sesion{
     padding: 0px;
 }
-nav .Navbar .Inicio_Sesion a{
+nav .Navbar .Inicio_Sesion,  .InicioSesion a{
     font-size: 18px;
     text-decoration: none;
     color: #33B66C;
     font-family:Segoe UI;
 
 } 
+
+.icono, .iconos{
+    color:  #33B66C;
+    
+}
+
+.iconon, #userName{
+    color: #8FDABA;
+}
 
 nav .Navbar .Carrito img{
     height: 30px;
@@ -115,5 +128,25 @@ section .Carrusel .container {
 }
 
 section .carousel-inner{
-    max-height: 66vh;
+    max-height: 60vh;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Mostrar las opciones del menú cuando se hace clic en el nombre del usuario */
+#userDropdown:hover .dropdown-content {
+    display: block;
 }

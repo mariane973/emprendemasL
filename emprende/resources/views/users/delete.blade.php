@@ -1,4 +1,4 @@
-@extends('plantillas.plantilla')
+@extends('layouts.navbar')
 @section('titulo', 'Ofertas')
 @section('content')
 <h2 class="text-center my-4">Desea eliminar el Usuario <br> {{$usuarioEliminar->name}}</h2>

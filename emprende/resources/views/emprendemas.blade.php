@@ -1,4 +1,4 @@
-@extends('plantillas.plantilla')
+@extends('layouts.navbar')
 @section('content')
 <section>
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -18,7 +18,7 @@
     <div class="carousel-item">
       <img src="imagenes/carousel/carousel00.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption">
-        <p>EmprendeMas es un proyecto innovador diseñado para apoyar a las microempresas y pequeños emprendimientos en la comercialización de sus productos e impulso en el mercado. Facilitamos el proceso de compra para los usuarios. <br> ¡Únete a EmprendeMas!</p>
+      <p>EmprendeMas es un proyecto innovador diseñado para apoyar a las microempresas y pequeños emprendimientos en la comercialización de sus productos e impulso en el mercado. Facilitamos el proceso de compra para los usuarios. <br> ¡Únete a EmprendeMas!</p>
       </div>
     </div>
   </div>
@@ -32,6 +32,8 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+
 
 
     <div class="container mt-5">

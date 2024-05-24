@@ -1,4 +1,4 @@
-@extends('plantillas.plantilla')
+@extends('layouts.navbar')
 @section('titulo', 'Usuario')
 @section('content')
 <div class="container text-center">

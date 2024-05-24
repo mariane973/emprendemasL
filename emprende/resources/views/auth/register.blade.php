@@ -1,8 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
 <section>
-    <div class="Login1 container">
+<div class="Login1 container" style="margin-top: 50px; margin-bottom: 50px; height: 580px;">
         <form method="POST" action="{{ route('register') }}">
         @csrf
             <div class="Contenedor row">

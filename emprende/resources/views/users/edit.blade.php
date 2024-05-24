@@ -1,4 +1,4 @@
-@extends('plantillas.plantilla')
+@extends('layouts.navbar')
 @section('content')
 <h2 class="text-center my-4">EDITAR USUARIO</h2>
 <div class="container d-flex justify-content-center">

@@ -2,7 +2,7 @@
 
 @section('content')
 <section>
-<div class="Login container">
+<div class="Login container" style="margin-top: 50px; margin-bottom: 50px; height: 500px;">
     <div class="Contenedor row">
         <div class="Logo_Use col-5">
             <div class="Iso_Log col">
