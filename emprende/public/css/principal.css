@@ -115,5 +115,5 @@ section .Carrusel .container {
 }
 
 section .carousel-inner{
-    max-height: 60vh;
+    max-height: 66vh;
 }

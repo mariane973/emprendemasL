@@ -28,7 +28,7 @@
 <div class="container">
     <div class="row">
         @foreach($ofertaCont as $ofertaVista)
-        <div class="col-lg-6 md-6 d-flex justify-content-center">
+        <div class="col-lg-6 md-6 mt-3 d-flex justify-content-center">
             <div class="card mb-3" style="max-width: 480px;">
             <div class="row g-0">
                 <div class="col-md-5">

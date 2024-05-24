@@ -5,28 +5,23 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="imagenes/carousel/carousel6.jpg" class="d-block w-100" alt="...">
-
       <div class="carousel-caption">
-        <h5></h5>
-        <p>Some description text for slide 1.</p>
+        <p>EmprendeMas es un proyecto innovador diseñado para apoyar a las microempresas y pequeños emprendimientos en la comercialización de sus productos e impulso en el mercado. Facilitamos el proceso de compra para los usuarios. <br> ¡Únete a EmprendeMas!</p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="imagenes/carousel/carousel0000.jpg" class="d-block w-100" alt="...">
-
       <div class="carousel-caption">
-        <h5>Slide 2 Title</h5>
-        <p>Some description text for slide 2.</p>
+        <p>EmprendeMas es un proyecto innovador diseñado para apoyar a las microempresas y pequeños emprendimientos en la comercialización de sus productos e impulso en el mercado. Facilitamos el proceso de compra para los usuarios. <br> ¡Únete a EmprendeMas!</p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="imagenes/carousel/carousel00.jpg" class="d-block w-100" alt="...">
-
       <div class="carousel-caption">
-        <h5>Slide 3 Title</h5>
-        <p>Some description text for slide 3.</p>
+        <p>EmprendeMas es un proyecto innovador diseñado para apoyar a las microempresas y pequeños emprendimientos en la comercialización de sus productos e impulso en el mercado. Facilitamos el proceso de compra para los usuarios. <br> ¡Únete a EmprendeMas!</p>
       </div>
     </div>
+  </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

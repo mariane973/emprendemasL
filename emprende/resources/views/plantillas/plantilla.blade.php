@@ -49,9 +49,9 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col">
+                <!-- <div class="col">
                     p
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

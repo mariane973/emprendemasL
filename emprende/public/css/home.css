@@ -10,7 +10,7 @@
     left: 50%; /* Centrar horizontalmente */
     .carousel-caption {
   /* Ajuste el color de fondo y la opacidad a su preferencia */
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.416);
   color: white;
   padding: 20px;
   /* Centre el texto del título vertical y horizontalmente dentro de la diapositiva */
@@ -20,27 +20,23 @@
   left: 50%; /* Centrar horizontalmente */
   /* transform: translate(-50%, -50%); */
   /* Ocultar inicialmente los títulos */
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
   transition: opacity 0.3s ease-in-out; /* Agregue una transición suave */
 }
 
-.carousel-item:hover .carousel-caption {
-  /* Mostrar el título al pasar el mouse */
+
+/* .carousel-item:hover .carousel-caption {
   opacity: 1;
   visibility: visible;
 }
 
-    /* Ocultar inicialmente los títulos */
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease-in-out; /* Agregue una transición suave */
+    transition: opacity 0.3s ease-in-out;
   }
   
   .carousel-item:hover .carousel-caption {
-    /* Mostrar el título al pasar el mouse */
     opacity: 1;
-    visibility: visible;
-  }
-  
-  
+    visibility: visible;*/
+  } 

@@ -6,7 +6,7 @@
 <form action="/users/{{$usuarioEliminar->id}}" method="POST">
     @csrf
     @method('delete')
-    <div class="text-center">
+    <div class="text-center mb-5">
         <button type="submit" class="btn btn-confirmar mt-3 mb-5">Confirmar</button>
     </div>
 </form>
