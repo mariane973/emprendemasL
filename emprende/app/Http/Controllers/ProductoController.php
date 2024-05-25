@@ -12,6 +12,7 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return view('productos.index', [

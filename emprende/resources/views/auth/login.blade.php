@@ -22,7 +22,7 @@
             <form action="{{ route('login') }}" method="post">
             @csrf
                 <div class="Title">
-                    <h1>INICIAR SESION</h1>
+                    <h1>INICIAR SESIÓN</h1>
                 </div>
                 <div class="In_Use">
                     <input type="text"  class="fw-semibold @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Usuario">

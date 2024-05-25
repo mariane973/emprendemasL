@@ -35,7 +35,7 @@
                     @guest
                         <div class="Usuario col " style="display: flex; align-items: center;">
                         <i class="fas fa-user-circle iconos" style="font-size: 30px; vertical-align: middle;"></i>
-                            <a href="{{ route('login') }}"  class="fw-bold ms-2">Iniciar Sesion</a>
+                            <a href="{{ route('login') }}"  class="fw-bold ms-2">Iniciar Sesión</a>
                         </div>
                     @else
                         <div class="Usuario col">
@@ -66,8 +66,6 @@
     <main class="py-4">
         @yield('content')
     </main>
-    <script src="{{ asset('js/app.js') }}"></script>
-</body>
 
 <footer class="bg-body-tertiary text-center mt-5">
     <!-- Grid container -->
@@ -144,8 +142,10 @@
     <!-- Copyright -->
     </footer>
 
-</html>
+    <script src="{{ asset('js/app.js') }}"></script>
 
+</body>
+</html>
 
 <script>
     // Función para mostrar/ocultar las opciones del menú

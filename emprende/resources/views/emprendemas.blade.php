@@ -1,27 +1,22 @@
 @extends('layouts.navbar')
+@section('titulo', 'EmprendeMas')
 @section('content')
 <section>
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
+  <div class="carousel-overlay"></div>
     <div class="carousel-item active">
       <img src="imagenes/carousel/carousel6.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption">
-        <p>EmprendeMas es un proyecto innovador diseñado para apoyar a las microempresas y pequeños emprendimientos en la comercialización de sus productos e impulso en el mercado. Facilitamos el proceso de compra para los usuarios. <br> ¡Únete a EmprendeMas!</p>
-      </div>
     </div>
     <div class="carousel-item">
       <img src="imagenes/carousel/carousel0000.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption">
-        <p>EmprendeMas es un proyecto innovador diseñado para apoyar a las microempresas y pequeños emprendimientos en la comercialización de sus productos e impulso en el mercado. Facilitamos el proceso de compra para los usuarios. <br> ¡Únete a EmprendeMas!</p>
-      </div>
     </div>
     <div class="carousel-item">
       <img src="imagenes/carousel/carousel00.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption">
-      <p>EmprendeMas es un proyecto innovador diseñado para apoyar a las microempresas y pequeños emprendimientos en la comercialización de sus productos e impulso en el mercado. Facilitamos el proceso de compra para los usuarios. <br> ¡Únete a EmprendeMas!</p>
-      </div>
     </div>
   </div>
+  <div class="carousel-caption">
+    <p>EmprendeMas es un proyecto innovador diseñado para apoyar a las microempresas y pequeños emprendimientos en la comercialización de sus productos e impulso en el mercado. Facilitamos el proceso de compra para los usuarios. <br> ¡Únete a EmprendeMas!</p>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -32,9 +27,6 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
-
-
 
     <div class="container mt-5">
         <center>

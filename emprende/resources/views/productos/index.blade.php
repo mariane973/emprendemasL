@@ -35,6 +35,15 @@
                     <h4>{{$productoVista->nombre}}</h4>
                     <p>{{$productoVista->descripcion}}</p>
                     <p><strong>Precio: </strong>${{$productoVista->precio}}</p>
+                    @can('comprarProducto')
+                    <button type="button" class="btn btn-success mt-1">Agregar al Carrito</button>
+                    @endcan
+                    @can('editarProducto')
+                    <button type="button" class="btn btn-primary mt-1">Editar</button>
+                    @endcan
+                    @can('eliminarProducto')
+                    <button type="button" class="btn btn-danger mt-1">Eliminar</button>
+                    @endcan
                 </div>
             </div>
         </div>
