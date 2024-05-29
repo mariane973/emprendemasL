@@ -12,8 +12,14 @@
     <link rel="shortcut icon" type="image/png" href="imagenes/icon-tucan.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- <style>
+        .tailwind {
+            @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+        }
+    </style> -->
+    @livewireStyles
 </head>
-<body  class="@yield('body-class', 'bg')">
+<body class="@yield('body-class', 'bg')">
     <nav>   
         <div class="Navbar container-fluid ">    
             <div class="row ">
@@ -31,6 +37,14 @@
                         <a href="/productos" class="fw-bold ms-1">Productos</a>
                     </div>
                 </div>
+                @can('verCarrito')
+                <div class="InicioSesion col-lg-2 col-sm-5 mb-sm-4">
+                    <div class="Usuario col ms-4">
+                    <livewire:cartcontador />
+                    </div>
+                </div>
+                @endcan
+
                 <div class="InicioSesion col-lg-2 col-sm-4  mb-sm-4 col-md-3">
                     @guest
                         <div class="Usuario col " style="display: flex; align-items: center;">
@@ -143,6 +157,7 @@
     </footer>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    @livewireScripts
 
 </body>
 </html>
@@ -154,4 +169,3 @@
         dropdown.classList.toggle("show");
     }
 </script>
-

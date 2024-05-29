@@ -13,12 +13,10 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
-    {
-        return view('productos.index', [
-            'productoCont'=>Producto::all()
-        ]);
-    }
+     public function index()
+     {
+        return view('productos.index');
+     }
 
     /**
      * Show the form for creating a new resource.
