@@ -77,12 +77,31 @@ section .Login .Info {
       font-size: 16px;
     }
     .In_Use input[type="text"]::placeholder {
-        color: #fff;
+        color: #ffffff;
     }
     .In_Use input:focus {
         outline: none;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     }
+
+    .In_Use input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #8FDABA;
+        background-color: #8FDABA;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .In_Use input[type="password"]::placeholder {
+          color: #fff;
+      }
+      .In_Use input:focus {
+          outline: none;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+  
 
     .btn-ingresar button[type="submit"] {
       background-color: #33B66C;

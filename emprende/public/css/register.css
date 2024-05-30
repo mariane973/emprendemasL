@@ -27,6 +27,19 @@ section .Login1 .Info {
     .In_Use input[type="text"]::placeholder {
         color: #fff;
     }
+    .In_Use input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #8FDABA;
+        background-color: #8FDABA;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .In_Use input[type="password"]::placeholder {
+          color: #fff;
+      }
     .In_Use input[type="email"] {
         width: 100%;
         padding: 12px;

@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="carousel-caption">
-    <p>EmprendeMas es un proyecto innovador diseñado para apoyar a las microempresas y pequeños emprendimientos en la comercialización de sus productos e impulso en el mercado. Facilitamos el proceso de compra para los usuarios. <br> ¡Únete a EmprendeMas!</p>
+    <p class="fw-semibold" >EmprendeMas es un proyecto innovador diseñado para apoyar a las microempresas y pequeños emprendimientos en la comercialización de sus productos e impulso en el mercado. Facilitamos el proceso de compra para los usuarios. <br> ¡Únete a EmprendeMas!</p>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

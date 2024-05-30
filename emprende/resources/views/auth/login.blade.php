@@ -33,7 +33,7 @@
                     @enderror
                 </div>
                 <div class="In_Use">
-                    <input type="text"  class="fw-semibold @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Contraseña">
+                    <input type="password"  class="fw-semibold @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Contraseña">
                     @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
