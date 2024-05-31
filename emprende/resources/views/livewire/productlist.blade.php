@@ -10,14 +10,26 @@
                     <p>{{$productoVista->descripcion}}</p>
                     <p><strong>Precio: </strong>${{$productoVista->precio}}</p>
                     @can('comprarProducto')
-                    <button type="button" class="btn btn-success mt-2" wire:click="agregarCarro({{ $productoVista->id}})">Agregar al Carrito</button>
+                    <button type="button" class="btn btn-success mt-2" wire:click="agregarCarro({{ $productoVista->id }})">
+                        <i class="fas fa-cart-plus me-1"></i> Agregar al Carrito
+                    </button>
                     @endcan
-                    @can('editarProducto')
-                    <button type="button" class="btn btn-primary mt-1">Editar</button>
-                    @endcan
-                    @can('eliminarProducto')
-                    <button type="button" class="btn btn-danger mt-1">Eliminar</button>
-                    @endcan
+                    <div class="d-flex gap-2 mt-3">
+                        @can('editarProducto')
+                        <a href="/productos/{{$productoVista->id}}/edit" class="btn btn-success">
+                            <i class="fas fa-edit me-1"></i> Editar
+                        </a>
+                        @endcan
+                        @can('eliminarProducto')
+                        <form action="/productos/{{$productoVista->id}}/confirmar" method="post">
+                            @csrf
+                            @method('get')
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash-alt me-1"></i> Eliminar
+                            </button>
+                        </form>
+                        @endcan
+                    </div>
                 </div>
             </div>
         </div>

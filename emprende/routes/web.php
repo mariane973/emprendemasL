@@ -23,6 +23,7 @@ Route::get('/', function(){
 });
 
 Route::resource('/productos', ProductoController::class);
+Route::get('/productos/{producto}/confirmar',[ProductoController::class, 'eliminar']);
 
 Route::resource('/emprendimientos', VendedorController::class);
 
