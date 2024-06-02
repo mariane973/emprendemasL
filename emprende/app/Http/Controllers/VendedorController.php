@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vendedore;
+use Illuminate\Support\Facades\Auth;
 
 class VendedorController extends Controller
 {
@@ -14,9 +15,15 @@ class VendedorController extends Controller
      */
     public function index()
     {
-        return view('vendedores.index', [
-            'vendedorCont'=>Vendedore::all()
-        ]);
+        $user = Auth::user();
+
+        if ($user->hasRole('Vendedor')) {
+            $vendedorCont = Vendedore::where('user_id', $user->id)->get();
+        } else {
+            $vendedorCont = Vendedore::all();
+        }
+
+        return view('vendedores.index', compact('vendedorCont'));
     }
 
     /**
@@ -26,7 +33,7 @@ class VendedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('vendedores.create');
     }
 
     /**
@@ -37,7 +44,23 @@ class VendedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newVendedor = new Vendedore();
+        $logo = $request->file('logo');
+        $nombreimg = time().'.'.$logo -> getClientOriginalExtension();
+        $destino = public_path('imagenes/emprendimientos');
+        $request -> logo -> move($destino,$nombreimg);
+
+        $newVendedor -> logo = $nombreimg;
+        $newVendedor -> nom_emprendimiento = $request->get('nom_emprendimiento');
+        $newVendedor -> descrip_emprendimiento = $request->get('descrip_emprendimiento');
+        $newVendedor -> telefono = $request->get('telefono');
+        $newVendedor -> direccion = $request->get('direccion');
+        $newVendedor -> ciudad = $request->get('ciudad');
+        $newVendedor -> user_id = Auth::id();
+
+        $newVendedor -> save();
+
+        return redirect('/emprendimientos');
     }
 
     /**

@@ -15,15 +15,14 @@ class CreateVendedores extends Migration
     {
         Schema::create('vendedores', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('correo');
             $table->string('logo');
             $table->string('nom_emprendimiento');
             $table->string('descrip_emprendimiento');
-            $table->integer('telefono');
+            $table->bigInteger('telefono');
             $table->string('direccion');
             $table->string('ciudad');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

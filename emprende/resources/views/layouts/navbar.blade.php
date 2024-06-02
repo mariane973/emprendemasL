@@ -152,7 +152,7 @@
     <!-- Grid container -->
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0);">
         <p class="text-body">&copy; 2024 Company, Inc</p>
     </div>
     <!-- Copyright -->

@@ -27,6 +27,13 @@
 
 <div class="container">
     <div class="row ms-4">
+    <div class="container text-center mb-5">
+        @can('crearProducto')
+            <a href="/emprendimientos/create" class="btn btn-primary">
+                <i class="fas fa-plus me-1"></i> Crear mi Emprendimiento
+            </a>
+        @endcan
+    </div>
         @foreach($vendedorCont as $vendedorVista)
         <div class="col-lg-6 md-6 mb-4">
             <div class="d-flex align-items-center justify-content-center">

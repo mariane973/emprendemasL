@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use Illuminate\Support\Facades\Auth;
 
 class ProductoController extends Controller
 {
@@ -25,7 +26,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        return view('productos.create');
     }
 
     /**
@@ -36,7 +37,23 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newProduct = new Producto();
+        $imagen = $request->file('imagen');
+        $nombreimg = time().'.'.$imagen -> getClientOriginalExtension();
+        $destino = public_path('imagenes/productos');
+        $request -> imagen -> move($destino,$nombreimg);
+
+        $newProduct -> imagen = $nombreimg;
+        $newProduct -> nombre = $request->get('nombre');
+        $newProduct -> descripcion = $request->get('descripcion');
+        $newProduct -> precio = $request->get('precio');
+        $newProduct -> stock = $request->get('stock');
+        $newProduct -> categoria = $request->get('categoria');
+        $newProduct->vendedor_id = Auth::id();
+
+        $newProduct -> save();
+
+        return redirect('/productos');
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Producto;
 use App\Models\CarritoCompra;
+use Illuminate\Support\Facades\Auth;
 
 class Productlist extends Component
 {
@@ -12,7 +13,13 @@ class Productlist extends Component
 
     public function render()
     {
-        $this->productoCont = Producto::get();
+        $user = Auth::user();
+
+        if ($user->hasRole('Vendedor')) {
+            $this->productoCont = Producto::where('vendedor_id', $user->id)->get();
+        } else {
+            $this->productoCont = Producto::all();
+        }
 
         return view('livewire.productlist');
     }
