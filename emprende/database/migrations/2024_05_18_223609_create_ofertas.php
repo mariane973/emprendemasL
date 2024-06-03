@@ -20,7 +20,10 @@ class CreateOfertas extends Migration
             $table->integer('precio');
             $table->integer('descuento');
             $table->integer('stock');
+            $table->integer('precioDescuento');
             $table->string('imagen');
+            $table->bigInteger('vendedor_id')->unsigned();
+            $table->foreign('vendedor_id')->references('user_id')->on('vendedores')->onDelete('cascade');
             $table->timestamps();
         });
     }

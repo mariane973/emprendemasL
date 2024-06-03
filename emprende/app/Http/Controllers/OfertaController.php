@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Oferta;
+use Illuminate\Support\Facades\Auth;
 
 class OfertaController extends Controller
 {
@@ -14,15 +15,7 @@ class OfertaController extends Controller
      */
     public function index()
     {
-        $ofertas = Oferta::all();
-
-        foreach ($ofertas as $oferta) {
-            $oferta->precioDescuento = $oferta->precio - ($oferta-> precio * ($oferta->descuento / 100));
-        }
-
-        return view('ofertas.index', [
-            'ofertaCont' => $ofertas]
-        );
+        return view('ofertas.index');
     }
 
     /**
@@ -32,7 +25,7 @@ class OfertaController extends Controller
      */
     public function create()
     {
-        //
+        return view('ofertas.create');
     }
 
     /**
@@ -43,7 +36,24 @@ class OfertaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newProduct = new Oferta();
+        $imagen = $request->file('imagen');
+        $nombreimg = time().'.'.$imagen -> getClientOriginalExtension();
+        $destino = public_path('imagenes/ofertas');
+        $request -> imagen -> move($destino,$nombreimg);
+
+        $newProduct -> imagen = $nombreimg;
+        $newProduct -> nombre = $request->get('nombre');
+        $newProduct -> descripcion = $request->get('descripcion');
+        $newProduct -> precio = $request->get('precio');
+        $newProduct -> descuento = $request->get('descuento');
+        $newProduct -> stock = $request->get('stock');
+        $newProduct -> precioDescuento = $request->get('precioDescuento');
+        $newProduct -> vendedor_id = Auth::id();
+
+        $newProduct -> save();
+
+        return redirect('/ofertas');
     }
 
     /**

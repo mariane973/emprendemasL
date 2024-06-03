@@ -11,23 +11,33 @@ class Carritocompra extends Component
 
     public function render()
     {
-        $this->carritoitems = Carrito::with('producto')
-            ->where(['user_id'=>auth()->user()->id])
+        $this->carritoitems = Carrito::with(['producto', 'oferta', 'servicio'])
+            ->where('user_id', auth()->user()->id)
             ->get();
-        $this->total = 0; $this->sub_total = 0; $this->envio = 8000;
+            
+        $this->total = 0; $this->sub_total = 0;
 
-        foreach($this->carritoitems as $item){
-            $this->sub_total += $item->producto->precio * $item->cantidad;
+        foreach ($this->carritoitems as $item) {
+            if ($item->producto) {
+                $this->sub_total += $item->producto->precio * $item->cantidad;
+            } elseif ($item->oferta) {
+                $this->sub_total += $item->oferta->precioDescuento * $item->cantidad;
+            } elseif ($item->servicio) {
+                $this->sub_total += $item->servicio->precio * $item->cantidad;
+            }
         }
+
         $this->total = $this->sub_total + $this->envio;
-        
+
         return view('livewire.carritocompra');
     }
 
     public function incrementCant($id){
         $cart = Carrito::whereId($id)->first();
-        $cart->cantidad += 1;
-        $cart->save();
+        if ($cart) {
+            $cart->cantidad += 1;
+            $cart->save();
+        }
     }
 
     public function decrementCant($id){

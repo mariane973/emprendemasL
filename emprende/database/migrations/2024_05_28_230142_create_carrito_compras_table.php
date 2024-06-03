@@ -15,8 +15,11 @@ class CreateCarritoComprasTable extends Migration
     {
         Schema::create('carrito_compras', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('producto_id')->constrained()->onDelete('cascade');
+            $table->foreignId('producto_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('oferta_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('servicio_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->integer('cantidad')->default(1);
             $table->timestamps();
         });
     }

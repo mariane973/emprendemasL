@@ -24,8 +24,7 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function vendedor(): HasOne
-    {
+    public function vendedor() {
         return $this->hasOne(Vendedore::class);
     }
 

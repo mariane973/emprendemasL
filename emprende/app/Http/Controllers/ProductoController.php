@@ -14,10 +14,10 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function index()
-     {
+    public function index()
+    {
         return view('productos.index');
-     }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -49,7 +49,7 @@ class ProductoController extends Controller
         $newProduct -> precio = $request->get('precio');
         $newProduct -> stock = $request->get('stock');
         $newProduct -> categoria = $request->get('categoria');
-        $newProduct->vendedor_id = Auth::id();
+        $newProduct -> vendedor_id = Auth::id();
 
         $newProduct -> save();
 

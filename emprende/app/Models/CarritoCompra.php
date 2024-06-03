@@ -11,7 +11,15 @@ class CarritoCompra extends Model
 
     protected $guarded = [];
 
-    public function producto(){
+    public function producto() {
         return $this->belongsTo(Producto::class);
+    }
+
+    public function oferta() {
+        return $this->belongsTo(Oferta::class);
+    }
+
+    public function servicio() {
+        return $this->belongsTo(Servicio::class);
     }
 }

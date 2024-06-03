@@ -11,8 +11,7 @@ class Producto extends Model
 
     protected $guarded = [];
 
-    public function vendedor(): BelongsTo
-    {
+    public function vendedor() {
         return $this->belongsTo(Vendedore::class);
     }
 }

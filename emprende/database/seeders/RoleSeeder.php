@@ -20,10 +20,11 @@ class RoleSeeder extends Seeder
         $role1 = Role::create(['name'=>'Vendedor']);
         $role2 = Role::create(['name'=>'Cliente']);
 
-        Permission::create(['name'=>'comprarProducto'])->syncRoles([$role2]);
+        Permission::create(['name'=>'agregarCarrito'])->syncRoles([$role2]);
         Permission::create(['name'=>'editarProducto'])->syncRoles([$role1]);
         Permission::create(['name'=>'eliminarProducto'])->syncRoles([$role1]);
         Permission::create(['name'=>'crearProducto'])->syncRoles([$role1]);
         Permission::create(['name'=>'verCarrito'])->syncRoles([$role2]);
+        Permission::create(['name'=>'agregarVendedor'])->syncRoles([$role1]);
     }
 }

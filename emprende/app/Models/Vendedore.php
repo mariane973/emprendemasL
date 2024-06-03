@@ -9,13 +9,19 @@ class Vendedore extends Model
 {
     use HasFactory;
 
-    public function user(): BelongsTo
-    {
+    public function user() {
         return $this->belongsTo(User::class);
     }
 
-    public function productos()
-    {
+    public function productos() {
         return $this->hasMany(Producto::class);
+    }
+
+    public function ofertas() {
+        return $this->hasMany(Oferta::class);
+    }
+
+    public function servicios() {
+        return $this->hasMany(Servicio::class);
     }
 }

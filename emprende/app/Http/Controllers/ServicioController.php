@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Vendedore;
+use App\Models\Servicio;
 use Illuminate\Support\Facades\Auth;
 
-class VendedorController extends Controller
+class ServicioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +15,7 @@ class VendedorController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-
-        if (Auth::check() && $user->hasRole('Vendedor')) {
-            $vendedorCont = Vendedore::where('user_id', $user->id)->get();
-        } else {
-            $vendedorCont = Vendedore::all();
-        }
-
-        return view('vendedores.index', compact('vendedorCont'));
+        return view('servicios.index');
     }
 
     /**
@@ -33,7 +25,7 @@ class VendedorController extends Controller
      */
     public function create()
     {
-        return view('vendedores.create');
+        return view('servicios.create');
     }
 
     /**
@@ -44,23 +36,22 @@ class VendedorController extends Controller
      */
     public function store(Request $request)
     {
-        $newVendedor = new Vendedore();
-        $logo = $request->file('logo');
-        $nombreimg = time().'.'.$logo -> getClientOriginalExtension();
-        $destino = public_path('imagenes/emprendimientos');
-        $request -> logo -> move($destino,$nombreimg);
+        $newProduct = new Servicio();
+        $imagen = $request->file('imagen');
+        $nombreimg = time().'.'.$imagen -> getClientOriginalExtension();
+        $destino = public_path('imagenes/servicios');
+        $request -> imagen -> move($destino,$nombreimg);
 
-        $newVendedor -> logo = $nombreimg;
-        $newVendedor -> nom_emprendimiento = $request->get('nom_emprendimiento');
-        $newVendedor -> descrip_emprendimiento = $request->get('descrip_emprendimiento');
-        $newVendedor -> telefono = $request->get('telefono');
-        $newVendedor -> direccion = $request->get('direccion');
-        $newVendedor -> ciudad = $request->get('ciudad');
-        $newVendedor -> user_id = Auth::id();
+        $newProduct -> imagen = $nombreimg;
+        $newProduct -> nombre = $request->get('nombre');
+        $newProduct -> descripcion = $request->get('descripcion');
+        $newProduct -> precio = $request->get('precio');
+        $newProduct -> categoria = $request->get('categoria');
+        $newProduct -> vendedor_id = Auth::id();
 
-        $newVendedor -> save();
+        $newProduct -> save();
 
-        return redirect('/emprendimientos');
+        return redirect('/servicios');
     }
 
     /**
