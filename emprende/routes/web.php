@@ -7,6 +7,9 @@ use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Livewire\CarritoCompra;
+use App\Models\Oferta;
+use App\Models\Servicio;
+use App\Models\Vendedore;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +30,13 @@ Route::resource('/productos', ProductoController::class);
 Route::get('/productos/{producto}/confirmar',[ProductoController::class, 'eliminar']);
 
 Route::resource('/emprendimientos', VendedorController::class);
+Route::get('/emprendimientos/{emprendimiento}/confirmar',[VendedorController::class, 'eliminar']);
 
 Route::resource('/ofertas', OfertaController::class);
+Route::get('/ofertas/{oferta}/confirmar',[OfertaController::class, 'eliminar']);
 
 Route::resource('/servicios',ServicioController::class);
+Route::get('/servicios/{servicio}/confirmar',[ServicioController::class, 'eliminar']);
 
 Route::resource('/users', UserController::class);
 Route::get('/users/{usuario}/confirmar',[UserController::class, 'eliminar']);

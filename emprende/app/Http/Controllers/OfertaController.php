@@ -36,22 +36,22 @@ class OfertaController extends Controller
      */
     public function store(Request $request)
     {
-        $newProduct = new Oferta();
+        $newOferta = new Oferta();
         $imagen = $request->file('imagen');
         $nombreimg = time().'.'.$imagen -> getClientOriginalExtension();
         $destino = public_path('imagenes/ofertas');
         $request -> imagen -> move($destino,$nombreimg);
 
-        $newProduct -> imagen = $nombreimg;
-        $newProduct -> nombre = $request->get('nombre');
-        $newProduct -> descripcion = $request->get('descripcion');
-        $newProduct -> precio = $request->get('precio');
-        $newProduct -> descuento = $request->get('descuento');
-        $newProduct -> stock = $request->get('stock');
-        $newProduct -> precioDescuento = $request->get('precioDescuento');
-        $newProduct -> vendedor_id = Auth::id();
+        $newOferta -> imagen = $nombreimg;
+        $newOferta -> nombre = $request->get('nombre');
+        $newOferta -> descripcion = $request->get('descripcion');
+        $newOferta -> precio = $request->get('precio');
+        $newOferta -> descuento = $request->get('descuento');
+        $newOferta -> stock = $request->get('stock');
+        $newOferta -> precioDescuento = $request->get('precioDescuento');
+        $newOferta -> vendedor_id = Auth::id();
 
-        $newProduct -> save();
+        $newOferta -> save();
 
         return redirect('/ofertas');
     }
@@ -75,7 +75,10 @@ class OfertaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ofertaEditar = Oferta::findOrFail($id);
+        return view('ofertas.edit', [
+            'ofertaEditar' => $ofertaEditar
+        ]);
     }
 
     /**
@@ -87,7 +90,17 @@ class OfertaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $editarOferta = Oferta::findOrFail($id);
+
+        $editarOferta -> nombre = $request -> get('nombreEdit');
+        $editarOferta -> descripcion = $request -> get('descripEdit');
+        $editarOferta -> precio = $request -> get('precioEdit');
+        $editarOferta -> descuento = $request -> get('descuentoEdit');
+        $editarOferta -> stock = $request -> get('stockEdit');
+        $editarOferta -> precioDescuento = $request -> get('precioDescuentoEdit');
+        
+        $editarOferta -> save();
+        return redirect('/ofertas');
     }
 
     /**
@@ -98,6 +111,18 @@ class OfertaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $eliminarOferta = Oferta::findOrFail($id);
+        $eliminarOferta -> delete();
+        return redirect('/ofertas');
+    }
+
+    public function eliminar($id)
+    {
+        $eliminarOferta = Oferta::findOrFail($id);
+
+        return view('ofertas.delete', [
+            'ofertaEliminar' => $eliminarOferta
+        ]);
+
     }
 }

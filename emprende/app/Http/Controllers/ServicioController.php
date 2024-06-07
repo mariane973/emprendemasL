@@ -73,7 +73,10 @@ class ServicioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $servicioEditar = Servicio::findOrFail($id);
+        return view('servicios.edit', [
+            'serviciosEditar' => $servicioEditar
+        ]);
     }
 
     /**
@@ -85,7 +88,15 @@ class ServicioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $editarServicio = Servicio::findOrFail($id);
+
+        $editarServicio -> nombre = $request -> get('nombreEdit');
+        $editarServicio -> descripcion = $request -> get('descripEdit');
+        $editarServicio -> precio = $request -> get('precioEdit');
+        $editarServicio -> categoria = $request -> get('categoriaEdit');
+        
+        $editarServicio -> save();
+        return redirect('/servicios');
     }
 
     /**
@@ -96,6 +107,18 @@ class ServicioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $eliminarServicio = Servicio::findOrFail($id);
+        $eliminarServicio -> delete();
+        return redirect('/servicios');
+    }
+
+    public function eliminar($id)
+    {
+        $eliminarServicio = Servicio::findOrFail($id);
+
+        return view('servicios.delete', [
+            'servicioEliminar' => $eliminarServicio
+        ]);
+
     }
 }

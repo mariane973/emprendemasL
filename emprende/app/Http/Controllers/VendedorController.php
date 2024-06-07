@@ -82,7 +82,10 @@ class VendedorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vendedorEditar = Vendedore::findOrFail($id);
+        return view('servicios.edit', [
+            'serviciosEditar' => $vendedorEditar
+        ]);
     }
 
     /**
