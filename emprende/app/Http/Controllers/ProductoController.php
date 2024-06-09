@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\Vendedore;
 use Illuminate\Support\Facades\Auth;
 
 class ProductoController extends Controller
@@ -26,7 +27,9 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('productos.create');
+        $user = Auth::user();
+        $vendedores = $user->vendedores;
+        return view('productos.create', compact('vendedores'));
     }
 
     /**
@@ -49,7 +52,7 @@ class ProductoController extends Controller
         $newProduct -> precio = $request->get('precio');
         $newProduct -> stock = $request->get('stock');
         $newProduct -> categoria = $request->get('categoria');
-        $newProduct -> vendedor_id = Auth::id();
+        $newProduct -> vendedor_id = $request->get('vendedor_id');
 
         $newProduct -> save();
 

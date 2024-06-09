@@ -21,7 +21,7 @@ class CreateServiciosTable extends Migration
             $table->string('categoria');
             $table->string('imagen');
             $table->bigInteger('vendedor_id')->unsigned();
-            $table->foreign('vendedor_id')->references('user_id')->on('vendedores')->onDelete('cascade');
+            $table->foreign('vendedor_id')->references('id')->on('vendedores')->onDelete('cascade');
             $table->timestamps();
         });
     }

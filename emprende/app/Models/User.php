@@ -24,8 +24,8 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function vendedor() {
-        return $this->hasOne(Vendedore::class);
+    public function vendedores() {
+        return $this->hasMany(Vendedore::class);
     }
 
     /**
