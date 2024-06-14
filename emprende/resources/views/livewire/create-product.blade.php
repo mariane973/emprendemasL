@@ -12,7 +12,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Valor Total</label>
-            <input type="text" placeholder="" class="form-control" name="Valor Total" required="">
+            <h2 type="text" placeholder="" class="form-control" name="valorTotal" required="">
         </div>
     </div>
 </div>
