@@ -26,10 +26,6 @@
         <input type="text" placeholder="" class="form-control" name="categoria" required="">
     </div>
     <div class="mb-3">
-        <label for="imagen" class="form-label">Imagen</label>
-        <input type="file" placeholder="" class="form-control" name="imagen" required="">
-    </div>
-    <div class="mb-3">
         <label for="vendedor_id" class="form-label">Emprendimiento</label>
         <select class="form-control" name="vendedor_id" required>
             <option value="" disabled selected>Seleccione su emprendimiento</option>
@@ -38,9 +34,12 @@
             @endforeach
         </select>
     </div>
-    <div class="text-center">
-        <button type="submit" class="btn btn-success my-4">Crear</button>
+    <div class="mb-3">
+        <label for="imagen" class="form-label">Imagen</label>
+        <input type="file" placeholder="" class="form-control" name="imagen" required="">
     </div>
+
+    <livewire:create-product />
 </form>
 </div>
 @endsection

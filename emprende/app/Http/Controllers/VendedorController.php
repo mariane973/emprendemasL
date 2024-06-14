@@ -83,8 +83,8 @@ class VendedorController extends Controller
     public function edit($id)
     {
         $vendedorEditar = Vendedore::findOrFail($id);
-        return view('servicios.edit', [
-            'serviciosEditar' => $vendedorEditar
+        return view('vendedores.edit', [
+            'vendedorEditar' => $vendedorEditar
         ]);
     }
 
@@ -97,7 +97,23 @@ class VendedorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $editVendedor = Vendedore::findOrFail($id);
+
+        $editVendedor = new Vendedore();
+        $logo = $request->file('logoEdit');
+        $nombreimg = time().'.'.$logo -> getClientOriginalExtension();
+        $destino = public_path('imagenes/emprendimientos');
+        $request -> logo -> move($destino,$nombreimg);
+
+        $editVendedor -> logo = $nombreimg;
+        $editVendedor -> nom_emprendimiento = $request->get('nom_emprendimientoEdit');
+        $editVendedor -> descrip_emprendimiento = $request->get('descrip_emprendimientoEdit');
+        $editVendedor -> telefono = $request->get('telefonoEdit');
+        $editVendedor -> direccion = $request->get('direccionEdit');
+        $editVendedor -> ciudad = $request->get('ciudadEdit');
+
+        $editVendedor -> save();
+        return redirect('/emprendimientos');
     }
 
     /**

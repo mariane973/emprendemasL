@@ -2,7 +2,7 @@
 @section('content')
 <h2 class="text-center my-4">EDITAR PRODUCTO</h2>
 <div class="container d-flex justify-content-center">
-<form action="/servicios/{{$serviciosEditar->id}}" method="POST" class="form-editar" enctype="multipart/form-data">
+<form action="/servicios/{{$serviciosEditar->id}}" method="POST" class="form-editar" enctype="multipart/form-data" class="form-editar">
     @csrf
     @method('put')
     <div class="mb-3">

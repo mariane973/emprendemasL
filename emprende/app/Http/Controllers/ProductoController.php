@@ -52,6 +52,8 @@ class ProductoController extends Controller
         $newProduct -> precio = $request->get('precio');
         $newProduct -> stock = $request->get('stock');
         $newProduct -> categoria = $request->get('categoria');
+        $newProduct -> oferta = $request->get('opcOferta');
+        $newProduct -> descuento = $request->get('descuento');
         $newProduct -> vendedor_id = $request->get('vendedor_id');
 
         $newProduct -> save();

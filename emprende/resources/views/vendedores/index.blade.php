@@ -43,6 +43,22 @@
                     <h4>{{$vendedorVista->nom_emprendimiento}}</h4>
                     <p>{{$vendedorVista->descrip_emprendimiento}}</p>
                 </div>
+                <div class="d-flex gap-2 mt-3">
+                        @can('editarProducto')
+                        <a href="/emprendimientos/{{$vendedorVista->id}}/edit" class="btn btn-success">
+                            <i class="fas fa-edit me-1"></i> Editar
+                        </a>
+                        @endcan
+                        @can('eliminarProducto')
+                        <form action="/emorendimientos/{{$vendedorVista->id}}/delete" method="post">
+                            @csrf
+                            @method('get')
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash-alt me-1"></i> Eliminar
+                            </button>
+                        </form>
+                        @endcan
+                    </div>
             </div>
         </div>
         @endforeach
