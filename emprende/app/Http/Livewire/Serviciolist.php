@@ -16,7 +16,11 @@ class Serviciolist extends Component
         $user = Auth::user();
         
         if (Auth::check() && $user->hasRole('Vendedor')) {
-            $this->servicioCont = Servicio::where('vendedor_id', $user->id)->get();
+            $vendedorIds = $user->vendedores->map(
+                function($vendedor) {
+                    return $vendedor->id;
+               });
+            $this->servicioCont = Servicio::whereIn('vendedor_id', $vendedorIds)->get();
         } else {
             $this->servicioCont = Servicio::all();
         }

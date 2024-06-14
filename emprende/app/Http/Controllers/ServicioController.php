@@ -25,7 +25,9 @@ class ServicioController extends Controller
      */
     public function create()
     {
-        return view('servicios.create');
+        $user = Auth::user();
+        $vendedores = $user->vendedores;
+        return view('servicios.create', compact('vendedores'));
     }
 
     /**
@@ -47,7 +49,7 @@ class ServicioController extends Controller
         $newProduct -> descripcion = $request->get('descripcion');
         $newProduct -> precio = $request->get('precio');
         $newProduct -> categoria = $request->get('categoria');
-        $newProduct -> vendedor_id = Auth::id();
+        $newProduct -> vendedor_id = $request->get('vendedor_id');
 
         $newProduct -> save();
 

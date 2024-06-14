@@ -22,10 +22,18 @@
         <input type="text" placeholder="" class="form-control" name="categoria" required="">
     </div>
     <div class="mb-3">
+        <label for="vendedor_id" class="form-label fw-semibold">Emprendimiento</label>
+        <select class="form-control" name="vendedor_id" required>
+            <option value="" disabled selected>Seleccione su emprendimiento</option>
+            @foreach($vendedores as $vendedor)
+                <option value="{{ $vendedor->id }}">{{ $vendedor->nom_emprendimiento }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="mb-3">
         <label for="imagen" class="form-label">Imagen</label>
         <input type="file" placeholder="" class="form-control" name="imagen" required="">
     </div>
-    <input type="hidden" name="vendedor_id" value="{{ Auth::user()->id }}">
     <div class="text-center">
         <button type="submit" class="btn btn-success my-4">Crear</button>
     </div>

@@ -52,15 +52,22 @@ class ProductoController extends Controller
         $newProduct -> precio = $request->get('precio');
         $newProduct -> stock = $request->get('stock');
         $newProduct -> categoria = $request->get('categoria');
-        $newProduct -> oferta = $request->get('opcOferta');
+        $newProduct -> oferta = $request->opcOferta == 'si';
         $newProduct -> descuento = $request->get('descuento');
-        $newProduct -> valor_final = $request->get('valorTotal');
+        $newProduct -> valor_final = $request->get('valor_final');
         $newProduct -> vendedor_id = $request->get('vendedor_id');
 
         $newProduct -> save();
 
         return redirect('/productos');
     }
+
+    public function ofertasIndex()
+    {
+        $ofertaCont = Producto::where('oferta', 1)->get();
+        return view('ofertas.index', compact('ofertaCont'));
+    }
+
 
     /**
      * Display the specified resource.

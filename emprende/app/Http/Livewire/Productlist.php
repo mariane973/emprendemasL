@@ -18,7 +18,7 @@ class Productlist extends Component
         if (Auth::check() && $user->hasRole('Vendedor')) {
             $vendedorIds = $user->vendedores->map(
                 function($vendedor) {
-                     return $vendedor->id;
+                    return $vendedor->id;
                 });
             $this->productoCont = Producto::whereIn('vendedor_id', $vendedorIds)->get();
         } else {

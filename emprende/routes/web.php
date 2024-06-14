@@ -32,8 +32,8 @@ Route::get('/productos/{producto}/confirmar',[ProductoController::class, 'elimin
 Route::resource('/emprendimientos', VendedorController::class);
 Route::get('/emprendimientos/{emprendimiento}/confirmar',[VendedorController::class, 'eliminar']);
 
-Route::resource('/ofertas', OfertaController::class);
-Route::get('/ofertas/{oferta}/confirmar',[OfertaController::class, 'eliminar']);
+//Route::resource('/ofertas', OfertaController::class);
+//Route::get('/ofertas/{oferta}/confirmar',[OfertaController::class, 'eliminar']);
 
 Route::resource('/servicios',ServicioController::class);
 Route::get('/servicios/{servicio}/confirmar',[ServicioController::class, 'eliminar']);
@@ -52,3 +52,5 @@ Route::get('/carrito', CarritoCompra::class)->name('carritocompra');
 Route::get('/carrito', function () {
     return view('carrito');
 })->name('carrito');
+
+Route::get('/ofertas', [ProductoController::class, 'ofertasIndex'])->name('ofertas.index');

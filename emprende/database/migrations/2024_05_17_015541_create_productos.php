@@ -21,9 +21,9 @@ class CreateProductos extends Migration
             $table->integer('stock');
             $table->string('categoria');
             $table->string('imagen');
-            $table->boolean('oferta');
-            $table->integer('descuento');
-            $table->integer('valor_final');
+            $table->boolean('oferta')->default(0);
+            $table->integer('descuento')->nullable();
+            $table->integer('valor_final')->nullable();
             $table->bigInteger('vendedor_id')->unsigned();
             $table->foreign('vendedor_id')->references('id')->on('vendedores')->onDelete('cascade');
             $table->timestamps();

@@ -3,8 +3,8 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Oferta;
 use App\Models\CarritoCompra;
+use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
 
 class OfertasList extends Component
@@ -13,13 +13,17 @@ class OfertasList extends Component
 
     public function render()
     {
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        if (Auth::check() && $user->hasRole('Vendedor')) {
-            $this->ofertaCont = Oferta::where('vendedor_id', $user->id)->get();
-        } else {
-            $this->ofertaCont = Oferta::all();
-        }
+        // if (Auth::check() && $user->hasRole('Vendedor')) {
+        //     $this->ofertaCont = Producto::where('vendedor_id', $user->id)->get();
+        // } else {
+        //     $this->ofertaCont = Producto::all();
+        // }
+        // return view('livewire.ofertas-list');
+        
+        $this->ofertaCont = Producto::where('oferta', true)->get();
+        
         return view('livewire.ofertas-list');
     }
 

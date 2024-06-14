@@ -13,10 +13,10 @@ class OfertaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('ofertas.index');
-    }
+    // public function index()
+    // {
+    //     return view('ofertas.index');
+    // }
 
     /**
      * Show the form for creating a new resource.

@@ -7,42 +7,49 @@
     @csrf
     <div class="container mt-3">
         <div class="row">
-        <div class="col-lg-6 mb-4">
-        <label class="form-label fw-semibold">Nombre</label>
-        <input type="text" placeholder="" class="form-control" name="nombre" required="">
-    </div>
-    <div class="col-lg-6 mb-4">
-        <label class="form-label fw-semibold">Descripción</label>
-        <input type="text" placeholder="" class="form-control" name="descripcion" required="">
-    </div>
-    <div class="col-lg-6 mb-4">
-        <label class="form-label fw-semibold">Precio</label>
-        <input type="number" placeholder="" class="form-control" name="precio" required="">
-    </div>
-    <div class="col-lg-6 mb-4">
-        <label class="form-label fw-semibold">Stock</label>
-        <input type="number" placeholder="" class="form-control" name="stock" required="">
-    </div>
-    <div class="col-lg-6 mb-4">
-        <label class="form-label fw-semibold">Categoria</label>
-        <input type="text" placeholder="" class="form-control" name="categoria" required="">
-    </div>
-    <div class="col-lg-6 mb-4">
-        <label for="vendedor_id" class="form-label fw-semibold">Emprendimiento</label>
-        <select class="form-control" name="vendedor_id" required>
-            <option value="" disabled selected>Seleccione su emprendimiento</option>
-            @foreach($vendedores as $vendedor)
-                <option value="{{ $vendedor->id }}">{{ $vendedor->nom_emprendimiento }}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="mb-3">
-        <label for="imagen" class="form-label fw-semibold">Imagen</label>
-        <input type="file" placeholder="" class="form-control" name="imagen" required="">
-    </div>
+            <div class="col-lg-6 mb-4">
+                <label class="form-label fw-semibold">Nombre</label>
+                <input type="text" placeholder="" class="form-control" name="nombre" required="">
+            </div>
+            <div class="col-lg-6 mb-4">
+                <label class="form-label fw-semibold">Descripción</label>
+                <input type="text" placeholder="" class="form-control" name="descripcion" required="">
+            </div>
+            <div class="col-lg-6 mb-4">
+                <label class="form-label fw-semibold">Precio</label>
+                <input type="number" placeholder="" class="form-control" name="precio" wire:model="precio"  wire:change="calculateValorFinal" required="">
+            </div>
+            <div class="col-lg-6 mb-4">
+                <label class="form-label fw-semibold">Stock</label>
+                <input type="number" placeholder="" class="form-control" name="stock" required="">
+            </div>
+            <div class="col-lg-6 mb-4">
+                <label class="form-label fw-semibold">Categoria</label>
+                <input type="text" placeholder="" class="form-control" name="categoria" required="">
+            </div>
+            <div class="col-lg-6 mb-4">
+                <label for="vendedor_id" class="form-label fw-semibold">Emprendimiento</label>
+                <select class="form-control" name="vendedor_id" required>
+                    <option value="" disabled selected>Seleccione su emprendimiento</option>
+                    @foreach($vendedores as $vendedor)
+                        <option value="{{ $vendedor->id }}">{{ $vendedor->nom_emprendimiento }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="imagen" class="form-label fw-semibold">Imagen</label>
+                <input type="file" placeholder="" class="form-control" name="imagen" required="">
+            </div>
         </div>
-    </div>
-    <livewire:create-product />
-</form>
+        </div>
+        <livewire:create-product />
+        <input type="hidden" name="opcOferta" wire:model="opcOferta">
+        <input type="hidden" name="descuento" wire:model="descuento">
+        <input type="hidden" name="valor_final" wire:model="valor_final">
+        <input type="hidden" name="vendedor_id" value="{{ Auth::user()->id }}">
+        <div class="text-center">
+            <button type="submit" class="btn btn-success my-4 fw-semibold">Crear Producto</button>
+        </div>
+    </form>
 </div>
 @endsection
