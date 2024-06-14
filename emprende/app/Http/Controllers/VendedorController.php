@@ -124,6 +124,18 @@ class VendedorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $eliminarVendedor =Vendedore::findOrFail($id);
+        $eliminarVendedor -> delete();
+        return redirect('/emprendimientos');
+    }
+
+    public function eliminar($id)
+    {
+        $eliminarVendedor =Vendedore::findOrFail($id);
+
+        return view('vendedores.delete', [
+            'vendedorEliminar' => $eliminarVendedor
+        ]);
+
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.navbar')
 @section('titulo', 'Crear Emprendimiento')
 @section('content')
-<h2 class="text-center my-4">CREAR MI EMPRENDIMIENTO</h2>
+<h2 class="text-center my-4">EDITAR MI EMPRENDIMIENTO</h2>
 <div class="container d-flex justify-content-center">
 <form action="/emprendimientos/{{$vendedorEditar->id}}" method="POST" enctype="multipart/form-data" class="form-editar">
     @csrf
@@ -31,7 +31,7 @@
         <input type="text" placeholder="" class="form-control" value="{{$vendedorEditar->ciudad}}" name="ciudadEdit">
     </div>
     <div class="text-center">
-        <button type="submit" class="btn btn-success my-4">Crear</button>
+        <button type="submit" class="btn btn-success my-4">Guardar Cambios</button>
     </div>
 </form>
 </div>

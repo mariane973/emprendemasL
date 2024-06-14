@@ -50,7 +50,7 @@
                         </a>
                         @endcan
                         @can('eliminarProducto')
-                        <form action="/emorendimientos/{{$vendedorVista->id}}/delete" method="post">
+                        <form action="/emprendimientos/{{$vendedorVista->id}}/confirmar" method="post">
                             @csrf
                             @method('get')
                             <button type="submit" class="btn btn-danger">
