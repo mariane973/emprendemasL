@@ -23,30 +23,30 @@
     <nav>   
         <div class="Navbar container-fluid ">    
             <div class="row ">
-                <div class="Logo col-lg-2 ms-sm-4 col-sm-2 me-sm-3 pe-sm-1 mb-sm-4 col-md-1 col-xs-1 me-xs-5">
+                <div class="Logo col-lg-2 col-sm-2 ms-3 me-sm-4 mb-sm-4 col-md-1 col-xs-1 me-xs-5">
                     <a href="/" class="fw-bold">
                         <img src="/imagenes/op2.png" alt="" style="height: 60px; ">
                     </a>
                 </div>
-                <div class="Caja_Busqueda col-lg-5  me-lg-3 ms-sm-5 ps-sm-2 col-sm-7 mb-sm-4 col-md-4 offset-sm-2">
+                <div class="Caja_Busqueda col-lg-4 me-lg-1 ms-sm-5 ps-sm-3 col-sm-7 mb-sm-4 col-md-4">
                     <input type="text" placeholder="Buscar un emprendedor o producto      " >
                     <i class="fas fa-search"></i>
                 </input>
                 </div>
-                <div class="InicioSesion col-lg-2 col-sm-5 mb-sm-4">
+                <div class="InicioSesion col-lg-2 col-sm-2 mb-sm-4">
                     <div class="Usuario col ms-4">
                     <i class="fas fa-seedling icono" style="font-size: 28px; vertical-align: middle;"></i>
-                        <a href="/productos" class="fw-bold ms-1">Productos</a>
+                        <a href="/productos" class="fw-bold">Productos</a>
                     </div>
                 </div>
                 @can('verCarrito')
-                <div class="InicioSesion col-lg-1 col-sm-5 mb-sm-4 me-3">
+                <div class="InicioSesion col-lg-1 mt-1 col-sm-5 mb-sm-4 me-3">
                     <div class="Usuario col ms-1 vertical-align: middle;">
                     <livewire:cartcontador />
                     </div>
                 </div>
                 @endcan
-                <div class="InicioSesion col-lg-2 col-sm-4  mb-sm-4 col-md-2">
+                <div class="InicioSesion col-lg-2  mb-sm-4 col-md-1">
                     @guest
                         <div class="Usuario col " style="display: flex; align-items: center;">
                         <i class="fas fa-user-circle iconos" style="font-size: 30px; vertical-align: middle;"></i>
@@ -72,6 +72,7 @@
                         </form>
                     @endguest
                 </div>
+                
             
             </div>
         </div>
@@ -83,7 +84,7 @@
         @yield('content')
     </main>
 
-<footer class="bg-body-tertiary text-center mt-5">
+<footer class="bg-body-tertiary text-center mt-5 ">
     <!-- Grid container -->
     <div class="container p-4 pb-0">
         <!-- Section: Social media -->
@@ -152,7 +153,7 @@
     <!-- Grid container -->
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0);">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
         <p class="text-body">&copy; 2024 Company, Inc</p>
     </div>
     <!-- Copyright -->

@@ -42,8 +42,7 @@
                 <div class="box">
                     <h4>{{$vendedorVista->nom_emprendimiento}}</h4>
                     <p>{{$vendedorVista->descrip_emprendimiento}}</p>
-                </div>
-                <div class="d-flex gap-2 mt-3">
+                    <div class="d-flex gap-2 mt-3">
                         @can('editarProducto')
                         <a href="/emprendimientos/{{$vendedorVista->id}}/edit" class="btn btn-success">
                             <i class="fas fa-edit me-1"></i> Editar
@@ -59,6 +58,7 @@
                         </form>
                         @endcan
                     </div>
+                </div>
             </div>
         </div>
         @endforeach
