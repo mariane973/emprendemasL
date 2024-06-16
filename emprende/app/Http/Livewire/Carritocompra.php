@@ -19,9 +19,9 @@ class Carritocompra extends Component
 
         foreach ($this->carritoitems as $item) {
             if ($item->producto) {
-                $this->sub_total += $item->producto->precio * $item->cantidad;
+                $this->sub_total += $item->producto->valor_final * $item->cantidad;
             } elseif ($item->servicio) {
-                $this->sub_total += $item->servicio->precio * $item->cantidad;
+                $this->sub_total += $item->servicio->valor_final * $item->cantidad;
             }
         }
 

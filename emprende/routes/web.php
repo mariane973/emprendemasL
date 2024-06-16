@@ -25,16 +25,17 @@ Route::get('/', function(){
 });
 
 Route::resource('/productos', ProductoController::class);
-Route::get('/productos/{producto}/confirmar',[ProductoController::class, 'eliminar']);
 
 Route::resource('/emprendimientos', VendedorController::class);
-Route::get('/emprendimientos/{emprendimiento}/confirmar',[VendedorController::class, 'eliminar']);
 
 Route::resource('/servicios',ServicioController::class);
-Route::get('/servicios/{servicio}/confirmar',[ServicioController::class, 'eliminar']);
 
 Route::resource('/users', UserController::class);
 Route::get('/users/{usuario}/confirmar',[UserController::class, 'eliminar']);
+
+Route::get('/ofertas', [ProductoController::class, 'ofertasIndex'])->name('ofertas.index');
+
+Route::get('/ofertas_servicios', [ServicioController::class, 'ofertasServicios'])->name('ofertas.index_servicios');
 
 Auth::routes();
 
@@ -47,5 +48,3 @@ Route::get('/carrito', CarritoCompra::class)->name('carritocompra');
 Route::get('/carrito', function () {
     return view('carrito');
 })->name('carrito');
-
-Route::get('/ofertas', [ProductoController::class, 'ofertasIndex'])->name('ofertas.index');

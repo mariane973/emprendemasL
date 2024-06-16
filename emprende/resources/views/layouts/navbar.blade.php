@@ -72,8 +72,6 @@
                         </form>
                     @endguest
                 </div>
-                
-            
             </div>
         </div>
     </nav>
@@ -171,4 +169,85 @@
         var dropdown = document.getElementById("userDropdown");
         dropdown.classList.toggle("show");
     }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Alerta Eliminar -->
+<script>
+    // Alerta Producto
+    window.addEventListener('eliminacion-producto', event => {
+        Swal.fire({
+        title: "¿Estás seguro de eliminar este producto?",
+        text: "No podrás revertir esta acción.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar" 
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Livewire.emit('confirmacionEliminacion');
+            }
+        })
+    });
+    window.addEventListener('productoEliminado', event => {
+        Swal.fire({
+            title: "Producto Eliminado",
+            html: '<img src="imagenes/success.gif">',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    });
+    // Alerta Servicio
+    window.addEventListener('eliminacion-servicio', event => {
+        Swal.fire({
+        title: "¿Estás seguro de eliminar este servicio?",
+        text: "No podrás revertir esta acción.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar" 
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Livewire.emit('confirmacionEliminacion');
+            }
+        })
+    });
+    window.addEventListener('servicioEliminado', event => {
+        Swal.fire({
+            title: "Servicio Eliminado",
+            html: '<img src="imagenes/success.gif">',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    });
+    // Alerta Emprendimiento
+    window.addEventListener('eliminacion-emprendimiento', event => {
+        Swal.fire({
+        title: "¿Estás seguro de eliminar este emprendimiento?",
+        text: "No podrás revertir esta acción.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar" 
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Livewire.emit('confirmacionEliminacion');
+            }
+        })
+    });
+    window.addEventListener('emprendimientoEliminado', event => {
+        Swal.fire({
+            title: "Emprendimiento Eliminado",
+            html: '<img src="imagenes/success.gif">',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    });
 </script>

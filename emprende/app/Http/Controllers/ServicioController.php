@@ -18,6 +18,11 @@ class ServicioController extends Controller
         return view('servicios.index');
     }
 
+    public function ofertasServicios()
+    {
+        return view('ofertas.index_servicios');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -62,11 +67,6 @@ class ServicioController extends Controller
         $newServicio -> save();
 
         return redirect('/servicios');
-    }
-
-    public function ofertasIndex()
-    {
-        return view('ofertas.index');
     }
 
     /**
@@ -148,18 +148,6 @@ class ServicioController extends Controller
      */
     public function destroy($id)
     {
-        $eliminarServicio = Servicio::findOrFail($id);
-        $eliminarServicio -> delete();
-        return redirect('/servicios');
-    }
-
-    public function eliminar($id)
-    {
-        $eliminarServicio = Servicio::findOrFail($id);
-
-        return view('servicios.delete', [
-            'servicioEliminar' => $eliminarServicio
-        ]);
-
+        //
     }
 }

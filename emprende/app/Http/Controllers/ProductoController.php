@@ -154,18 +154,6 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $eliminarProducto = Producto::findOrFail($id);
-        $eliminarProducto -> delete();
-        return redirect('/productos');
-    }
-
-    public function eliminar($id)
-    {
-        $eliminarProducto = Producto::findOrFail($id);
-
-        return view('productos.delete', [
-            'productoEliminar' => $eliminarProducto
-        ]);
-
+        //
     }
 }

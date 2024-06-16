@@ -43,4 +43,20 @@ class Serviciolist extends Component
             session()->flash('success', 'Servicio agregado al carrito exitosamente.');
         }
     }
+
+    public $id_eliminacion;
+
+    protected $listeners = ['confirmacionEliminacion'=>'eliminarServicio'];
+
+    public function eliminacion($id) {
+        $this->id_eliminacion = $id;
+        $this->dispatchBrowserEvent('eliminacion-servicio');
+    }
+
+    public function eliminarServicio() {
+        $servicio = Servicio::where('id', $this->id_eliminacion)->first();
+        $servicio->delete();
+
+        $this->dispatchBrowserEvent('servicioEliminado');
+    }
 }

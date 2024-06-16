@@ -41,4 +41,20 @@ class Productlist extends Component
             session()->flash('success','Producto agregado al carrito exitosamente.');
         }
     }
+
+    public $id_eliminacion;
+
+    protected $listeners = ['confirmacionEliminacion'=>'eliminarProducto'];
+
+    public function eliminacion($id) {
+        $this->id_eliminacion = $id;
+        $this->dispatchBrowserEvent('eliminacion-producto');
+    }
+
+    public function eliminarProducto() {
+        $producto = Producto::where('id', $this->id_eliminacion)->first();
+        $producto->delete();
+
+        $this->dispatchBrowserEvent('productoEliminado');
+    }
 }

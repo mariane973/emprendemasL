@@ -3,19 +3,19 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Servicio;
 use App\Models\CarritoCompra;
-use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
 
-class OfertasList extends Component
+class OfertasServicioslist extends Component
 {
     public $ofertaCont;
 
     public function render()
     {
-        $this -> ofertaCont = Producto::where('oferta', true)->get();
+        $this -> ofertaCont = Servicio::where('oferta', true)->get();
         
-        return view('livewire.ofertas-list');
+        return view('livewire.ofertas-servicioslist');
     }
 
     public function agregarCarro($id)
@@ -24,7 +24,7 @@ class OfertasList extends Component
 
             $data = [
                 'user_id' => auth()->user()->id,
-                'producto_id' => $id,
+                'servicio_id' => $id,
             ];
             
             CarritoCompra::updateOrCreate($data);
@@ -34,19 +34,20 @@ class OfertasList extends Component
             session()->flash('success', 'Oferta agregada al carrito exitosamente.');
         }
     }
+
     public $id_eliminacion;
 
-    protected $listeners = ['confirmacionEliminacion'=>'eliminarProducto'];
+    protected $listeners = ['confirmacionEliminacion'=>'eliminarServicio'];
 
     public function eliminacion($id) {
         $this->id_eliminacion = $id;
-        $this->dispatchBrowserEvent('eliminacion-producto');
+        $this->dispatchBrowserEvent('eliminacion-servicio');
     }
 
-    public function eliminarProducto() {
-        $producto = Producto::where('id', $this->id_eliminacion)->first();
-        $producto->delete();
+    public function eliminarServicio() {
+        $servicio = Servicio::where('id', $this->id_eliminacion)->first();
+        $servicio->delete();
 
-        $this->dispatchBrowserEvent('productoEliminado');
-    }    
+        $this->dispatchBrowserEvent('servicioEliminado');
+    }   
 }

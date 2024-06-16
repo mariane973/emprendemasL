@@ -28,13 +28,9 @@
                         </a>
                         @endcan
                         @can('eliminarProducto')
-                        <form action="/productos/{{$productoVista->id}}/confirmar" method="post">
-                            @csrf
-                            @method('get')
-                            <button type="submit" class="btn btn-danger">
+                            <button type="button" class="btn btn-danger" wire:click='eliminacion({{$productoVista->id}})'>
                                 <i class="fas fa-trash-alt me-1"></i> Eliminar
                             </button>
-                        </form>
                         @endcan
                     </div>
                 </div>

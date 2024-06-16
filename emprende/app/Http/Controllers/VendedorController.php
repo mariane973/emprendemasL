@@ -15,15 +15,7 @@ class VendedorController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-
-        if (Auth::check() && $user->hasRole('Vendedor')) {
-            $vendedorCont = Vendedore::where('user_id', $user->id)->get();
-        } else {
-            $vendedorCont = Vendedore::all();
-        }
-
-        return view('vendedores.index', compact('vendedorCont'));
+        return view('vendedores.index');
     }
 
     /**
@@ -134,18 +126,6 @@ class VendedorController extends Controller
      */
     public function destroy($id)
     {
-        $eliminarVendedor =Vendedore::findOrFail($id);
-        $eliminarVendedor -> delete();
-        return redirect('/emprendimientos');
-    }
-
-    public function eliminar($id)
-    {
-        $eliminarVendedor =Vendedore::findOrFail($id);
-
-        return view('vendedores.delete', [
-            'vendedorEliminar' => $eliminarVendedor
-        ]);
-
+        //
     }
 }

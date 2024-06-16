@@ -6,7 +6,7 @@
             <div class="card mb-3" style="max-width: 1000px;">
                 <div class="row g-0">
                     <div class="col-md-5 m-auto">
-                        <img src="imagenes/productos/{{$ofertaVista->imagen}}" class="img-fluid rounded-start" alt="...">
+                        <img src="imagenes/servicios/{{$ofertaVista->imagen}}" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-7 align-self-center">
                         <div class="card-body text-center">
@@ -20,7 +20,7 @@
                             @endcan
                             @can('editarProducto')
                             <div class="d-flex justify-content-center gap-2 mb-5">
-                                <a href="/productos/{{$ofertaVista->id}}/edit" class="btn btn-success">
+                                <a href="/servicios/{{$ofertaVista->id}}/edit" class="btn btn-success">
                                     <i class="fas fa-edit me-1"></i> Editar
                                 </a>
                                 <button type="button" class="btn btn-danger" wire:click='eliminacion({{$ofertaVista->id}})'>

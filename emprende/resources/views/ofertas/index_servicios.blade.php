@@ -19,16 +19,16 @@
         <div class="Sec_Ofe col-lg-2  col-sm-6 mb-sm-5">
             <img src="imagenes/oferta.png" alt="">
             <a href="/ofertas">Ofertas Productos</a>
-            <hr>
         </div>
         <div class="Sec_Ofe col-lg-2  col-sm-6 mb-sm-5">
             <img src="imagenes/oferta.png" alt="">
             <a href="/ofertas_servicios">Ofertas Servicios</a>
+            <hr>
         </div>
     </div>
 </div>
 </section>
 
-<livewire:ofertas-list />
+<livewire:ofertas-servicioslist />
 
 @endsection
