@@ -29,7 +29,7 @@ class ProductoController extends Controller
     {
         $user = Auth::user();
         $vendedores = $user->vendedores;
-        return view('productos.create', compact('vendedores'));
+        return view('productos.create', compact( 'vendedores'));
     }
 
     /**
@@ -52,9 +52,14 @@ class ProductoController extends Controller
         $newProduct -> precio = $request->get('precio');
         $newProduct -> stock = $request->get('stock');
         $newProduct -> categoria = $request->get('categoria');
-        $newProduct -> oferta = $request->opcOferta == 'si';
-        $newProduct -> descuento = $request->get('descuento');
-        $newProduct -> valor_final = $request->get('valor_final');
+        $newProduct -> oferta = $request -> opcOferta == 'si';
+        if($request -> opcOferta == 'si') {
+            $newProduct -> descuento = $request->get('descuento');
+            $newProduct -> valor_final = $request->get('valor_final');
+        } else {
+            $newProduct -> descuento = null;
+            $newProduct -> valor_final = $request->get('precio');
+        }
         $newProduct -> vendedor_id = $request->get('vendedor_id');
 
         $newProduct -> save();
@@ -64,8 +69,7 @@ class ProductoController extends Controller
 
     public function ofertasIndex()
     {
-        $ofertaCont = Producto::where('oferta', 1)->get();
-        return view('ofertas.index', compact('ofertaCont'));
+        return view('ofertas.index');
     }
 
 
@@ -110,8 +114,35 @@ class ProductoController extends Controller
         $editarProducto -> precio = $request -> get('precioEdit');
         $editarProducto -> stock = $request -> get('stockEdit');
         $editarProducto -> categoria = $request -> get('categoriaEdit');
+
+        if ($request->opcOferta == 'si') {
+            $editarProducto->oferta = true;
+            $editarProducto->descuento = $request->get('descuento');
+            $editarProducto->valor_final = $request->get('valor_final');
+        } else {
+            $editarProducto->oferta = false;
+            $editarProducto->descuento = null;
+            $editarProducto->valor_final = $request->get('precioEdit');
+        }
         
+        if ($request->hasFile('imagen')) {
+            if ($editarProducto->imagen) {
+                $rutaImagenActual = public_path('imagenes/productos/' . $editarProducto->imagen);
+                if (file_exists($rutaImagenActual)) {
+                    unlink($rutaImagenActual);
+                }
+            }
+    
+            $imagen = $request->file('imagen');
+            $nombreimg = time() . '.' . $imagen->getClientOriginalExtension();
+            $destino = public_path('imagenes/productos');
+            $imagen->move($destino, $nombreimg);
+    
+            $editarProducto->imagen = $nombreimg;
+        }
+
         $editarProducto -> save();
+
         return redirect('/productos');
     }
 

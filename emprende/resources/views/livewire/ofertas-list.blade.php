@@ -12,7 +12,7 @@
                         <div class="card-body text-center">
                             <h4 class="card-title">{{$ofertaVista->nombre}}</h4>
                             <del><p class="card-text mt-2">${{ number_format($ofertaVista->precio, 0) }}</p></del>
-                            <p class="card-text-descuento mt-2">${{ number_format($ofertaVista->precio_total, 0) }}</p>
+                            <p class="card-text-descuento mt-2">${{ number_format($ofertaVista->valor_final, 0) }}</p>
                             @can('agregarCarrito')
                                 <button type="button" class="btn btn-success mb-5" wire:click="agregarCarro({{ $ofertaVista->id }})">
                                     <i class="fas fa-cart-plus me-1"></i> Agregar al Carrito
@@ -23,7 +23,7 @@
                                 <a href="/productos/{{$ofertaVista->id}}/edit" class="btn btn-success">
                                     <i class="fas fa-edit me-1"></i> Editar
                                 </a>
-                                <form action="/ofertas/{{$ofertaVista->id}}/confirmar" method="post">
+                                <form action="/productos/{{$ofertaVista->id}}/confirmar" method="post">
                                     @csrf
                                     @method('get')
                                     <button type="submit" class="btn btn-danger">

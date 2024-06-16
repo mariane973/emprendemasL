@@ -21,7 +21,7 @@ class CreateProductos extends Migration
             $table->integer('stock');
             $table->string('categoria');
             $table->string('imagen');
-            $table->boolean('oferta')->default(0);
+            $table->boolean('oferta')->default(false);
             $table->integer('descuento')->nullable();
             $table->integer('valor_final')->nullable();
             $table->bigInteger('vendedor_id')->unsigned();

@@ -17,7 +17,7 @@
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label fw-semibold">Precio</label>
-                <input type="number" placeholder="" class="form-control" name="precio" wire:model="precio"  wire:change="calculateValorFinal" required="">
+                <input type="number" placeholder="" class="form-control" name="precio" id="precio" required="">
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label fw-semibold">Stock</label>
@@ -36,20 +36,37 @@
                     @endforeach
                 </select>
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
                 <label for="imagen" class="form-label fw-semibold">Imagen</label>
                 <input type="file" placeholder="" class="form-control" name="imagen" required="">
             </div>
+            <div class="contenedor-menu-info">
+                <h1 class="mb-4 mt-3 fw-semibold" style="font-size: 18px;font-weight: 350;">¿El producto tiene oferta?</h1>
+                <select id="opcOfertaSelect" class="form-control" name="opcOferta">
+                    <option value="no">No</option>
+                    <option value="si">Sí</option>
+                </select>
+
+                <div id="ofertaFields" style="display: none;">
+                    <div class="mt-4">
+                        <div class="row">
+                            <div class="col-lg-6 mb-4">
+                                <label class="form-label fw-semibold">Indique el descuento (%)</label>
+                                <input type="number" placeholder="" class="form-control" name="descuento" id="descuento">
+                            </div>
+                            <div class="col-lg-6 mb-4 fw-semibold">
+                                <label class="form-label">Valor Total</label>
+                                <input type="number" placeholder="" class="form-control" name="valor_final" id="valor_final" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         </div>
-        <livewire:create-product />
-        <input type="hidden" name="opcOferta" wire:model="opcOferta">
-        <input type="hidden" name="descuento" wire:model="descuento">
-        <input type="hidden" name="valor_final" wire:model="valor_final">
-        <input type="hidden" name="vendedor_id" value="{{ Auth::user()->id }}">
-        <div class="text-center">
-            <button type="submit" class="btn btn-success my-4 fw-semibold">Crear Producto</button>
-        </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-success my-4 fw-semibold">Crear Producto</button>
+    </div>
     </form>
 </div>
 @endsection

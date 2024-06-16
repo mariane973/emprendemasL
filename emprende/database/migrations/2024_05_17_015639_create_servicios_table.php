@@ -20,6 +20,9 @@ class CreateServiciosTable extends Migration
             $table->integer('precio');
             $table->string('categoria');
             $table->string('imagen');
+            $table->boolean('oferta')->default(false);
+            $table->integer('descuento')->nullable();
+            $table->integer('valor_final')->nullable();
             $table->bigInteger('vendedor_id')->unsigned();
             $table->foreign('vendedor_id')->references('id')->on('vendedores')->onDelete('cascade');
             $table->timestamps();

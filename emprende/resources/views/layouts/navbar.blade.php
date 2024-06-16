@@ -158,7 +158,7 @@
     </div>
     <!-- Copyright -->
     </footer>
-
+    <script src="{{ asset('js/oferta.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     @livewireScripts
 

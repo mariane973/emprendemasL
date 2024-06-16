@@ -99,20 +99,30 @@ class VendedorController extends Controller
     {
         $editVendedor = Vendedore::findOrFail($id);
 
-        $editVendedor = new Vendedore();
-        $logo = $request->file('logoEdit');
-        $nombreimg = time().'.'.$logo -> getClientOriginalExtension();
-        $destino = public_path('imagenes/emprendimientos');
-        $request -> logo -> move($destino,$nombreimg);
-
-        $editVendedor -> logo = $nombreimg;
         $editVendedor -> nom_emprendimiento = $request->get('nom_emprendimientoEdit');
         $editVendedor -> descrip_emprendimiento = $request->get('descrip_emprendimientoEdit');
         $editVendedor -> telefono = $request->get('telefonoEdit');
         $editVendedor -> direccion = $request->get('direccionEdit');
         $editVendedor -> ciudad = $request->get('ciudadEdit');
 
+        if ($request->hasFile('logoEdit')) {
+            if ($editVendedor->logo) {
+                $rutaImagenActual = public_path('imagenes/emprendimientos/' . $editVendedor->logo);
+                if (file_exists($rutaImagenActual)) {
+                    unlink($rutaImagenActual);
+                }
+            }
+    
+            $logo = $request->file('logoEdit');
+            $nombreimg = time() . '.' . $logo->getClientOriginalExtension();
+            $destino = public_path('imagenes/emprendimientos');
+            $logo->move($destino, $nombreimg);
+    
+            $editVendedor -> logo = $nombreimg;
+        }
+
         $editVendedor -> save();
+
         return redirect('/emprendimientos');
     }
 

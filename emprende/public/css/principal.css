@@ -4,8 +4,7 @@ body{
 }
 
 .no-bg {
-    background-color: transparent !important; /* Asegúrate de que la regla tenga prioridad */
-    /* Otras reglas de estilo si es necesario */
+    background-color: transparent !important;
 }
 /* Navegador */
 nav .Navbar .row {
@@ -63,7 +62,6 @@ nav .Navbar .Inicio_Sesion,  .InicioSesion a{
     text-decoration: none;
     color: #33B66C;
     font-family:Segoe UI;
-
 }
 
 .carousel-inner {
@@ -142,6 +140,11 @@ section .Section_Nav .Sec_Emp hr{
 } 
 
 section .Section_Nav .Sec_Ofe  hr{
+    margin: 5px;
+    border: 1px solid #000;
+}
+
+section .Section_Nav .Sec_Zona hr{
     margin: 5px;
     border: 1px solid #000;
 }

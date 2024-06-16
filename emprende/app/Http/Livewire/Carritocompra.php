@@ -11,7 +11,7 @@ class Carritocompra extends Component
 
     public function render()
     {
-        $this->carritoitems = Carrito::with(['producto', 'oferta', 'servicio'])
+        $this->carritoitems = Carrito::with(['producto', 'servicio'])
             ->where('user_id', auth()->user()->id)
             ->get();
             
@@ -20,8 +20,6 @@ class Carritocompra extends Component
         foreach ($this->carritoitems as $item) {
             if ($item->producto) {
                 $this->sub_total += $item->producto->precio * $item->cantidad;
-            } elseif ($item->oferta) {
-                $this->sub_total += $item->oferta->precioDescuento * $item->cantidad;
             } elseif ($item->servicio) {
                 $this->sub_total += $item->servicio->precio * $item->cantidad;
             }

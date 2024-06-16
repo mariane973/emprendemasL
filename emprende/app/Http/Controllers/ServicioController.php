@@ -38,22 +38,35 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        $newProduct = new Servicio();
+        $newServicio = new Servicio();
         $imagen = $request->file('imagen');
         $nombreimg = time().'.'.$imagen -> getClientOriginalExtension();
         $destino = public_path('imagenes/servicios');
         $request -> imagen -> move($destino,$nombreimg);
 
-        $newProduct -> imagen = $nombreimg;
-        $newProduct -> nombre = $request->get('nombre');
-        $newProduct -> descripcion = $request->get('descripcion');
-        $newProduct -> precio = $request->get('precio');
-        $newProduct -> categoria = $request->get('categoria');
-        $newProduct -> vendedor_id = $request->get('vendedor_id');
+        $newServicio -> imagen = $nombreimg;
+        $newServicio -> nombre = $request->get('nombre');
+        $newServicio -> descripcion = $request->get('descripcion');
+        $newServicio -> precio = $request->get('precio');
+        $newServicio -> categoria = $request->get('categoria');
+        $newServicio -> oferta = $request -> opcOferta == 'si';
+        if($request -> opcOferta == 'si') {
+            $newServicio -> descuento = $request->get('descuento');
+            $newServicio -> valor_final = $request->get('valor_final');
+        } else {
+            $newServicio -> descuento = null;
+            $newServicio -> valor_final = $request->get('precio');
+        }
+        $newServicio -> vendedor_id = $request->get('vendedor_id');
 
-        $newProduct -> save();
+        $newServicio -> save();
 
         return redirect('/servicios');
+    }
+
+    public function ofertasIndex()
+    {
+        return view('ofertas.index');
     }
 
     /**
@@ -96,7 +109,33 @@ class ServicioController extends Controller
         $editarServicio -> descripcion = $request -> get('descripEdit');
         $editarServicio -> precio = $request -> get('precioEdit');
         $editarServicio -> categoria = $request -> get('categoriaEdit');
-        
+
+        if ($request->opcOferta == 'si') {
+            $editarServicio->oferta = true;
+            $editarServicio->descuento = $request->get('descuento');
+            $editarServicio->valor_final = $request->get('valor_final');
+        } else {
+            $editarServicio->oferta = false;
+            $editarServicio->descuento = null;
+            $editarServicio->valor_final = $request->get('precioEdit');
+        }
+
+        if ($request->hasFile('imagen')) {
+            if ($editarServicio->imagen) {
+                $rutaImagenActual = public_path('imagenes/servicios/' . $editarServicio->imagen);
+                if (file_exists($rutaImagenActual)) {
+                    unlink($rutaImagenActual);
+                }
+            }
+    
+            $imagen = $request->file('imagen');
+            $nombreimg = time() . '.' . $imagen->getClientOriginalExtension();
+            $destino = public_path('imagenes/servicios');
+            $imagen->move($destino, $nombreimg);
+    
+            $editarServicio->imagen = $nombreimg;
+        }
+
         $editarServicio -> save();
         return redirect('/servicios');
     }
