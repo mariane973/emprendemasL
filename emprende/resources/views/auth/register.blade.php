@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <section>
-<div class="Login1 container" style="margin-top: 50px; margin-bottom: 50px; height: 580px;">
+<div class="Login1 container" style="margin-top: 50px; margin-bottom: 50px; height: 650px;">
         <form method="POST" action="{{ route('register') }}">
         @csrf
             <div class="Contenedor row">
@@ -35,6 +35,18 @@
                     </div>
                     <div class="In_Use">
                     <input type="password" class="fw-semibold" name="password_confirmation" required autocomplete="new-password" placeholder="Confirmar Contraseña">
+                    </div>
+                    <div class="In_Use">
+                        <select class="fw-semibold @error('role') is-invalid @enderror" name="role" required>
+                            <option value="">Seleccionar rol</option>
+                            <option value="Vendedor">Vendedor</option>
+                            <option value="Cliente">Cliente</option>
+                        </select>
+                        @error('role')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div> 
                     <div class="btn-ingresar text-center">
                         <button type="submit" class="fw-bold">Registrar</button>

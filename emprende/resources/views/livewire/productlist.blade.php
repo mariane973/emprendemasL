@@ -16,11 +16,23 @@
                     <h4>{{$productoVista->nombre}}</h4>
                     <p>{{$productoVista->descripcion}}</p>
                     <p><strong>Precio: </strong>${{number_format($productoVista->valor_final)}}</p>
-                    @can('agregarCarrito')
-                    <button type="button" class="btn btn-success mt-2" wire:click="agregarCarro({{ $productoVista->id }})">
-                        <i class="fas fa-cart-plus me-1"></i> Agregar al Carrito
-                    </button>
-                    @endcan
+                    
+                    @if($productoVista->stock > 0)
+                        @can('agregarCarrito')
+                        <button type="button" class="btn btn-success mt-2" wire:click="agregarCarro({{ $productoVista->id }})">
+                            <i class="fas fa-cart-plus me-1"></i> Agregar al Carrito
+                        </button>
+                        @endcan
+
+                        @if ($productoVista->stock <= 10)
+                            @can('editarProducto')
+                                <p class="text-warning"><strong>¡Quedan {{ $productoVista->stock }} unidades disponibles!</strong></p>
+                            @endcan                    
+                        @endif
+                    @else
+                        <p class="text-danger"><strong>No hay stock disponible.</strong></p>
+                    @endif
+
                     <div class="d-flex gap-2 mt-3">
                         @can('editarProducto')
                         <a href="/productos/{{$productoVista->id}}/edit" class="btn btn-success">

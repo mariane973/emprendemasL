@@ -66,6 +66,24 @@ section .Login1 .Info {
     .In_Use input[type="password"]::placeholder {
         color: #fff;
     }
+    .In_Use select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #8FDABA;
+        background-color: #8FDABA;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+    }
+    .In_Use select::placeholder {
+        color: #fff;
+    }
+    .In_Use select:focus {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        border-color: #555;
+    }
     .In_Use input:focus {
         outline: none;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -108,7 +126,6 @@ hr {
     top: 0;
     transform: translateX(-50%);
 }
-
   
 section .Login1{
     position: absolute;
@@ -146,6 +163,3 @@ section .Login1 .Logo_Use .Iso_Log .Text .emprende {
 section .Login1 .Logo_Use .Iso_Log .Text .mas {
     color: #FD9021;
 }
-
-
-

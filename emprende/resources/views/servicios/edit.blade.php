@@ -1,4 +1,5 @@
 @extends('layouts.navbar')
+@section('titulo', 'Editar Servicio')
 @section('content')
 <h2 class="text-center my-4">EDITAR SERVICIO</h2>
 <div class="container d-flex justify-content-center">

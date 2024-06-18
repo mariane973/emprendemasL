@@ -15,7 +15,7 @@
                 <div class="box">
                     <h4>{{$servicioVista->nombre}}</h4>
                     <p>{{$servicioVista->descripcion}}</p>
-                    <p><strong>Precio: </strong>${{number_format($servicioVista->precio)}}</p>
+                    <p><strong>Precio: </strong>${{number_format($servicioVista->valor_final)}}</p>
                     @can('agregarCarrito')
                     <button type="button" class="btn btn-success mt-2" wire:click="agregarCarro({{ $servicioVista->id }})">
                         <i class="fas fa-cart-plus me-1"></i> Agregar al Carrito
