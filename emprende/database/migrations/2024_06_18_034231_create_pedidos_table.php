@@ -15,15 +15,22 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_cliente');
+            $table->string('nombre_cl');
+            $table->string('email_cl');
             $table->string('direccion');
             $table->string('ciudad');
             $table->string('telefono');
-            $table->string('cantidad');
-            $table->bigInteger('id_carrito')->unsigned();
-            $table->foreign('id_carrito')->references('id')->on('carrito_compras')->onDelete('cascade');
+            $table->string('nombre_producto');
+            $table->integer('cantidad');
+            $table->integer('precio');
+            $table->integer('total');
+            $table->bigInteger('id_vendedor')->unsigned();
+            $table->foreign('id_vendedor')->references('user_id')->on('vendedores')->onDelete('cascade');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

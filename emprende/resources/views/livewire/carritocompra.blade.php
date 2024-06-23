@@ -83,7 +83,6 @@
           <p class="mb-1 text-lg font-bold">${{ number_format($this->total) }}</p>
         </div>
       </div>
-      <button class="mt-6 w-full rounded-md bg-green-500 py-1.5 font-medium text-green-50 hover:bg-green-600">Finalizar Compra</button>
-    </div>
-  </div>
+      <a href="{{ route('pedidos.create', ['producto_id' => $item->producto->id, 'cantidad' => $item->cantidad, 'id_vendedor' => $item->producto->vendedor->id]) }}" class="btn btn-primary">Pagar</a>
+
 </div>

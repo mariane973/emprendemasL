@@ -5,7 +5,10 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\VendedorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\PasarelaController;
+use App\Http\Controllers\CompraController;
 use App\Http\Livewire\CarritoCompra;
+use App\Http\Controllers\PedidoController;
 use App\Models\Servicio;
 use App\Models\Vendedore;
 
@@ -48,3 +51,15 @@ Route::get('/carrito', CarritoCompra::class)->name('carritocompra');
 Route::get('/carrito', function () {
     return view('carrito');
 })->name('carrito');
+
+
+Route::post('/pagar/{producto_id}/{cantidad}/{precio}', [PasarelaController::class, 'pagar'])->name('pagar');
+
+Route::get('/pasarela-pago/{producto_id}/{cantidad}/{precio}', [CompraController::class, 'pasarelaPago'])->name('pasarela.pago');
+
+
+
+Route::get('/pedidos_index', [PedidoController::class, 'index'])->name('pedidos.index')->middleware('auth');
+
+Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.create');
+Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');

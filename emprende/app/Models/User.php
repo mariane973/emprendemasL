@@ -46,4 +46,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+
+    public function pedidosCliente()
+    {
+        return $this->hasMany(Pedido::class, 'id_cliente');
+    }
+
+    public function pedidosVendedor()
+    {
+        return $this->hasMany(Pedido::class, 'id_vendedor');
+    }
 }

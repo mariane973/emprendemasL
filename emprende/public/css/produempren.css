@@ -37,5 +37,10 @@
     background-color:#E51A1A;
     color: aliceblue;
     border-top-left-radius: 0.25rem;
-    width: 65px;
+    width: 100px;
+}
+
+.card{
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.10);
+    border-color: transparent;
 }

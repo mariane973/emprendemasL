@@ -1,6 +1,6 @@
 @extends('layouts.navbar')
-@section('titulo', 'Ofertas')
 @section('content')
+
 <section>
 <div class="Section_Nav container">
     <div class="row text-center">
@@ -20,24 +20,58 @@
            
         </div>
 
-        <div class="Sec_Ofe dropdown col-lg-2" id="userDropdown">
+        <div class="dropdown col-lg-2" id="userDropdown">
             <img src="imagenes/oferta.png" alt="">
             <a href="/ofertas">Ofertas</a>
             <div class="dropdown-content">
                 <a href="/ofertas">Ofertas productos</a>
                 <a href="/ofertas_servicios">Ofertas servicios</a>
             </div>
-            <hr>
         </div>
     
         <div class="Sec_Ofe col-lg-2  col-sm-6">
             <img src="imagenes/oferta.png" alt="">
             <a href="/pedidos_index">Pedidos</a>
+            <hr>
         </div>
     </div>
 </div>
 </section>
 
-<livewire:ofertas-list />
+<div class="container">
+    <h3 class="fw-semibold mb-5">Revisa tus pedidos</h3>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Total compra</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($pedidos as $pedido)
+            <tr>
+                <td>{{ $pedido->id }}</td>
+                <td>{{ $pedido->nombre_cl }}</td>
+                <td>{{ $pedido->email_cl }}</td>
+                <td>{{ $pedido->direccion }}</td>
+                <td>{{ $pedido->telefono }}</td>
+                <td>
+                {{ $pedido->nombre_producto}}
+                </td>
+                <td>{{ $pedido->cantidad }}</td>
+                <td>{{ $pedido->total }}</td>
+            </tr>
+            
+            @endforeach
+        </tbody>
+    </table>
+</div>
 @endsection

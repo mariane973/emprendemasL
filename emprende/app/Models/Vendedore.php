@@ -24,4 +24,9 @@ class Vendedore extends Model
     public function servicios() {
         return $this->hasMany(Servicio::class);
     }
+
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class);
+    }
 }
