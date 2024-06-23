@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class Serviciolist extends Component
 {
     public $servicioCont;
+    public $search = '';
 
     public function render()
     {
@@ -20,9 +21,12 @@ class Serviciolist extends Component
                 function($vendedor) {
                     return $vendedor->id;
                });
-            $this->servicioCont = Servicio::whereIn('vendedor_id', $vendedorIds)->get();
+            $this->servicioCont = Servicio::whereIn('vendedor_id', $vendedorIds)
+            ->where('nombre', 'like', '%' . $this->search.'%')
+            ->get();
         } else {
-            $this->servicioCont = Servicio::all();
+            $this->servicioCont = Servicio::where('nombre', 'like', '%' . $this->search . '%')
+            ->get();
         }
 
         return view('livewire.serviciolist');

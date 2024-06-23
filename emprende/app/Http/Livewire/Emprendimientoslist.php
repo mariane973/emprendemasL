@@ -9,15 +9,19 @@ use Illuminate\Support\Facades\Auth;
 class Emprendimientoslist extends Component
 {
     public $vendedorCont;
+    public $search = '';
 
     public function render()
     {
         $user = Auth::user();
 
         if (Auth::check() && $user->hasRole('Vendedor')) {
-            $this->vendedorCont = Vendedore::where('user_id', $user->id)->get();
+            $this->vendedorCont = Vendedore::where('user_id', $user->id)
+            ->where('nom_emprendimiento', 'like', '%' . $this->search.'%')
+            ->get();
         } else {
-            $this->vendedorCont = Vendedore::all();
+            $this->vendedorCont = Vendedore::where('nom_emprendimiento', 'like', '%' . $this->search . '%')
+            ->get();
         }
 
         return view('livewire.emprendimientoslist');

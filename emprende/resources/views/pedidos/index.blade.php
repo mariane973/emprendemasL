@@ -1,10 +1,10 @@
 @extends('layouts.navbar')
+@section('titulo', 'Pedidos')
 @section('content')
-
 <section>
 <div class="Section_Nav container">
     <div class="row text-center">
-        <div class="Sec_Pro offset-lg-1 col-lg-2 col-sm-6 mb-sm-1">
+        <div class="Sec_Pro col-lg-2 col-sm-6 mb-sm-1">
             <img src="imagenes/caja.png" alt="">
             <a href="/productos">Productos</a>
             
@@ -34,6 +34,13 @@
             <a href="/pedidos_index">Pedidos</a>
             <hr>
         </div>
+
+        @can('agregarVendedor')
+        <div class="Sec_Ofe col-lg-2  col-sm-6">
+            <img src="imagenes/oferta.png" alt="">
+            <a href="/inventario">Inventario</a>
+        </div>
+        @endcan
     </div>
 </div>
 </section>

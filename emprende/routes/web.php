@@ -40,6 +40,10 @@ Route::get('/ofertas', [ProductoController::class, 'ofertasIndex'])->name('ofert
 
 Route::get('/ofertas_servicios', [ServicioController::class, 'ofertasServicios'])->name('ofertas.index_servicios');
 
+Route::get('/inventario', [ProductoController::class, 'inventarioVendedor'])->name('inventario.index');
+
+Route::put('/inventario/{id}/stock', [ProductoController::class, 'actualizarStock'])->name('inventario.actualizarStock');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

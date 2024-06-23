@@ -1,14 +1,20 @@
 <div class="container">
     @include('layouts.mensaje')
-    <div class="row ms-4">
+    <div class="row">
+        <div class="container mb-5 d-flex justify-content-center align-items-center">
+            <div class="Caja_Busqueda col-lg-4 col-md-4 ps-sm-3 col-sm-4 col-md-4">
+                <input wire:model.live='search' type="text" placeholder="Buscar una oferta">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
         @foreach($ofertaCont  as $ofertaVista)
         <div class="col-lg-6 md-6 mt-3 d-flex justify-content-center">
-            <div class="card mb-3" style="max-width: 420px;">
+            <div class="card mb-3" style="max-width: 450px;">
                 <div class="row g-0">
                     <div class="col-md-5 m-auto ps-2 py-2">
                         <img src="imagenes/productos/{{$ofertaVista->imagen}}" class="img-fluid rounded-start rounded-end" alt="...">
                     </div>
-                    <div class="col-md-7 align-self-center">
+                    <div class="col-md-7">
                         <div class="card-body text-center">
                             <h4 class="card-title">{{$ofertaVista->nombre}}</h4>
                             <div class="row">

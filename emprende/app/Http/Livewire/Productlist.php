@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class Productlist extends Component
 {
     public $productoCont;
+    public $search = '';
 
     public function render()
     {
@@ -20,9 +21,12 @@ class Productlist extends Component
                 function($vendedor) {
                     return $vendedor->id;
                 });
-            $this->productoCont = Producto::whereIn('vendedor_id', $vendedorIds)->get();
+            $this->productoCont = Producto::whereIn('vendedor_id', $vendedorIds)
+            ->where('nombre', 'like', '%' . $this->search.'%')
+            ->get();
         } else {
-            $this->productoCont = Producto::all();
+            $this->productoCont = Producto::where('nombre', 'like', '%' . $this->search . '%')
+            ->get();
         }
 
         return view('livewire.productlist');

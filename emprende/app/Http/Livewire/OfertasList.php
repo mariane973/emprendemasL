@@ -10,11 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class OfertasList extends Component
 {
     public $ofertaCont;
+    public $search = '';
 
     public function render()
     {
-        $this -> ofertaCont = Producto::where('oferta', true)->get();
-        
+        $this -> ofertaCont = Producto::where('oferta', true)
+        ->where('nombre', 'like', '%' . $this->search.'%')
+        ->get();
+       
         return view('livewire.ofertas-list');
     }
 

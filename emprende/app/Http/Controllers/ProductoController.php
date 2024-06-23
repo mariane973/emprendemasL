@@ -72,6 +72,25 @@ class ProductoController extends Controller
         return view('ofertas.index');
     }
 
+    public function inventarioVendedor()
+    {
+        $user = auth()->user();
+        $userId = $user->id;
+
+        $inventario = Producto::where('vendedor_id', $userId)->get();
+
+        return view('inventario.index', compact('inventario'));
+    }
+
+    public function actualizarStock(Request $request, $id)
+    {
+        $producto = Producto::findOrFail($id);
+        $producto -> stock = $request->get('stock');
+
+        $producto -> save();
+
+        return redirect('/inventario');
+    }
 
     /**
      * Display the specified resource.

@@ -4,7 +4,7 @@
 <section>
 <div class="Section_Nav container">
     <div class="row text-center">
-        <div class="Sec_Pro offset-lg-1 col-lg-2 col-sm-6 mb-sm-1">
+        <div class="Sec_Pro col-lg-2 col-sm-6 mb-sm-1">
             <img src="imagenes/caja.png" alt="">
             <a href="/productos">Productos</a>
             <hr>
@@ -21,7 +21,7 @@
 
         <div class="dropdown col-lg-2" id="userDropdown">
             <img src="imagenes/oferta.png" alt="">
-            <a href="/ofertas">Ofertas</a>
+            <a href="">Ofertas</a>
             <div class="dropdown-content">
                 <a href="/ofertas">Ofertas productos</a>
                 <a href="/ofertas_servicios">Ofertas servicios</a>
@@ -32,6 +32,13 @@
             <img src="imagenes/oferta.png" alt="">
             <a href="/pedidos_index">Pedidos</a>
         </div>
+
+        @can('agregarVendedor')
+        <div class="Sec_Ofe col-lg-2  col-sm-6">
+            <img src="imagenes/oferta.png" alt="">
+            <a href="/inventario">Inventario</a>
+        </div>
+        @endcan
     </div>
 </div>
 </section>

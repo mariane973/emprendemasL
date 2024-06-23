@@ -1,13 +1,17 @@
 <div class="container">
     @include('layouts.mensaje')
-    <div class="row ms-4">
-        @can('agregarVendedor')
-        <div class="container text-center mb-5">
-            <a href="/productos/create" class="btn btn-primary">
-                <i class="fas fa-plus me-1"></i> Crear Producto
-            </a>
+    <div class="row">
+        <div class="container text-center mb-5 d-flex justify-content-center align-items-center">
+            @can('agregarVendedor')
+                <a href="/productos/create" class="btn btn-primary">
+                    <i class="fas fa-plus me-1"></i> Crear Producto
+                </a>
+            @endcan
+            <div class="Caja_Busqueda col-lg-4 ms-sm-5 ps-sm-3 col-sm-5 col-md-4">
+                <input wire:model.live='search' type="text" placeholder="Buscar un producto">
+                <i class="fas fa-search"></i>
+            </div>
         </div>
-        @endcan
         @foreach($productoCont as $productoVista)
         <div class="col-lg-6 md-6 mb-5">
             <div class="d-flex align-items-center justify-content-center">
