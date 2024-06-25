@@ -1,6 +1,7 @@
 @extends('layouts.navbar')
 @section('titulo', 'Pedidos')
 @section('content')
+@can('accesoPedidos')
 <section>
 <div class="Section_Nav container">
     <div class="row text-center">
@@ -98,4 +99,9 @@
         </tbody>
     </table>
 </div>
+@else
+    <div class="alert alert-success text-center mx-5" role="alert">
+    Acceso no Autorizado
+    </div>
+@endcan
 @endsection

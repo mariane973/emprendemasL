@@ -1,6 +1,7 @@
 @extends('layouts.navbar')
 @section('titulo', 'Editar Producto')
 @section('content')
+@can('accesoVendedor')
 <h2 class="text-center my-4">EDITAR PRODUCTO</h2>
 <div class="container d-flex justify-content-center">
     <form action="/productos/{{$productEditar->id}}" method="POST" class="form-editar" enctype="multipart/form-data">
@@ -69,4 +70,9 @@
             </div>
     </form>
 </div>
+@else
+    <div class="alert alert-success text-center mx-5" role="alert">
+    Acceso no Autorizado
+    </div>
+@endcan
 @endsection

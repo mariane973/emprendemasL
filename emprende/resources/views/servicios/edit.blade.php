@@ -1,6 +1,7 @@
 @extends('layouts.navbar')
 @section('titulo', 'Editar Servicio')
 @section('content')
+@can('accesoVendedor')
 <h2 class="text-center my-4">EDITAR SERVICIO</h2>
 <div class="container d-flex justify-content-center">
 <form action="/servicios/{{$serviciosEditar->id}}" method="POST" class="form-editar" enctype="multipart/form-data" class="form-editar">
@@ -57,4 +58,9 @@
     </div>
 </form>
 </div>
+@else
+    <div class="alert alert-success text-center mx-5" role="alert">
+    Acceso no Autorizado
+    </div>
+@endcan
 @endsection

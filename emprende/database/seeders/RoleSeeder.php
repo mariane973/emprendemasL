@@ -15,8 +15,6 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        //Roles
-        //$role = Role::create(['name'=>'Admin']);
         $role1 = Role::create(['name'=>'Vendedor']);
         $role2 = Role::create(['name'=>'Cliente']);
 
@@ -26,5 +24,8 @@ class RoleSeeder extends Seeder
         Permission::create(['name'=>'crearProducto'])->syncRoles([$role1]);
         Permission::create(['name'=>'verCarrito'])->syncRoles([$role2]);
         Permission::create(['name'=>'agregarVendedor'])->syncRoles([$role1]);
+        Permission::create(['name'=>'accesoVendedor'])->syncRoles([$role1]);
+        Permission::create(['name'=>'accesoPedidos'])->syncRoles([$role1,$role2]);
+        Permission::create(['name'=>'accesoPerfil'])->syncRoles([$role1,$role2]);
     }
 }

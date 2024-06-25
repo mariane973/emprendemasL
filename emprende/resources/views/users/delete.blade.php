@@ -1,6 +1,7 @@
 @extends('layouts.navbar')
 @section('titulo', 'Ofertas')
 @section('content')
+@can('accesoPerfil')
 <h2 class="text-center my-4">Desea eliminar el Usuario <br> {{$usuarioEliminar->name}}</h2>
 <div class="container d-flex justify-content-center">
 <form action="/users/{{$usuarioEliminar->id}}" method="POST">
@@ -11,4 +12,9 @@
     </div>
 </form>
 </div>
+@else
+    <div class="alert alert-success text-center mx-5" role="alert">
+    Acceso no Autorizado
+    </div>
+@endcan
 @endsection

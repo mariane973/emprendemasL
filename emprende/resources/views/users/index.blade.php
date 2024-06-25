@@ -1,6 +1,7 @@
 @extends('layouts.navbar')
 @section('titulo', 'Usuario')
 @section('content')
+@can('accesoPerfil')
 <div class="container text-center">
     <div class="row">
         <h2 class="my-4">Datos del Usuario</h2>
@@ -20,4 +21,9 @@
         </div>
     </div>
 </div>
+@else
+    <div class="alert alert-success text-center mx-5" role="alert">
+    Acceso no Autorizado
+    </div>
+@endcan
 @endsection

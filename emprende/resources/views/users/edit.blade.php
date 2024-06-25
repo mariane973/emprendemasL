@@ -1,5 +1,6 @@
 @extends('layouts.navbar')
 @section('content')
+@can('accesoPerfil')
 <h2 class="text-center my-4">EDITAR USUARIO</h2>
 <div class="container d-flex justify-content-center">
 <form action="/users/{{$usuEditar->id}}" method="POST" class="form-editar">
@@ -18,4 +19,9 @@
     </div>
 </form>
 </div>
+@else
+    <div class="alert alert-success text-center mx-5" role="alert">
+    Acceso no Autorizado
+    </div>
+@endcan
 @endsection
