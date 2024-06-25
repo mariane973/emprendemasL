@@ -13,7 +13,8 @@
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label">Descripción</label>
-                <input type="text" placeholder="" class="form-control" name="descripcion" required="">
+                <input type="text" placeholder="Describa a detalle el paquete del servicio." class="form-control" name="descripcion" required="">
+                <small class="form-text text-muted">Especifique de qué se compone o en qué unidades (ej. 5 sesiones, 10 horas).</small>
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label">Precio</label>

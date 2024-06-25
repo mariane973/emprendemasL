@@ -14,11 +14,19 @@
         </div>
         @foreach($productoCont as $productoVista)
         <div class="col-lg-6 md-6 mb-5">
-            <div class="d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-center position-relative">            
+            @if($productoVista -> descuento > 0)
+                    <span class="badge bg-danger position-absolute rounded-pill top-0 start-0 mt-3">
+                        {{ $productoVista->descuento }}%
+                    </span>
+                @endif
                 <img src="imagenes/productos/{{$productoVista->imagen}}" class="image-product" alt="">
-                <div class="box">
+                <div class="box">        
                     <h4>{{$productoVista->nombre}}</h4>
                     <p>{{$productoVista->descripcion}}</p>
+                    @if($productoVista->cantidad && $productoVista->medida)
+                        <p>{{ $productoVista->cantidad }} {{ $productoVista->medida }}</p>
+                    @endif
                     <p><strong>Precio: </strong>${{number_format($productoVista->valor_final)}}</p>
                     
                     @if($productoVista->stock > 0)

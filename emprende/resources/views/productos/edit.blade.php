@@ -25,6 +25,14 @@
                     <input type="number" class="form-control" value="{{$productEditar->stock}}" name="stockEdit" id="stock">
                 </div>
                 <div class="col-lg-6 mb-4">
+                    <label class="form-label fw-semibold">Cantidad</label>
+                    <input type="number" value="{{$productEditar->cantidad}}" class="form-control" name="cantidadEdit">
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <label class="form-label fw-semibold">Unidad de medida</label>
+                    <input type="text" value="{{$productEditar->medida}}" class="form-control" name="medidaEdit">
+                </div>
+                <div class="col-lg-6 mb-4">
                     <label for="categoriaProducto" class="form-label">Categoria</label>
                     <input type="text" class="form-control" value="{{$productEditar->categoria}}" name="categoriaEdit">
                 </div>

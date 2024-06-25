@@ -1,7 +1,14 @@
 <div class="min-h-screen pt-3">
-  <h1 class="mb-10 text-center text-2xl font-bold">Productos Carrito</h1>
+  <h1 class="mb-10 text-center text-2xl font-bold">Productos Carrito de Compras</h1>
   <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
     <div class="rounded-lg md:w-2/3">
+      @if($carritoitems->isEmpty())
+        <div class="max-w-lg mx-auto">
+          <div class="alert alert-success text-center" role="alert">
+            No tienes productos en tu carrito de compras.
+          </div>
+        </div>
+      @else
       @foreach($carritoitems as $item)
       <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
         @if($item->producto)
@@ -65,6 +72,7 @@
           @endif
         </div>
       @endforeach
+      @endif
     </div>
     <!-- Sub total -->
     <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
@@ -83,6 +91,10 @@
           <p class="mb-1 text-lg font-bold">${{ number_format($this->total) }}</p>
         </div>
       </div>
-      <a href="{{ route('pedidos.create', ['producto_id' => $item->producto->id, 'cantidad' => $item->cantidad, 'id_vendedor' => $item->producto->vendedor->id]) }}" class="btn btn-primary">Pagar</a>
+      @if(!$carritoitems->isEmpty())
+      <div class="text-center mt-4">
+        <a href="{{ route('pedidos.create', ['producto_id' => $item->producto->id, 'cantidad' => $item->cantidad, 'id_vendedor' => $item->producto->vendedor->id]) }}" class="btn btn-primary">Pagar</a>
+      </div>
+      @endif
 
 </div>

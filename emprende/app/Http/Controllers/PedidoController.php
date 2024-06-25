@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\Vendedore;
 use App\Models\Producto;
+use App\Models\CarritoCompra;
 use App\Models\User;
 
 
@@ -78,7 +79,7 @@ class PedidoController extends Controller
         'nombre' => 'required|string',
         'email' => 'required|email',
         'direccion' => 'required|string',
-        'telefono' => 'required|string',
+        'telefono' => 'required|integer|min:1',
         'ciudad' => 'required|string',
         'cantidad' => 'required|integer|min:1',
         'valor' => 'required|numeric|min:0',
@@ -110,31 +111,35 @@ class PedidoController extends Controller
     $pedido->telefono = $request->get('telefono');
     $pedido->nombre_producto = $producto->nombre;
     $pedido->cantidad = $request->get('cantidad');
+    $pedido->estado = 'Pedido Recibido';
     $pedido->precio = $request->get('precio');
     $pedido->total = $request->get('valor');
 
    
-   $pedido->id_vendedor = $id_vendedor; 
+    $pedido->id_vendedor = $id_vendedor; 
     $pedido->id_cliente = $cliente->id;  
 
     $pedido->save();
 
-    //$this->eliminarItemDelCarrito($producto->id, $cliente->id);
+    $this->eliminarItemDelCarrito($cliente->id);
 
     return redirect()->route('productos.index')->with('success', 'Pedido realizado con éxito');
 }
 
-private function eliminarItemDelCarrito($productoId, $clienteId)
-{
-    $carritoItem = CarritoItem::where('producto_id', $productoId)
-                              ->where('cliente_id', $clienteId)
-                              ->first();
-
-    if ($carritoItem) {
-        $carritoItem->delete();
+    private function eliminarItemDelCarrito($clienteId)
+    {
+        CarritoCompra::where('user_id', $clienteId)->delete();
     }
-}
 
+    public function actualizarEstado(Request $request, $id)
+    {
+        $pedido = Pedido::findOrFail($id);
+        $pedido -> estado = $request->get('estado');
+
+        $pedido -> save();
+
+        return redirect()->route('pedidos.index');
+    }
 
     /**
      * Display the specified resource.

@@ -21,7 +21,7 @@
 
                             <div class="form-group col-lg-6 mb-3">
                                 <label for="telefono">Teléfono:</label>
-                                <input type="text" id="telefono" name="telefono" class="form-control" required>
+                                <input type="number" id="telefono" name="telefono" class="form-control" required>
                             </div>
                         </div>
 
@@ -67,8 +67,9 @@
                         <label for="valor">Total a pagar:</label>
                         <input type="text" id="total" name="valor" value="{{ $precio * $cantidad }}" class="form-control" readonly>
                     </div>
-
+                    <div class="text-center">
                         <button type="submit" class="btn btn-primary">Guardar Pedido</button>
+                    </div>                
                     </form>
                 </div>
             </div>

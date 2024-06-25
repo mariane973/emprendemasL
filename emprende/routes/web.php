@@ -61,9 +61,10 @@ Route::post('/pagar/{producto_id}/{cantidad}/{precio}', [PasarelaController::cla
 
 Route::get('/pasarela-pago/{producto_id}/{cantidad}/{precio}', [CompraController::class, 'pasarelaPago'])->name('pasarela.pago');
 
-
-
 Route::get('/pedidos_index', [PedidoController::class, 'index'])->name('pedidos.index')->middleware('auth');
 
 Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.create');
+
 Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');
+
+Route::put('/pedidos/{id}/estado', [PedidoController::class, 'actualizarEstado'])->name('pedido.actualizarEstado');

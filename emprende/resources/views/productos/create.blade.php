@@ -36,6 +36,14 @@
                     @endforeach
                 </select>
             </div>
+            <div class="col-lg-6 mb-4">
+                <label class="form-label fw-semibold">Cantidad</label>
+                <input type="number" placeholder="" class="form-control" name="cantidad">
+            </div>
+            <div class="col-lg-6 mb-4">
+                <label class="form-label fw-semibold">Unidad de Medida</label>
+                <input type="text" placeholder="ej. Lts, Gr, Ml, Kg, Pares, etc." class="form-control" name="medida">
+            </div>
             <div class="mb-4">
                 <label for="imagen" class="form-label fw-semibold">Imagen</label>
                 <input type="file" placeholder="" class="form-control" name="imagen" required="">

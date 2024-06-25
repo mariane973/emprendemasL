@@ -59,7 +59,7 @@
                 <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Total compra</th>
-
+                <th>Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -70,13 +70,30 @@
                 <td>{{ $pedido->email_cl }}</td>
                 <td>{{ $pedido->direccion }}</td>
                 <td>{{ $pedido->telefono }}</td>
-                <td>
-                {{ $pedido->nombre_producto}}
-                </td>
+                <td>{{ $pedido->nombre_producto}}</td>
                 <td>{{ $pedido->cantidad }}</td>
                 <td>{{ $pedido->total }}</td>
+                @can('agregarCarrito')
+                <td>{{ $pedido->estado }}</td>
+                @endcan
+                @can('agregarVendedor')
+                <td>
+                    <form action="{{ route('pedido.actualizarEstado', $pedido->id) }}" method="POST">
+                        @csrf
+                        @method('put')
+                        <select name="estado" class="form-control">
+                            <option value="Pedido Recibido" {{ $pedido->estado == 'Pedido Recibido' ? 'selected' : '' }}>Pedido Recibido</option>
+                            <option value="Preparando Pedido" {{ $pedido->estado == 'Preparando Pedido' ? 'selected' : '' }}>Preparando Pedido</option>
+                            <option value="Enviado" {{ $pedido->estado == 'Enviado' ? 'selected' : '' }}>Enviado</option>
+                            <option value="Entregado" {{ $pedido->estado == 'Entregado' ? 'selected' : '' }}>Entregado</option>
+                        </select>
+                </td>
+                <td>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </form>
+                </td>
+                @endcan
             </tr>
-            
             @endforeach
         </tbody>
     </table>

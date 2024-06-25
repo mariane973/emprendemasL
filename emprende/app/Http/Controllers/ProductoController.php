@@ -52,6 +52,8 @@ class ProductoController extends Controller
         $newProduct -> precio = $request->get('precio');
         $newProduct -> stock = $request->get('stock');
         $newProduct -> categoria = $request->get('categoria');
+        $newProduct -> cantidad = $request->get('cantidad');
+        $newProduct -> medida = $request->get('medida');
         $newProduct -> oferta = $request -> opcOferta == 'si';
         if($request -> opcOferta == 'si') {
             $newProduct -> descuento = $request->get('descuento');
@@ -132,6 +134,8 @@ class ProductoController extends Controller
         $editarProducto -> descripcion = $request -> get('descripEdit');
         $editarProducto -> precio = $request -> get('precioEdit');
         $editarProducto -> stock = $request -> get('stockEdit');
+        $editarProducto -> cantidad = $request -> get('cantidadEdit');
+        $editarProducto -> medida = $request -> get('medidaEdit');
         $editarProducto -> categoria = $request -> get('categoriaEdit');
 
         if ($request->opcOferta == 'si') {

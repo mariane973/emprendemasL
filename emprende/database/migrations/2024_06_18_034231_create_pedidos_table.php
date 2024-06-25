@@ -20,11 +20,12 @@ class CreatePedidosTable extends Migration
             $table->string('email_cl');
             $table->string('direccion');
             $table->string('ciudad');
-            $table->string('telefono');
+            $table->bigInteger('telefono');
             $table->string('nombre_producto');
             $table->integer('cantidad');
             $table->integer('precio');
             $table->integer('total');
+            $table->string('estado');
             $table->bigInteger('id_vendedor')->unsigned();
             $table->foreign('id_vendedor')->references('user_id')->on('vendedores')->onDelete('cascade');
             $table->timestamps();

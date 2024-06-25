@@ -20,6 +20,8 @@ class CreateProductos extends Migration
             $table->integer('precio');
             $table->integer('stock');
             $table->string('categoria');
+            $table->string('cantidad')->nullable();
+            $table->string('medida')->nullable();
             $table->string('imagen');
             $table->boolean('oferta')->default(false);
             $table->integer('descuento')->nullable();
