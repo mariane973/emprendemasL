@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Vendedore;
+use App\Models\Categoria;
 use Illuminate\Support\Facades\Auth;
+
 
 class ProductoController extends Controller
 {
@@ -15,10 +17,21 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
-    {
-        return view('productos.index');
-    }
+     public function index(Request $request)
+     {
+         $query = Producto::query();
+     
+         if ($request->has('categoria')) {
+             $categorias = $request->input('categoria');
+             $query->where('categoria', $categorias);
+         }
+     
+         $productos = $query->get();
+         $categorias = Categoria::all();
+     
+         return view('productos.index', compact('productos', 'categorias'));
+     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -29,7 +42,9 @@ class ProductoController extends Controller
     {
         $user = Auth::user();
         $vendedores = $user->vendedores;
-        return view('productos.create', compact( 'vendedores'));
+        $categorias = Categoria::all(); 
+
+        return view('productos.create', compact('vendedores', 'categorias'));
     }
 
     /**
@@ -76,10 +91,11 @@ class ProductoController extends Controller
 
     public function inventarioVendedor()
     {
-        $user = auth()->user();
-        $userId = $user->id;
+        $user = Auth::user();
 
-        $inventario = Producto::where('vendedor_id', $userId)->get();
+        $inventario = Producto::whereHas('vendedor', function($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->get();
 
         return view('inventario.index', compact('inventario'));
     }

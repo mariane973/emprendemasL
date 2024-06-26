@@ -9,6 +9,7 @@ use App\Http\Controllers\PasarelaController;
 use App\Http\Controllers\CompraController;
 use App\Http\Livewire\CarritoCompra;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\InventarioController;
 use App\Models\Servicio;
 use App\Models\Vendedore;
 
@@ -40,9 +41,10 @@ Route::get('/ofertas', [ProductoController::class, 'ofertasIndex'])->name('ofert
 
 Route::get('/ofertas_servicios', [ServicioController::class, 'ofertasServicios'])->name('ofertas.index_servicios');
 
-Route::get('/inventario', [ProductoController::class, 'inventarioVendedor'])->name('inventario.index');
-
-Route::put('/inventario/{id}/stock', [ProductoController::class, 'actualizarStock'])->name('inventario.actualizarStock');
+Route::middleware('auth')->group(function() {
+    Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
+    Route::put('/inventario/{id}', [InventarioController::class, 'update'])->name('inventario.actualizarStock');
+});
 
 Auth::routes();
 

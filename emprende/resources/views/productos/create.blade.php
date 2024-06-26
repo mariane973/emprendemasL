@@ -25,8 +25,13 @@
                 <input type="number" placeholder="" class="form-control" name="stock" required="">
             </div>
             <div class="col-lg-6 mb-4">
-                <label class="form-label fw-semibold">Categoria</label>
-                <input type="text" placeholder="" class="form-control" name="categoria" required="">
+                <label class="form-label fw-semibold">Categoría</label>
+                <select class="form-control" name="categoria" required>
+                    <option value="" disabled selected>Seleccione una categoría</option>
+                    @foreach($categorias as $categoria)
+                        <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="col-lg-6 mb-4">
                 <label for="vendedor_id" class="form-label fw-semibold">Emprendimiento</label>

@@ -23,7 +23,7 @@ nav .Navbar .row {
 
 nav .Navbar .Logo img{
     height: 45px;
-    width: 250px;
+    width: 210px;
     margin-left: 15px;
 }
 
@@ -34,25 +34,25 @@ nav .Navbar .Logo img{
 }
 .Caja_Busqueda input {
     flex: 1;
-    padding: 10px;
+    padding: 2px;
     border: 1px solid #8FDABA;
     border-radius: 5px;
     box-sizing: border-box;
     background-color: #8FDABA;
-    width: 700px;
+    width: 100px;
 } 
 .Caja_Busqueda input[type="text"] {
     color: #ffffff;
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
 }
 .Caja_Busqueda input[type="text"]::placeholder {
-    color: #fff;
+    color: #ffffff;
 }
 .Caja_Busqueda input:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.671);
 }
 nav .Navbar .Inicio_Sesion{
     padding: 0px;
@@ -123,18 +123,18 @@ nav .Navbar .Usuario img{
 
 /* Seccion de Navegacion */
 
-section .Section_Nav img{
+section .InicioSesion img{
     height: 30px;
     width: 30px;
 }
 
-section .Section_Nav {
+section .InicioSesion {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-section .Section_Nav .row {
+section .InicioSesion .row {
     width: 100%;
     justify-content: center;
 }

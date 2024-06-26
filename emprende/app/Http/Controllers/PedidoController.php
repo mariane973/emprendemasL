@@ -121,6 +121,9 @@ class PedidoController extends Controller
 
     $pedido->save();
 
+    $producto->stock -= $request->get('cantidad');
+    $producto->save();
+
     $this->eliminarItemDelCarrito($cliente->id);
 
     return redirect()->route('productos.index')->with('success', 'Pedido realizado con éxito');

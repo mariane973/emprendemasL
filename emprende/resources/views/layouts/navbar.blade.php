@@ -23,38 +23,56 @@
     <nav>   
         <div class="Navbar container-fluid ">    
             <div class="row">
-                <div class="Logo col-lg-2 col-sm-2 ms-3 me-sm-4 mb-sm-4 col-md-1 col-xs-1 me-xs-5">
+                <div class="Logo col-lg-2 d-flex col-sm-2 ms-5 me-sm-4 mb-sm-4 col-md-1 col-xs-1 me-xs-5">
                     <a href="/" class="fw-bold">
-                        <img src="/imagenes/op2.png" alt="" style="height: 60px; ">
+                        <img src="/imagenes/op2.png" alt="" style="height: 52px; ">
                     </a>
                 </div>
-                <div class="InicioSesion col-lg-2 offset-3 col-sm-2 mb-sm-4">
-                    <div class="Usuario col ms-5">
-                    <i class="fas fa-seedling icono" style="font-size: 28px; vertical-align: middle;"></i>
-                        <a href="/servicios" class="fw-bold">Servicios</a>
-                    </div>
-                </div>
-                <div class="InicioSesion col-lg-2 col-sm-2 mb-sm-4">
-                    <div class="Usuario col ms-4">
-                    <i class="fas fa-seedling icono" style="font-size: 28px; vertical-align: middle;"></i>
-                        <a href="/productos" class="fw-bold">Productos</a>
-                    </div>
-                </div>
+
+                
                 @can('verCarrito')
-                <div class="InicioSesion col-lg-1 mt-1 col-sm-5 mb-sm-4 me-3">
+                <div class="InicioSesion align-items-end justify-content-end d-flex col-lg-1 mt-1 col-sm-5 mb-sm-4 ">
                     <div class="Usuario col ms-1 vertical-align: middle;">
                     <livewire:cartcontador />
                     </div>
                 </div>
+
+                <div class="InicioSesion col-lg-2  offset-4 align-items-end justify-content-end d-flex col-sm-2 mb-sm-4">
+                <div class="dropdown" id="userDropdown">
+                    <i class="fas fa-seedling icono" style="font-size: 28px; vertical-align: middle;"></i>
+                    <a href="/servicios" class="fw-bold">Conocer</a>
+                    <div class="dropdown-content">
+                        <a href="/servicios">Servicios</a>
+                        <a href="/productos">Productos</a>
+                    </div>
+                </div>
+            </div>
+                
                 @endcan
-                <div class="InicioSesion col-lg-2  mb-sm-4 col-md-1">
+                            
+
+            @cannot('verCarrito')
+            <div class="InicioSesion col-lg-2 @cannot('verCarrito') offset-5 @endcannot align-items-end justify-content-end d-flex col-sm-2 mb-sm-4">
+                <div class="dropdown" id="userDropdown">
+                    <i class="fas fa-seedling icono" style="font-size: 28px; vertical-align: middle;"></i>
+                    <a href="/servicios" class="fw-bold">Conocer</a>
+                    <div class="dropdown-content">
+                        <a href="/servicios">Servicios</a>
+                        <a href="/productos">Productos</a>
+                    </div>
+                </div>
+            </div>
+            
+            @endcannot
+                
+                <div class="InicioSesion col-lg-2 justify-content-start d-flex mb-sm-4 col-md-1">
                     @guest
-                        <div class="Usuario col " style="display: flex; align-items: center;">
+                        <div class="Usuario " style="display: flex; align-items: center;">
                         <i class="fas fa-user-circle iconos" style="font-size: 30px; vertical-align: middle;"></i>
-                            <a href="{{ route('login') }}"  class="fw-bold ms-2">Iniciar Sesión</a>
+                            <a href="{{ route('login') }}"  class="fw-bold ms-2">Ingresar</a>
                         </div>
                     @else
-                        <div class="Usuario col">
+                        <div class="Usuario col align-items-end">
                             <div class="dropdown" id="userDropdown">
                             <i class="fas fa-user-circle iconon" style="font-size: 30px; vertical-align: middle;"></i>
                                 <span class="fw-bold" id="userName" style="vertical-align: middle;">{{ Auth::user()->name }}</span>
@@ -72,7 +90,7 @@
                             @csrf
                         </form>
                     @endguest
-                </div>
+                </div>  
             </div>
         </div>
     </nav>
