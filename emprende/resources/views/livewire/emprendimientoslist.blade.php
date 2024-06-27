@@ -32,8 +32,11 @@
                                 <i class="fas fa-trash-alt me-1"></i> Eliminar
                             </button>
                         @endcan
-                    </div>
-                </div>
+                    </div>                    
+                    <a href="{{ route('vendedores.detalle', $vendedorVista->id) }}" class="btn btn-info text-center mt-3 text-white">
+                        <i class="fas fa-eye me-1"></i> Ver Detalles
+                    </a>
+                </div>                
             </div>
         </div>
         @endforeach

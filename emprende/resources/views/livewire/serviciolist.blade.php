@@ -17,7 +17,12 @@
         </div>
         @foreach($servicioCont as $servicioVista)
         <div class="col-lg-6 md-6 mb-5">
-            <div class="d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-center position-relative">
+                @if($servicioVista->descuento > 0)
+                    <span class="badge bg-danger position-absolute rounded-pill top-0 start-0 mt-3" style="margin-left: 4rem;">
+                        {{ $servicioVista->descuento }}% dcto
+                    </span>
+                @endif
                 <img src="imagenes/servicios/{{$servicioVista->imagen}}" class="image-product" alt="">
                 <div class="box">
                     <h4>{{$servicioVista->nombre}}</h4>

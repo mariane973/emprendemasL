@@ -31,6 +31,7 @@ Route::get('/', function(){
 Route::resource('/productos', ProductoController::class);
 
 Route::resource('/emprendimientos', VendedorController::class);
+Route::get('/emprendimientos/{id}/detalle', [VendedorController::class, 'mostrarEmprendimiento'])->name('vendedores.detalle');
 
 Route::resource('/servicios',ServicioController::class);
 
@@ -41,10 +42,8 @@ Route::get('/ofertas', [ProductoController::class, 'ofertasIndex'])->name('ofert
 
 Route::get('/ofertas_servicios', [ServicioController::class, 'ofertasServicios'])->name('ofertas.index_servicios');
 
-Route::middleware('auth')->group(function() {
-    Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
-    Route::put('/inventario/{id}', [InventarioController::class, 'update'])->name('inventario.actualizarStock');
-});
+Route::get('/inventario', [ProductoController::class, 'inventarioVendedor'])->name('inventario.index');
+Route::put('/inventario/{id}/stock', [ProductoController::class, 'actualizarStock'])->name('inventario.actualizarStock');
 
 Auth::routes();
 

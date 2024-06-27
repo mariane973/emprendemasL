@@ -14,10 +14,18 @@ class OfertasList extends Component
 
     public function render()
     {
-        $this -> ofertaCont = Producto::where('oferta', true)
-        ->where('nombre', 'like', '%' . $this->search.'%')
-        ->get();
-       
+        if (auth()->user()->hasRole('Vendedor')) {
+            $this->ofertaCont = Producto::where('oferta', true)
+                ->where('nombre', 'like', '%' . $this->search . '%')
+                ->whereHas('vendedor', function ($query) {
+                    $query->where('user_id', auth()->user()->id);
+                })
+                ->get();
+        } else {
+            $this->ofertaCont = Producto::where('oferta', true)
+                ->where('nombre', 'like', '%' . $this->search . '%')
+                ->get();
+        }
         return view('livewire.ofertas-list');
     }
 

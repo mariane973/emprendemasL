@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vendedore;
+use App\Models\Producto;
+use App\Models\Servicio;
 use Illuminate\Support\Facades\Auth;
 
 class VendedorController extends Controller
@@ -16,6 +18,13 @@ class VendedorController extends Controller
     public function index()
     {
         return view('vendedores.index');
+    }
+
+    public function mostrarEmprendimiento($id)
+    {
+        $vendedor = Vendedore::find($id);
+
+        return view('vendedores.detalle', compact('vendedor'));
     }
 
     /**

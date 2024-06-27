@@ -66,7 +66,9 @@
                         <input type="number" name="stock" value="{{ $item->stock }}" class="form-control">
                 </td>
                 <td>
-                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                        <button type="submit" class="btn btn-primary text-white">
+                            <i class="fas fa-sync-alt me-1"></i> Actualizar
+                        </button>
                     </form>
                 </td>
             </tr>

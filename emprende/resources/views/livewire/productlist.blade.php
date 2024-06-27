@@ -10,8 +10,7 @@
                 </div>
             @endcan
 
-
-                @can('agregarCarrito')
+            @can('agregarCarrito')
                 <div class="Caja_Busqueda  justify-content-start btn dropdown">
                     <select wire:model="categoriaSeleccionada" class=" btn dropdown-toggle fw-semibold" type="button" wire:change="filtrarPorCategoria" style="background-color: #8FDABA; color: white;">
                         <option value="">Todas las categorías</option>
