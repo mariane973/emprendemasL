@@ -2,7 +2,7 @@
 
 @section('content')
 <section>
-<div class="Login container" style="margin-top: 50px; margin-bottom: 50px; height: 500px;">
+<div class="Login container" style="margin-top: 40px; margin-bottom: 50px; height: 500px;">
     <div class="Contenedor row">
         <div class="Logo_Use col-5">
             <div class="Iso_Log col">
@@ -25,7 +25,7 @@
                     <h1>INICIAR SESIÓN</h1>
                 </div>
                 <div class="In_Use">
-                    <input type="text"  class="fw-semibold @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Usuario">
+                    <input type="text"  class="fw-semibold @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo">
                     @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

@@ -14,11 +14,11 @@ class OfertasServicioslist extends Component
 
     public function render()
     {
-        if (auth()->user()->hasRole('Vendedor')) {
+        if(Auth::check() && Auth::user()->hasRole('Vendedor')) {
             $this->ofertaCont = Servicio::where('oferta', true)
                 ->where('nombre', 'like', '%' . $this->search . '%')
                 ->whereHas('vendedor', function ($query) {
-                    $query->where('user_id', auth()->user()->id);
+                    $query->where('user_id', Auth::user()->id);
                 })
                 ->get();
         } else {

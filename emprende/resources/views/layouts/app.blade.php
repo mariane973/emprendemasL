@@ -14,6 +14,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="shortcut icon" type="image/png" href="/imagenes/icon-tucan.png"/>
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
@@ -27,7 +28,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
-                    <img src="imagenes/logo.png"  alt="" style="width: 200px; heigth: 50px;">
+                    <img src="/imagenes/logo.png"  alt="" style="width: 200px; heigth: 50px;">
                  
                 </a>
 
