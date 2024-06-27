@@ -40,7 +40,7 @@
               </div>
             </div>
           </div>
-          @elseif($item->servicio)
+        @elseif($item->servicio)
           <img src="imagenes/servicios/{{$item->servicio->imagen}}" alt="servicio-image" class="w-full rounded-lg sm:w-40" />
           <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between sm:items-center">
             <div>
@@ -59,7 +59,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M12 5v14M5 12h14" />
                   </svg>
-              </button>
+                </button>
               </div>
               <div class="flex items-center space-x-4 mt-2 sm:mt-0">
                 <p class="text-sm">${{number_format ($item->servicio->valor_final* $item->cantidad) }}</p>
@@ -69,7 +69,7 @@
               </div>
             </div>
           </div>
-          @endif
+        @endif
         </div>
       @endforeach
       @endif
@@ -92,9 +92,30 @@
         </div>
       </div>
       @if(!$carritoitems->isEmpty())
-      <div class="text-center mt-4">
-        <a href="{{ route('pedidos.create', ['producto_id' => $item->producto->id, 'cantidad' => $item->cantidad, 'id_vendedor' => $item->producto->vendedor->id]) }}" class="btn btn-primary">Pagar</a>
-      </div>
-      @endif
-
+    <div class="text-center mt-4">
+        @if($item->producto && $item->servicio)
+            <a href="{{ route('pedidos.create', [
+                'producto_id' => $item->producto->id,
+                'servicio_id' => $item->servicio->id,
+                'cantidad' => $item->cantidad,
+                'id_vendedor' => $item->producto->vendedor->id, $item->servicio->vendedor->id, 
+                'total' => $total,
+            ]) }}" class="btn btn-primary">Pagar</a>
+        @elseif($item->producto)
+            <a href="{{ route('pedidos.create', [
+                'producto_id' => $item->producto->id,
+                'cantidad' => $item->cantidad,
+                'id_vendedor' => $item->producto->vendedor->id,
+                'total' => $total,
+            ]) }}" class="btn btn-primary">Pagar</a>
+        @elseif($item->servicio)
+            <a href="{{ route('pedidos.create', [
+                'servicio_id' => $item->servicio->id,
+                'cantidad' => $item->cantidad,
+                'id_vendedor' => $item->servicio->vendedor->id,
+                'total' => $total,
+            ]) }}" class="btn btn-primary">Pagar</a>
+        @endif
+    </div>
+@endif
 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <section>
-<div class="Login container" style="margin-top: 40px; margin-bottom: 50px; height: 500px;">
+<div class="Login container" style="height: 500px;">
     <div class="Contenedor row">
         <div class="Logo_Use col-5">
             <div class="Iso_Log col">

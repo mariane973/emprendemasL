@@ -41,34 +41,77 @@
                         <input type="email" id="email" name="email" value="{{ auth()->user()->email }}" class="form-control" required>
                     </div>
 
+                    @if(isset($producto))
                     <input type="hidden" name="producto_id" value="{{ $producto->id }}">
-                    <input type="hidden" name="cantidad" value="{{ $cantidad }}">
-                    <input type="hidden" name="precio" value="{{ $producto->precio * $cantidad }}">
-                    <input type="hidden" name="valor" value="{{ $producto->precio * $cantidad }}">
-                    <input type="hidden" name="id_vendedor" value="{{ $id_vendedor }}">
-                    <hr>
-                    <h5 class="my-4">Acerca de tu pedido</h5>
+                    <input type="hidden" name="cantidad_producto" value="{{ $cantidad }}">
+                    <input type="hidden" name="precio_producto" value="{{ $producto->precio * $cantidad }}">
+                    <input type="hidden" name="valor_total_producto" value="{{ $valorTotalProducto }}">
+                    <div class="row">
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="producto">Producto:</label>
+                            <input type="text" id="producto" name="producto" value="{{ $producto->nombre }}" class="form-control" readonly>
+                        </div>
+
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="cantidad_producto">Cantidad:</label>
+                            <input type="number" id="cantidad_producto" value="{{ $cantidad }}" name="cantidad_producto" class="form-control" readonly>
+                        </div>
+                    </div>
 
                     <div class="row">
-                    <div class="form-group col-lg-6 mb-3">
-                        <label for="producto">Producto:</label>
-                        <input type="text" id="producto" name="producto" value="{{ $producto->nombre }}" class="form-control" readonly>
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="valor_producto">Valor unidad:</label>
+                            <input type="text" id="valor_producto" name="valor_producto" value="{{ number_format($producto->valor_final) }}" class="form-control" readonly>
+                        </div>
+
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="valor_total_producto">Valor total:</label>
+                            <input type="text" id="valor_total_producto" name="valor_total_producto" value="{{ number_format($valorTotalProducto) }}" class="form-control" readonly>
+                        </div>
+                    </div>
+                    @endif
+
+                    @if(isset($servicio))
+                    <input type="hidden" name="servicio_id" value="{{ $servicio->id }}">
+                    <input type="hidden" name="cantidad_servicio" value="{{ $cantidad }}">
+                    <input type="hidden" name="precio_servicio" value="{{ $servicio->precio * $cantidad }}">
+                    <input type="hidden" name="valor_total_servicio" value="{{ $valorTotalServicio }}">
+                    <div class="row">
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="servicio">Servicio:</label>
+                            <input type="text" id="servicio" name="servicio" value="{{ $servicio->nombre }}" class="form-control" readonly>
+                        </div>
+
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="cantidad_servicio">Cantidad:</label>
+                            <input type="number" id="cantidad_servicio" value="{{ $cantidad }}" name="cantidad_servicio" class="form-control" readonly>
+                        </div>
                     </div>
 
-                    <div class="form-group col-lg-6 mb-3">
-                        <label for="cantidad">Cantidad:</label>
-                        <input type="number" id="cantidad" value="{{ $cantidad }}" name="cantidad" class="form-control" readonly>
-                    </div>
-                    </div>
-                    
+                    <div class="row">
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="valor_servicio">Valor unidad:</label>
+                            <input type="text" id="valor_servicio" name="valor_servicio" value="{{ number_format($servicio->valor_final) }}" class="form-control" readonly>
+                        </div>
 
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="valor_total_servicio">Valor total:</label>
+                            <input type="text" id="valor_total_servicio" name="valor_total_servicio" value="{{ number_format($valorTotalServicio) }}" class="form-control" readonly>
+                        </div>
+                    </div>
+                    @endif
+
+                    <hr>
+
+                    <!-- Total a pagar -->
                     <div class="form-group mb-3">
-                    <label for="valor">Total a pagar:</label>
-                    <input type="text" id="total" name="valor" value="{{ $precio * $cantidad }}" class="form-control" readonly>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Guardar Pedido</button>
-                </div>                
+                        <label for="total">Total a pagar:</label>
+                        <input type="text" id="total" name="total" value="{{ number_format($total) }}" class="form-control" readonly>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Guardar Pedido</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -76,7 +119,7 @@
 </section>
 @else
     <div class="alert alert-success text-center mx-5" role="alert">
-    Acceso no Autorizado
+        Acceso no Autorizado
     </div>
 @endcan
 @endsection

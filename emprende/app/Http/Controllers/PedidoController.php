@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\Vendedore;
 use App\Models\Producto;
+use App\Models\Servicio;
 use App\Models\CarritoCompra;
 use App\Models\User;
 
@@ -39,34 +40,56 @@ class PedidoController extends Controller
     public function create(Request $request)
 {
     $productoId = $request->input('producto_id');
+    $servicioId = $request->input('servicio_id');
     $cantidad = $request->input('cantidad'); 
+    $total = $request->input('total');
 
     $producto = Producto::find($productoId);
-
+    $servicio = Servicio::find($servicioId);
     
-    if (!$producto) {
-        return redirect()->back()->with('error', 'El producto seleccionado no existe.');
+    if (!$producto && !$servicio) {
+        return redirect()->back()->with('error', 'Ni el producto ni el servicio seleccionados existen.');
     }
 
-   
-    $vendedor = $producto->vendedor;
+    $vendedor = null;
+    $precioProducto = 0;
+    $precioServicio = 0;
+
+    if ($producto) {
+        $vendedor = $producto->vendedor;
+        $precioProducto = $producto->precio;
+    }
+
+    if ($servicio) {
+        $vendedor = $servicio->vendedor;
+        $precioServicio = $servicio->precio;
+    }
 
     if (!$vendedor) {
-        return redirect()->back()->with('error', 'El producto seleccionado no tiene un vendedor asociado.');
+        return redirect()->back()->with('error', 'El vendedor asociado no existe.');
     }
 
-    $precio = $producto->precio;
+    $valorTotalProducto = 0;
+    $valorTotalServicio = 0;
+
+    if ($producto) {
+        $valorTotalProducto = $producto->valor_final * $cantidad;
+    }
+
+    if ($servicio) {
+        $valorTotalServicio = $servicio->valor_final * $cantidad;
+    }
 
     return view('pedidos.create', [
-        'productos' => Producto::all(), 
         'producto' => $producto,
+        'servicio' => $servicio,
         'cantidad' => $cantidad,
-        'precio' => $precio,
-        'id_vendedor' => $vendedor->id, 
+        'valorTotalProducto' => $valorTotalProducto,
+        'valorTotalServicio' => $valorTotalServicio,
+        'total' => $total,
+        'id_vendedor' => $vendedor->id,
     ]);
 }
-
-
     /**
      * Store a newly created resource in storage.
      *
