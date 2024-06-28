@@ -38,11 +38,15 @@ class OfertasList extends Component
                 'producto_id' => $id,
             ];
             
-            CarritoCompra::updateOrCreate($data);
+            $carritoItem = CarritoCompra::where($data)->first();
 
-            $this->emit('updateCartCount');
-
-            session()->flash('success', 'Oferta agregada al carrito exitosamente.');
+            if ($carritoItem) {
+                session()->flash('error', 'La oferta ya se encuentra en el carrito.');
+            } else {
+                CarritoCompra::create($data);
+                $this->emit('updateCartCount');
+                session()->flash('success', 'Oferta agregada al carrito exitosamente.');
+            }
         }
     }
     public $id_eliminacion;

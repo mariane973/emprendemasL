@@ -38,13 +38,17 @@ class Serviciolist extends Component
             $data = [
                 'user_id' => auth()->user()->id,
                 'servicio_id' => $id,
-            ];
-            
-            CarritoCompra::updateOrCreate($data);
+            ];            
 
-            $this->emit('updateCartCount');
+            $carritoItem = CarritoCompra::where($data)->first();
 
-            session()->flash('success', 'Servicio agregado al carrito exitosamente.');
+            if ($carritoItem) {
+                session()->flash('error', 'El servicio ya se encuentra en el carrito.');
+            } else {
+                CarritoCompra::create($data);
+                $this->emit('updateCartCount');
+                session()->flash('success', 'Servicio agregado al carrito exitosamente.');
+            }
         }
     }
 

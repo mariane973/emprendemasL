@@ -65,11 +65,16 @@ class Productlist extends Component
                 'user_id' => auth()->user()->id,
                 'producto_id' => $id,
             ];
-            CarritoCompra::updateOrCreate($data);
-            
-            $this->emit('updateCartCount');
 
-            session()->flash('success','Producto agregado al carrito exitosamente.');
+            $carritoItem = CarritoCompra::where($data)->first();
+
+            if ($carritoItem) {
+                session()->flash('error', 'El producto ya se encuentra en el carrito.');
+            } else {
+                CarritoCompra::create($data);
+                $this->emit('updateCartCount');
+                session()->flash('success', 'Producto agregado al carrito exitosamente.');
+            }
         }
     }
 
