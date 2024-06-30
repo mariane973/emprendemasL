@@ -21,10 +21,6 @@
                 <label for="precioProducto" class="form-label">Precio</label>
                 <input type="number" class="form-control" value="{{$serviciosEditar->precio}}" name="precioEdit" id="precio">
             </div>
-            <div class="col-lg-6 mb-4">
-                <label for="categoriaProducto" class="form-label">Categoria</label>
-                <input type="text" class="form-control" value="{{$serviciosEditar->categoria}}" name="categoriaEdit">
-            </div>
             <div class="mb-4">
                 <label for="imagen" class="form-label fw-semibold">Imagen</label>
                 <input type="file" class="form-control" name="imagen" value="{{$serviciosEditar->imagen}}">

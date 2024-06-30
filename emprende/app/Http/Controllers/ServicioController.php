@@ -53,7 +53,6 @@ class ServicioController extends Controller
         $newServicio -> nombre = $request->get('nombre');
         $newServicio -> descripcion = $request->get('descripcion');
         $newServicio -> precio = $request->get('precio');
-        $newServicio -> categoria = $request->get('categoria');
         $newServicio -> oferta = $request -> opcOferta == 'si';
         if($request -> opcOferta == 'si') {
             $newServicio -> descuento = $request->get('descuento');
@@ -108,7 +107,6 @@ class ServicioController extends Controller
         $editarServicio -> nombre = $request -> get('nombreEdit');
         $editarServicio -> descripcion = $request -> get('descripEdit');
         $editarServicio -> precio = $request -> get('precioEdit');
-        $editarServicio -> categoria = $request -> get('categoriaEdit');
 
         if ($request->opcOferta == 'si') {
             $editarServicio->oferta = true;

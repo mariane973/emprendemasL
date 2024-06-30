@@ -92,30 +92,11 @@
         </div>
       </div>
       @if(!$carritoitems->isEmpty())
-    <div class="text-center mt-4">
-        @if($item->producto && $item->servicio)
+        <div class="text-center mt-4">
             <a href="{{ route('pedidos.create', [
-                'producto_id' => $item->producto->id,
-                'servicio_id' => $item->servicio->id,
-                'cantidad' => $item->cantidad,
-                'id_vendedor' => $item->producto->vendedor->id, $item->servicio->vendedor->id, 
+                'items' => $carritoitems,
                 'total' => $total,
             ]) }}" class="btn btn-primary">Pagar</a>
-        @elseif($item->producto)
-            <a href="{{ route('pedidos.create', [
-                'producto_id' => $item->producto->id,
-                'cantidad' => $item->cantidad,
-                'id_vendedor' => $item->producto->vendedor->id,
-                'total' => $total,
-            ]) }}" class="btn btn-primary">Pagar</a>
-        @elseif($item->servicio)
-            <a href="{{ route('pedidos.create', [
-                'servicio_id' => $item->servicio->id,
-                'cantidad' => $item->cantidad,
-                'id_vendedor' => $item->servicio->vendedor->id,
-                'total' => $total,
-            ]) }}" class="btn btn-primary">Pagar</a>
-        @endif
-    </div>
-@endif
+        </div>
+      @endif
 </div>

@@ -18,7 +18,6 @@ class CreateServiciosTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->integer('precio');
-            $table->string('categoria');
             $table->string('imagen');
             $table->boolean('oferta')->default(false);
             $table->integer('descuento')->nullable();

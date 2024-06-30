@@ -63,7 +63,13 @@
                     <form action="{{ route('inventario.actualizarStock', $item->id) }}" method="POST">
                         @csrf
                         @method('put')
+                        @if($item->stock == 0)                       
+                        <input type="number" name="stock" value="{{ $item->stock }}" class="form-control" style="background-color: #f8d7da;">
+                        @elseif($item->stock <= 10)
+                        <input type="number" name="stock" value="{{ $item->stock }}" class="form-control" style="background-color: #fff3cd;">
+                        @else
                         <input type="number" name="stock" value="{{ $item->stock }}" class="form-control">
+                        @endif
                 </td>
                 <td>
                         <button type="submit" class="btn btn-primary text-white">

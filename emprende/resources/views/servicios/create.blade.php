@@ -22,10 +22,6 @@
                 <input type="number" placeholder="" class="form-control" name="precio" id="precio" required="">
             </div>
             <div class="col-lg-6 mb-4">
-                <label class="form-label">Categoria</label>
-                <input type="text" placeholder="" class="form-control" name="categoria" required="">
-            </div>
-            <div class="col-lg-6 mb-4">
                 <label for="vendedor_id" class="form-label fw-semibold">Emprendimiento</label>
                 <select class="form-control" name="vendedor_id" required>
                     <option value="" disabled selected>Seleccione su emprendimiento</option>

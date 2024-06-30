@@ -11,6 +11,7 @@ class OfertasList extends Component
 {
     public $ofertaCont;
     public $search = '';
+    public $sinResultados = '';
 
     public function render()
     {
@@ -26,6 +27,14 @@ class OfertasList extends Component
                 ->where('nombre', 'like', '%' . $this->search . '%')
                 ->get();
         }
+
+        if ($this->ofertaCont->isEmpty() && !empty($this->search)) {
+            $this->sinResultados = 'No se encontraron coincidencias.';
+            $this->dispatchBrowserEvent('show-no-results-alert');
+        } else {
+            $this->sinResultados = '';
+        }
+
         return view('livewire.ofertas-list');
     }
 

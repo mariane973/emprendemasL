@@ -11,6 +11,7 @@ class Serviciolist extends Component
 {
     public $servicioCont;
     public $search = '';
+    public $sinResultados = '';
 
     public function render()
     {
@@ -27,6 +28,13 @@ class Serviciolist extends Component
         } else {
             $this->servicioCont = Servicio::where('nombre', 'like', '%' . $this->search . '%')
             ->get();
+        }
+
+        if ($this->servicioCont->isEmpty() && !empty($this->search)) {
+            $this->sinResultados = 'No se encontraron coincidencias.';
+            $this->dispatchBrowserEvent('show-no-results-alert');
+        } else {
+            $this->sinResultados = '';
         }
 
         return view('livewire.serviciolist');

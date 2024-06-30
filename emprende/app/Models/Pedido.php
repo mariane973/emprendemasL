@@ -7,26 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pedido extends Model
 {
+    use HasFactory;
+
     protected $table = 'pedidos';
 
-    use HasFactory;
     protected $fillable = [
-        'nombre_cliente', 'email_cliente', 'direccion', 'telefono',
-        'producto_id', 'cantidad', 'precio_unitario', 'total',
+        'id_cliente','nombre_cl', 'email_cl', 'direccion', 'ciudad', 'telefono', 'total'
     ];
 
-    public function vendedor()
+    public function detalles()
     {
-        return $this->belongsTo(Vendedore::class, 'id_vendedor');
+        return $this->hasMany(DetallePedido::class, 'pedido_id');
     }
 
     public function cliente()
     {
         return $this->belongsTo(User::class, 'id_cliente');
-    }
-    
-    public function producto()
-    {
-        return $this->belongsTo(Producto::class, 'producto_id');
     }
 }

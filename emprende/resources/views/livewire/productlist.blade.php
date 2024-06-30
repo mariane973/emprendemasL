@@ -1,5 +1,5 @@
 <div class="container">
-    @include('layouts.mensaje')
+    @include('layouts.mensaje')    
     <div class="row">
         <div class="Caja_Busqueda container text-center mb-5 d-flex justify-content-center align-items-center">
             @can('agregarVendedor')
@@ -77,13 +77,18 @@
             </div>
         @endforeach
     </div>
+    @if($sinResultados)
+        <div class="alert alert-success text-center mb-5" role="alert">
+            {{ $sinResultados }}
+        </div>
+    @endif
 </div>
 
 <script>
     document.addEventListener('livewire:load', function () {
         Livewire.on('productosActualizados', productos => {
             // Actualizar la lista de productos en la vista
-            // Puedes manipular el DOM para actualizar la lista de productos
+            document.querySelector('.alert').style.display = 'block';
         });
     });
 </script>

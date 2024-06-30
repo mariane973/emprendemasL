@@ -10,6 +10,7 @@ class Emprendimientoslist extends Component
 {
     public $vendedorCont;
     public $search = '';
+    public $sinResultados = '';
 
     public function render()
     {
@@ -22,6 +23,13 @@ class Emprendimientoslist extends Component
         } else {
             $this->vendedorCont = Vendedore::where('nom_emprendimiento', 'like', '%' . $this->search . '%')
             ->get();
+        }
+
+        if ($this->vendedorCont->isEmpty() && !empty($this->search)) {
+            $this->sinResultados = 'No se encontraron coincidencias.';
+            $this->dispatchBrowserEvent('show-no-results-alert');
+        } else {
+            $this->sinResultados = '';
         }
 
         return view('livewire.emprendimientoslist');

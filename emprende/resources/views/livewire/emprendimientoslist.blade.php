@@ -41,4 +41,17 @@
         </div>
         @endforeach
     </div>
+    @if($sinResultados)
+        <div class="alert alert-success text-center mb-5" role="alert">
+            {{ $sinResultados }}
+        </div>
+    @endif
 </div>
+
+<script>
+    document.addEventListener('livewire:load', function () {
+        Livewire.on('show-no-results-alert', () => {
+            document.querySelector('.alert').style.display = 'block';
+        });
+    });
+</script>

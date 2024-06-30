@@ -66,6 +66,6 @@ Route::get('/pedidos_index', [PedidoController::class, 'index'])->name('pedidos.
 
 Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.create');
 
-Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');
-
 Route::put('/pedidos/{id}/estado', [PedidoController::class, 'actualizarEstado'])->name('pedido.actualizarEstado');
+
+Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');

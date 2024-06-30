@@ -8,7 +8,9 @@ use App\Models\Vendedore;
 use App\Models\Producto;
 use App\Models\Servicio;
 use App\Models\CarritoCompra;
+use App\Models\DetallePedido;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class PedidoController extends Controller
@@ -24,9 +26,17 @@ class PedidoController extends Controller
         $userId = $user->id;
 
         if ($user->hasRole('Vendedor')){
-            $pedidos = Pedido::where('id_vendedor', $userId)->get();
-        }elseif($user->hasRole('Cliente')){
-            $pedidos = Pedido::where('id_cliente', $userId)->get();
+            $pedidos = Pedido::whereHas('detalles', function ($query) use ($userId) {
+                $query->where('id_vendedor', $userId);
+            })->get();
+
+            $pedidos->each(function ($pedido) use ($userId) {
+                $pedido->detalles = $pedido->detalles->filter(function ($detalle) use ($userId) {
+                    return $detalle->id_vendedor == $userId;
+                });
+            });
+        } elseif ($user->hasRole('Cliente')) {
+            $pedidos = Pedido::where('id_cliente', $userId)->with('detalles')->get();
         }
 
         return view('pedidos.index', compact('pedidos'));
@@ -38,58 +48,47 @@ class PedidoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-{
-    $productoId = $request->input('producto_id');
-    $servicioId = $request->input('servicio_id');
-    $cantidad = $request->input('cantidad'); 
-    $total = $request->input('total');
+    {
+        $user = auth()->user();
+        $carritoitems = CarritoCompra::where('user_id', $user->id)->get();
 
-    $producto = Producto::find($productoId);
-    $servicio = Servicio::find($servicioId);
-    
-    if (!$producto && !$servicio) {
-        return redirect()->back()->with('error', 'Ni el producto ni el servicio seleccionados existen.');
+        $sub_total = 0;
+        $valorTotalProducto = 0;
+        $valorTotalServicio = 0;
+        $carritoitemsArray = [];
+
+        foreach ($carritoitems as $item) {
+            $itemArray = [];
+            if ($item->producto) {                
+                $valorTotalProducto = $item->producto->valor_final * $item->cantidad;
+                $sub_total += $item->producto->valor_final * $item->cantidad;
+                $itemArray = [
+                    'id' => $item->producto->id,
+                    'tipo' => 'producto',
+                    'nombre' => $item->producto->nombre,
+                    'valor_final' => $item->producto->valor_final,
+                    'cantidad' => $item->cantidad,
+                    'id_vendedor' => $item->producto->vendedor_id,
+                ];
+            } elseif ($item->servicio) {
+                $valorTotalServicio = $item->servicio->valor_final * $item->cantidad;
+                $sub_total += $item->servicio->valor_final * $item->cantidad;
+                $itemArray = [
+                    'id' => $item->servicio->id,
+                    'tipo' => 'servicio',
+                    'nombre' => $item->servicio->nombre,
+                    'valor_final' => $item->servicio->valor_final,
+                    'cantidad' => $item->cantidad,
+                    'id_vendedor' => $item->servicio->vendedor_id,
+                ];
+            }
+            $carritoitemsArray[] = $itemArray;
+        }
+        $envio = 8000;
+        $total = $sub_total + $envio;
+
+        return view('pedidos.create', compact('carritoitemsArray', 'sub_total', 'envio', 'total', 'valorTotalProducto', 'valorTotalServicio'));
     }
-
-    $vendedor = null;
-    $precioProducto = 0;
-    $precioServicio = 0;
-
-    if ($producto) {
-        $vendedor = $producto->vendedor;
-        $precioProducto = $producto->precio;
-    }
-
-    if ($servicio) {
-        $vendedor = $servicio->vendedor;
-        $precioServicio = $servicio->precio;
-    }
-
-    if (!$vendedor) {
-        return redirect()->back()->with('error', 'El vendedor asociado no existe.');
-    }
-
-    $valorTotalProducto = 0;
-    $valorTotalServicio = 0;
-
-    if ($producto) {
-        $valorTotalProducto = $producto->valor_final * $cantidad;
-    }
-
-    if ($servicio) {
-        $valorTotalServicio = $servicio->valor_final * $cantidad;
-    }
-
-    return view('pedidos.create', [
-        'producto' => $producto,
-        'servicio' => $servicio,
-        'cantidad' => $cantidad,
-        'valorTotalProducto' => $valorTotalProducto,
-        'valorTotalServicio' => $valorTotalServicio,
-        'total' => $total,
-        'id_vendedor' => $vendedor->id,
-    ]);
-}
     /**
      * Store a newly created resource in storage.
      *
@@ -97,72 +96,79 @@ class PedidoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'nombre' => 'required|string',
-        'email' => 'required|email',
-        'direccion' => 'required|string',
-        'telefono' => 'required|integer|min:1',
-        'ciudad' => 'required|string',
-        'cantidad' => 'required|integer|min:1',
-        'valor' => 'required|numeric|min:0',
-        'producto' => 'required|string',
-        'id_vendedor' => 'required|integer',
-    ]);
+    {
+        $request->validate([
+            'nombre' => 'required|string',
+            'email' => 'required|email',
+            'direccion' => 'required|string',
+            'telefono' => 'required|integer|min:1',
+            'ciudad' => 'required|string',
+            'total' => 'required|string',
+            'carritoitemsArray' => 'required|array',
+        ]);
 
+        $clienteId = auth()->user()->id;
+        $nombre = $request->input('nombre');
+        $email = $request->input('email');
+        $direccion = $request->input('direccion');
+        $ciudad = $request->input('ciudad');
+        $telefono = $request->input('telefono');
+        $total = $request->input('total');
+
+        $pedido = new Pedido();
+        $pedido->id_cliente = $clienteId;
+        $pedido->nombre_cl = $nombre;
+        $pedido->email_cl = $email;
+        $pedido->direccion = $direccion;
+        $pedido->ciudad = $ciudad;
+        $pedido->telefono = $telefono;
+        $pedido->total = $total;
+        $pedido->save();
+
+        foreach ($request->input('carritoitemsArray') as $item) {
+            $item = json_decode($item, true);
+            $detallePedido = new DetallePedido();
+            $detallePedido->pedido_id = $pedido->id;
+            $detallePedido->tipo = $item['tipo'];
+
+            if ($item['tipo'] === 'producto') {
+                $producto = Producto::find($item['id']);
+                $vendedor = Vendedore::find($producto->vendedor_id);                    
+                $detallePedido->producto_id = $producto->id;
+                $detallePedido->cantidad = $item['cantidad'];
+                $detallePedido->precio = $producto->valor_final;
+                $detallePedido->id_vendedor = $vendedor->user_id;
+                $detallePedido->estado = 'Pedido Aceptado';
+                $producto->stock -= $item['cantidad'];
+                $producto->save();
+            } elseif ($item['tipo'] === 'servicio') {
+                $servicio = Servicio::find($item['id']);
+                $vendedorServicio = Vendedore::find($servicio->vendedor_id);   
+                $detallePedido->servicio_id = $servicio->id;
+                $detallePedido->cantidad = $item['cantidad'];
+                $detallePedido->precio = $servicio->valor_final;            
+                $detallePedido->id_vendedor = $vendedorServicio->user_id;
+                $detallePedido->estado = 'Pedido Aceptado';
+            }
+            $detallePedido->save();
+        }
+
+        $this->eliminarItemDelCarrito($clienteId);
+        
+        return redirect()->route('pedidos.index')->with('success', 'Pedido realizados con éxito');
+    }
     
-    $producto = Producto::where('nombre', $request->get('producto'))->first();
-
-    if (!$producto) {
-        return redirect()->back()->with('error', 'El producto seleccionado no existe.');
-    }
-
-    $vendedor = $producto->vendedor;
-
-    if (!$vendedor) {
-        return redirect()->back()->with('error', 'El producto seleccionado no tiene un vendedor asociado.');
-    }
-
-    $id_vendedor = $vendedor->user_id;
-    $cliente = auth()->user(); 
-
-    $pedido = new Pedido();
-    $pedido->nombre_cl = $request->get('nombre');
-    $pedido->email_cl = $request->get('email');
-    $pedido->direccion = $request->get('direccion');
-    $pedido->ciudad = $request->get('ciudad');
-    $pedido->telefono = $request->get('telefono');
-    $pedido->nombre_producto = $producto->nombre;
-    $pedido->cantidad = $request->get('cantidad');
-    $pedido->estado = 'Pedido Recibido';
-    $pedido->precio = $request->get('precio');
-    $pedido->total = $request->get('valor');
-
-   
-    $pedido->id_vendedor = $id_vendedor; 
-    $pedido->id_cliente = $cliente->id;  
-
-    $pedido->save();
-
-    $producto->stock -= $request->get('cantidad');
-    $producto->save();
-
-    $this->eliminarItemDelCarrito($cliente->id);
-
-    return redirect()->route('productos.index')->with('success', 'Pedido realizado con éxito');
-}
-
     private function eliminarItemDelCarrito($clienteId)
     {
         CarritoCompra::where('user_id', $clienteId)->delete();
     }
+    
 
     public function actualizarEstado(Request $request, $id)
     {
-        $pedido = Pedido::findOrFail($id);
-        $pedido -> estado = $request->get('estado');
-
-        $pedido -> save();
+        $detallePedido = DetallePedido::findOrFail($id);
+        $detallePedido->estado = $request->input('estado');
+        $detallePedido->save();
 
         return redirect()->route('pedidos.index');
     }

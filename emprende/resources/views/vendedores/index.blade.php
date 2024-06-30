@@ -25,10 +25,12 @@
           <a href="/ofertas_servicios" class="fw-bold" style="color: #33B66C;  font-size: 16px;">Ofertas servicios</a>
         </div>
       </div>
+      @can('accesoPedidos')
       <div class="Sec_Ofe col-lg-1 col-sm-6 col-md-6 me-4 d-flex align-items-center justify-content-center">
         <i class="fas fa-scroll icono me-1"></i>
         <a href="/pedidos_index" class="fw-bold" style="color: #33B66C;  font-size: 18px;">Pedidos</a>
       </div>
+      @endcan      
       @can('agregarVendedor')
       <div class="Sec_Ofe col-lg-2 col-sm-6 col-md-6  d-flex align-items-center justify-content-center">
         <i class="fas fa-clipboard icono me-1"></i>

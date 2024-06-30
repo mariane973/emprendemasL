@@ -26,10 +26,12 @@
           <a href="/ofertas_servicios" class="fw-bold" style="color: #33B66C;  font-size: 16px;">Ofertas servicios</a>
         </div>
       </div>
+      @can('accesoPedidos')
       <div class="Sec_Ofe col-lg-1 col-sm-6 col-md-6 me-4 d-flex align-items-center justify-content-center">
         <i class="fas fa-scroll icono me-1" style="color: green;"></i>
         <a href="/pedidos_index" class="fw-bold" style="color: green;  font-size: 18px;">Pedidos</a>
       </div>
+      @endcan
       @can('agregarVendedor')
       <div class="Sec_Ofe col-lg-2 col-sm-6 col-md-6  d-flex align-items-center justify-content-center">
         <i class="fas fa-clipboard icono me-1"></i>
@@ -46,52 +48,64 @@
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Cliente</th>
-                <th>Email</th>
-                <th>Dirección</th>
-                <th>Teléfono</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Total compra</th>
-                <th>Estado</th>
+              <th>ID</th>
+              <th>Cliente</th>
+              <th>Email</th>
+              <th>Dirección</th>
+              <th>Teléfono</th>
+              <th>Tipo</th>
+              <th>Nombre</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Total compra</th>
+              <th>Estado</th>
             </tr>
         </thead>
         <tbody>
             @foreach($pedidos as $pedido)
-            <tr>
-                <td>{{ $pedido->id }}</td>
-                <td>{{ $pedido->nombre_cl }}</td>
-                <td>{{ $pedido->email_cl }}</td>
-                <td>{{ $pedido->direccion }}</td>
-                <td>{{ $pedido->telefono }}</td>
-                <td>{{ $pedido->nombre_producto}}</td>
-                <td>{{ $pedido->cantidad }}</td>
-                <td>{{ $pedido->total }}</td>
-                @can('agregarCarrito')
-                <td>{{ $pedido->estado }}</td>
-                @endcan
-                @can('agregarVendedor')
-                <td>
-                    <form action="{{ route('pedido.actualizarEstado', $pedido->id) }}" method="POST">
-                        @csrf
-                        @method('put')
-                        <select name="estado" class="form-control">
-                            <option value="Pedido Recibido" {{ $pedido->estado == 'Pedido Recibido' ? 'selected' : '' }}>Pedido Aceptado</option>
-                            <option value="Preparando Pedido" {{ $pedido->estado == 'Preparando Pedido' ? 'selected' : '' }}>Preparando Pedido</option>
-                            <option value="Enviado" {{ $pedido->estado == 'Enviado' ? 'selected' : '' }}>Enviado</option>
-                            <option value="Entregado" {{ $pedido->estado == 'Entregado' ? 'selected' : '' }}>Entregado</option>
-                        </select>
-                </td>
-                <td>
-                        <button type="submit" class="btn btn-primary text-white">
-                            <i class="fas fa-sync-alt me-1"></i> Actualizar
-                        </button>
-                    </form>
-                </td>
-                @endcan
-            </tr>
+              @foreach($pedido->detalles as $detalle)
+                <tr>
+                    <td>{{ $pedido->id }}</td>
+                    <td>{{ $pedido->nombre_cl }}</td>
+                    <td>{{ $pedido->email_cl }}</td>
+                    <td>{{ $pedido->direccion }}</td>
+                    <td>{{ $pedido->telefono }}</td>
+                    <td>{{ ucfirst($detalle->tipo) }}</td>
+                    <td>
+                        @if($detalle->tipo == 'producto')
+                            {{ $detalle->producto->nombre }}
+                        @else
+                            {{ $detalle->servicio->nombre }}
+                        @endif
+                    </td>        
+                    <td>{{ $detalle->cantidad }}</td>
+                    <td>{{ $detalle->precio }}</td>
+                    <td>{{ $pedido->total }}</td>
+                    @can('agregarCarrito')
+                    <td>{{ $detalle->estado }}</td>
+                    @endcan
+                    @can('agregarVendedor')
+                    <td>
+                      <form action="{{ route('pedido.actualizarEstado', $detalle->id) }}" method="POST">
+                          @csrf
+                          @method('put')
+                          <select name="estado" class="form-control">
+                              <option value="Pedido Aceptado" {{ $detalle->estado == 'Pedido Aceptado' ? 'selected' : '' }}>Pedido Aceptado</option>
+                              <option value="Preparando Pedido" {{ $detalle->estado == 'Preparando Pedido' ? 'selected' : '' }}>Preparando Pedido</option>
+                              <option value="Enviado" {{ $detalle->estado == 'Enviado' ? 'selected' : '' }}>Enviado</option>
+                              <option value="Entregado" {{ $detalle->estado == 'Entregado' ? 'selected' : '' }}>Entregado</option>
+                          </select>
+                    </td>
+                    <td>
+                            <button type="submit" class="btn btn-primary text-white">
+                                <i class="fas fa-sync-alt"></i> Actualizar
+                            </button>
+                        </form>
+                    </td>
+                    @endcan
+                </tr>
             @endforeach
+          @endforeach
         </tbody>
     </table>
 </div>

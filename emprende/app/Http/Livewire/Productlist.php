@@ -11,13 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class Productlist extends Component
 {
     
-
     public $productoCont;
     public $search = '';
-
     public $productos;
     public $categorias;
     public $categoriaSeleccionada = '';
+    public $sinResultados = '';
 
     public function filtrarPorCategoria()
     {
@@ -53,7 +52,13 @@ class Productlist extends Component
         $this->productoCont = $this->productoCont->whereIn('vendedor_id', $vendedorIds);
     }
 
-    
+    if ($this->productoCont->isEmpty() && !empty($this->search)) {
+        $this->sinResultados = 'No se encontraron coincidencias.';
+        $this->dispatchBrowserEvent('show-no-results-alert');
+    } else {
+        $this->sinResultados = '';
+    }
+
     $this->categorias = Categoria::all();
 
     return view('livewire.productlist');
