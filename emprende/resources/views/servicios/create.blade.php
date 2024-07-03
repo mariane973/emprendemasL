@@ -10,27 +10,27 @@
         <div class="row">
             <div class="col-lg-6 mb-4">
                 <label class="form-label">Nombre</label>
-                <input type="text" placeholder="" class="form-control" name="nombre" required="">
+                <input type="text" placeholder="Ingresa el nombre del servicio" class="form-control" name="nombre" required="">
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label">Descripción</label>
-                <input type="text" placeholder="Describa a detalle el paquete del servicio." class="form-control" name="descripcion" required="">
-                <small class="form-text text-muted">Especifique de qué se compone o en qué unidades (ej. 5 sesiones, 10 horas).</small>
+                <input type="text" placeholder="Describe a detalle el paquete del servicio." class="form-control" name="descripcion" required="">
+                <small class="form-text text-muted">Especifica de qué se compone o en qué unidades (ej. 5 sesiones, 10 horas).</small>
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label">Precio</label>
-                <input type="number" placeholder="" class="form-control" name="precio" id="precio" required="">
+                <input type="number" placeholder="Ingresa el precio del servicio" class="form-control" name="precio" id="precio" required="">
             </div>
             <div class="col-lg-6 mb-4">
                 <label for="vendedor_id" class="form-label fw-semibold">Emprendimiento</label>
                 <select class="form-control" name="vendedor_id" required>
-                    <option value="" disabled selected>Seleccione su emprendimiento</option>
+                    <option value="" disabled selected>Selecciona tu emprendimiento</option>
                     @foreach($vendedores as $vendedor)
                         <option value="{{ $vendedor->id }}">{{ $vendedor->nom_emprendimiento }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-12 mb-4">
                 <label for="imagen" class="form-label">Imagen</label>
                 <input type="file" placeholder="" class="form-control" name="imagen" required="">
             </div>
@@ -45,8 +45,9 @@
                     <div class="mt-4">
                         <div class="row">
                             <div class="col-lg-6 mb-4">
-                                <label class="form-label fw-semibold">Indique el descuento (%)</label>
-                                <input type="number" placeholder="" class="form-control" name="descuento" id="descuento">
+                                <label class="form-label fw-semibold">Indica el descuento (%)</label>
+                                <input type="number" placeholder="Porcentaje de descuento" class="form-control" name="descuento" id="descuento">
+                                <small class="form-text text-muted">Ingresa valores numéricos sin el signo (%).</small>
                             </div>
                             <div class="col-lg-6 mb-4 fw-semibold">
                                 <label class="form-label">Valor Total</label>

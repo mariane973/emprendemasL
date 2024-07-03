@@ -10,33 +10,33 @@
         <div class="row">
             <div class="col-lg-6 mb-4">
                 <label class="form-label fw-semibold">Nombre</label>
-                <input type="text" placeholder="" class="form-control" name="nombre" required="">
+                <input type="text"  class="form-control" name="nombre" required="" placeholder="Ingresa el nombre del producto">
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label fw-semibold">Descripción</label>
-                <input type="text" placeholder="" class="form-control" name="descripcion" required="">
+                <input type="text" placeholder="Ingresa la descripción del producto" class="form-control" name="descripcion" required="">
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label fw-semibold">Precio</label>
-                <input type="number" placeholder="" class="form-control" name="precio" id="precio" required="">
+                <input type="number" placeholder="Precio de tu producto por unidad" class="form-control" name="precio" id="precio" required="">
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label fw-semibold">Stock</label>
-                <input type="number" placeholder="" class="form-control" name="stock" required="">
+                <input type="number" placeholder="Cantidad disponible de tu producto" class="form-control" name="stock" required="">
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label fw-semibold">Categoría</label>
                 <select class="form-control" name="categoria" required>
-                    <option value="" disabled selected>Seleccione una categoría</option>
+                    <option value="" disabled selected>Selecciona una categoría</option>
                     @foreach($categorias as $categoria)
                         <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="col-lg-6 mb-4">
-                <label for="vendedor_id" class="form-label fw-semibold">Emprendimiento</label>
+                <label for="vendedor_id" class="form-label ">Emprendimiento</label>
                 <select class="form-control" name="vendedor_id" required>
-                    <option value="" disabled selected>Seleccione su emprendimiento</option>
+                    <option value="" disabled selected>Selecciona tu emprendimiento</option>
                     @foreach($vendedores as $vendedor)
                         <option value="{{ $vendedor->id }}">{{ $vendedor->nom_emprendimiento }}</option>
                     @endforeach
@@ -44,15 +44,15 @@
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label fw-semibold">Cantidad</label>
-                <input type="number" placeholder="" class="form-control" name="cantidad">
+                <input type="number" placeholder="Cantidad que contiene cada producto" class="form-control" name="cantidad">
             </div>
             <div class="col-lg-6 mb-4">
                 <label class="form-label fw-semibold">Unidad de Medida</label>
-                <input type="text" placeholder="ej. Lts, Gr, Ml, Kg, Pares, etc." class="form-control" name="medida">
+                <input type="text" placeholder="Ej. Lts, Gr, Ml, Kg, Pares, etc." class="form-control" name="medida">
             </div>
             <div class="mb-4">
                 <label for="imagen" class="form-label fw-semibold">Imagen</label>
-                <input type="file" placeholder="" class="form-control" name="imagen" required="">
+                <input type="file" placeholder="Seleccione la imagen del producto" class="form-control" name="imagen" required="">
             </div>
             <div class="contenedor-menu-info">
                 <h1 class="mb-4 mt-3 fw-semibold" style="font-size: 18px;font-weight: 350;">¿El producto tiene oferta?</h1>
@@ -65,12 +65,13 @@
                     <div class="mt-4">
                         <div class="row">
                             <div class="col-lg-6 mb-4">
-                                <label class="form-label fw-semibold">Indique el descuento (%)</label>
-                                <input type="number" placeholder="" class="form-control" name="descuento" id="descuento">
+                                <label class="form-label fw-semibold">Indica el descuento (%)</label>
+                                <input type="number" placeholder="Porcentaje de descuento" class="form-control" name="descuento" id="descuento">
+                                <small class="form-text text-muted">Ingresa valores numéricos sin el signo (%)</small>
                             </div>
                             <div class="col-lg-6 mb-4 fw-semibold">
                                 <label class="form-label">Valor Total</label>
-                                <input type="number" placeholder="" class="form-control" name="valor_final" id="valor_final" readonly>
+                                <input type="number" placeholder="Ingresa el nombre de su producto." class="form-control" name="valor_final" id="valor_final" readonly>
                             </div>
                         </div>
                     </div>

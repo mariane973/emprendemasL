@@ -21,25 +21,31 @@
 </head>
 <body class="@yield('body-class', 'bg')">
     <nav>   
-        <div class="Navbar container-fluid ">    
+        <div class="Navbar container-fluid fixed-top" style="background-color: white; ">    
             <div class="row">
-                <div class="Logo col-lg-2 d-flex col-sm-2 ms-5 me-sm-4 mb-sm-4 col-md-1 col-xs-1 me-xs-5">
+            @cannot('verCarrito')
+                <div class="Logo col-lg-2 ms-lg-5 col-md-2 col-sm-1  col-xs-1 offset-sm-12 d-flex  me-sm-2 mb-sm-4  col-xs-1 me-xs-2">
                     <a href="/" class="fw-bold">
                         <img src="/imagenes/op2.png" alt="" style="height: 52px; ">
                     </a>
                 </div>
+                @endcannot
+
 
                 
                 @can('verCarrito')
-                <div class="InicioSesion align-items-end justify-content-end d-flex col-lg-1 mt-1 col-sm-5 mb-sm-4 ">
-                    <div class="Usuario col ms-1 vertical-align: middle;">
+                <div class="InicioSesion align-items-end justify-content-end  d-flex col-lg-4 mt-2 col-sm-6 col-md-4  mb-4 ">
+                <a href="/" class="fw-bold">
+                        <img src="/imagenes/op2.png" alt="" style="height: 52px; " class="">
+                    </a>
+                    <div class="Usuario col ms-1 mb-2 vertical-align: middle;">
                     <livewire:cartcontador />
                     </div>
                 </div>
 
-                <div class="InicioSesion col-lg-2  offset-4 align-items-end justify-content-end d-flex col-sm-2 mb-sm-4">
+                <div class="InicioSesion col-lg-2 col-md-2 col-sm-3 col-xs-1 offset-md-3 offset-lg-4 align-items-end justify-content-end d-flex mb-sm-4">
                 <div class="dropdown" id="userDropdown">
-                    <i class="fas fa-seedling icono" style="font-size: 28px; vertical-align: middle;"></i>
+                    <i class="fas fa-seedling icono" style="font-size: 25px; vertical-align: middle;"></i>
                     <a href="/servicios" class="fw-bold">Conocer</a>
                     <div class="dropdown-content">
                         <a href="/servicios">Servicios</a>
@@ -52,9 +58,9 @@
                             
 
             @cannot('verCarrito')
-            <div class="InicioSesion col-lg-2 @cannot('verCarrito') offset-5 @endcannot align-items-end justify-content-end d-flex col-sm-2 mb-sm-4">
+            <div class="InicioSesion col-lg-2 col-md-3 col-sm-3 col-xs-1   @cannot('verCarrito') offset-lg-5 offset-sm-4 offset-xs-1 @endcannot align-items-end justify-content-end d-flex mb-sm-4">
                 <div class="dropdown" id="userDropdown">
-                    <i class="fas fa-seedling icono" style="font-size: 28px; vertical-align: middle;"></i>
+                    <i class="fas fa-seedling icono" style="font-size: 25px; vertical-align: middle;"></i>
                     <a href="/servicios" class="fw-bold">Conocer</a>
                     <div class="dropdown-content">
                         <a href="/servicios">Servicios</a>
@@ -65,7 +71,7 @@
             
             @endcannot
                 
-                <div class="InicioSesion col-lg-2 justify-content-start d-flex mb-sm-4 col-md-1">
+                <div class="InicioSesion col-lg-2 col-md-3 col-sm-3   col-xs-6  justify-content-start d-flex mb-sm-4 col-md-1">
                     @guest
                         <div class="Usuario " style="display: flex; align-items: center;">
                         <i class="fas fa-user-circle iconos" style="font-size: 30px; vertical-align: middle;"></i>
@@ -97,7 +103,7 @@
     <div class="container-fluid">
         <hr>
     </div>
-    <main class="py-4">
+    <main class="py-4 " style="margin-top: 5rem;">
         @yield('content')
     </main>
 

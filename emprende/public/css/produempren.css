@@ -11,6 +11,7 @@
 .box{
     margin-right: 25px;
     min-width: none;
+    border-color: transparent;
 }
 .image-empren {
     width: 200px;
@@ -30,15 +31,16 @@
     font-size: 20px;
     color: #898787;
 }
-.descuento{
+.descuento {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 0.5rem;
-    background-color:#E51A1A;
+    top: 0; 
+    left: 0; 
+    padding: 0.3rem;
+    background-color: #E51A1A;
     color: aliceblue;
     border-top-left-radius: 0.25rem;
-    width: 100px;
+    border-bottom-right-radius: 0.25rem;
+    width: 80px;
 }
 
 .card{
