@@ -106,6 +106,10 @@
                             <td>{{ $pedido->direccion }}</td>
                         </tr>
                         <tr>
+                            <th>Ciudad</th>
+                            <td>{{ $pedido->ciudad }}</td>
+                        </tr>
+                        <tr>
                             <th>Teléfono</th>
                             <td>{{ $pedido->telefono }}</td>
                         </tr>
