@@ -2,17 +2,17 @@
     @include('layouts.mensaje')
     <div class="row">
     <div class="container mb-5 d-flex justify-content-center align-items-center">
-        <h5 class="col-lg-4 fw-semibold" style="color: green;">Servicios</h3></h5>
+        <h5 class="col-lg-4 col-sm-2 fw-semibold" style="color: green;">Servicios</h3></h5>
 
             @can('agregarVendedor')
-            <div class="Caja_Busqueda col-lg-2  col-sm-2 ms-sm-5 ps-sm-3 col-sm-5 col-md-4">
+            <div class="Caja_Busqueda col-lg-2  col-sm-4 ms-sm-1 ps-sm-1  col-md-4">
             <a href="/servicios/create" class="btn fw-semibold" style="background-color: #8FDABA; color: white;">
                     <i class="fas fa-plus me-1"></i> Crear Servicio
                 </a>
             </div>
                 
             @endcan
-            <div class="Caja_Busqueda col-lg-4 col-sm-8 ms-sm-5 ps-sm-3 col-sm-5 col-md-4">
+            <div class="Caja_Busqueda col-lg-4 ms-sm-2 col-sm-7 col-md-4">
                 <input wire:model.live='search' type="text" placeholder="Buscar un servicio">
                 <i class="fas fa-search"></i>
             </div>

@@ -3,14 +3,14 @@
     <div class="container mb-5 d-flex justify-content-center align-items-center">
     <h5 class="col-lg-4  col-sm-4 fw-semibold" style="color: green;">Emprendimientos</h3></h5>
             @can('crearProducto')
-            <div class="Caja_Busqueda col-lg-3 ms-sm-5 col-sm-2 col-md-4">
+            <div class="Caja_Busqueda col-lg-3 ms-sm-2 col-sm-4 col-md-4">
             <a href="/emprendimientos/create" class="btn fw-semibold" style="background-color: #8FDABA; color: white;">
                     <i class="fas fa-plus me-1"></i> Crear Emprendimiento
                 </a>
             </div>
                 
             @endcan
-            <div class="Caja_Busqueda col-lg-4 ms-sm-4  col-sm-9 col-md-4">
+            <div class="Caja_Busqueda col-lg-4 ms-sm-4  col-sm-7 col-md-4">
                 <input wire:model.live='search' type="text" placeholder="Buscar un emprendimiento">
                 <i class="fas fa-search"></i>
             </div>

@@ -85,11 +85,10 @@
 <div class="container">
     <h4 class="fw-semibold mb-4" style="color: green;">Revisa tus pedidos <i class="fas fa-pencil icono me-1 mb-1" style="color: green; font-size: 18px"></i></h4>
    
-
+    <div class="row">
         @foreach($pedidos as $pedido)
             @foreach($pedido->detalles as $detalle)
-            <div class="row">
-                <div class="col-lg-4 mb-4">
+                <div class="col-lg-4 col-md-4 mb-4">
                     <table class="table card p-2 pt-1 pb-2" style="border-color: transparent;">
                         <tr>
                             <th class="text-start pb-4" colspan="3" style="font-size: 18px; color: green; border-bottom: none;">Información del pedido</th>
