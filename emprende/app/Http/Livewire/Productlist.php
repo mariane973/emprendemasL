@@ -18,15 +18,31 @@ class Productlist extends Component
     public $categoriaSeleccionada = '';
     public $sinResultados = '';
 
+    public function mount()
+    {
+        $this->categoriaSeleccionada = request()->query('categoria', '');
+        $this->filtrarPorCategoria();
+    }
+
     public function filtrarPorCategoria()
     {
+        $query = Producto::query();
+        
         if (!empty($this->categoriaSeleccionada)) {
-            $this->productoCont = Producto::where('categoria', $this->categoriaSeleccionada)
-                ->where('nombre', 'like', '%' . $this->search . '%')
-                ->get();
+            $query->where('categoria', $this->categoriaSeleccionada);
+        }
+
+        if (!empty($this->search)) {
+            $query->where('nombre', 'like', '%' . $this->search . '%');
+        }
+
+        $this->productoCont = $query->get();
+
+        if ($this->productoCont->isEmpty() && !empty($this->search)) {
+            $this->sinResultados = 'No se encontraron coincidencias.';
+            $this->dispatchBrowserEvent('show-no-results-alert');
         } else {
-            $this->productoCont = Producto::where('nombre', 'like', '%' . $this->search . '%')
-                ->get();
+            $this->sinResultados = '';
         }
 
         $this->emit('productosActualizados', $this->productoCont);

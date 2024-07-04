@@ -37,7 +37,7 @@
         <div class="row mb-5">
     <!-- Card 1 -->
     <div class="col-lg-3 col-sm-6 col-sm-6 mb-3 mb-lg-0 mb-sm-2 mt-4 mb-4">
-        <a class="text-light" href="/productos">
+        <a class="text-light" href="/productos?categoria=1">
             <div class="hover hover-1 text-white rounded">
                 <img src="imagenes/categorias/accesorios0.jpg" alt="">
                 <div class="hover-1-content px-5 py-5 d-flex flex-column align-items-center">
@@ -53,7 +53,7 @@
 
     <!-- Card 2 -->
     <div class="col-lg-3 col-sm-6 mb-3 mb-lg-0 mb-sm-2 mt-4 mb-4">
-        <a class="text-light" href="/productos">
+        <a class="text-light" href="/productos?categoria=3">
             <div class="hover hover-1 text-white rounded">
                 <img src="imagenes/categorias/postres0.jpg" alt="">
                 <div class="hover-1-content px-5 py-5 d-flex flex-column align-items-center">
@@ -69,7 +69,7 @@
 
     <!-- Card 3 -->
     <div class="col-lg-3 col-sm-6 mb-3 mb-lg-0 mb-sm-2 mt-4 mb-4">
-        <a class="text-light" href="/productos">
+        <a class="text-light" href="/productos?categoria=4">
             <div class="hover hover-1 text-white rounded">
                 <img src="imagenes/categorias/ropa.jpg" alt="">
                 <div class="hover-1-content px-5 py-5 d-flex flex-column align-items-center">
@@ -85,7 +85,7 @@
 
     <!-- Card 4 -->
     <div class="col-lg-3 col-sm-6 mb-3 mb-lg-0 mb-sm-2 mt-4 mb-5">
-        <a class="text-light" href="/productos">
+        <a class="text-light" href="/productos?categoria=2">
             <div class="hover hover-1 text-white rounded">
                 <img src="imagenes/categorias/artesanias.jpg" alt="">
                 <div class="hover-1-content px-5 py-5 d-flex flex-column align-items-center">
@@ -103,7 +103,7 @@
 <div class="row mb-5">
     <!-- Card 5 -->
     <div class="col-lg-3 col-sm-6 mb-3 mb-lg-0 mb-sm-2 mt-4 mb-4">
-                <a class="text-light" href="/productos">
+                <a class="text-light" href="/productos?categoria=5">
                     <div class="hover hover-1 text-white rounded">
                         <img src="imagenes/categorias/plantas.jpg" alt="">
                         <div class="hover-1-content px-5 py-5 d-flex flex-column align-items-center">
@@ -120,7 +120,7 @@
 
     <!-- Card 6 -->
     <div class="col-lg-3 col-sm-6 mb-3 mb-lg-0 mb-sm-2 mt-4 mb-4">
-        <a class="text-light" href="/productos">
+        <a class="text-light" href="/productos?categoria=6">
             <div class="hover hover-1 text-white rounded">
                 <img src="imagenes/categorias/personal.jpg" alt="">
                 <div class="hover-1-content px-5 py-4 d-flex flex-column align-items-center">
@@ -136,7 +136,7 @@
 
     <!-- Card 7 -->
     <div class="col-lg-3 col-sm-6 mb-3 mb-lg-0 mb-sm-2 mt-4 mb-4">
-        <a class="text-light" href="/productos">
+        <a class="text-light" href="/servicios">
             <div class="hover hover-1 text-white rounded">
                 <img src="imagenes/categorias/servicios.jpg" alt="">
                 <div class="hover-1-content px-5 py-5 d-flex flex-column align-items-center">
@@ -152,7 +152,7 @@
 
     <!-- Card 8 -->
     <div class="col-lg-3 col-sm-6 mb-3 mb-lg-0 mb-sm-2 mt-4 mb-4">
-        <a class="text-light" href="/productos">
+        <a class="text-light" href="/productos?categoria=7">
             <div class="hover hover-1 text-white rounded">
                 <img src="imagenes/categorias/garaje.jpg" alt="">
                 <div class="hover-1-content px-5 py-5 d-flex flex-column align-items-center">
