@@ -37,9 +37,20 @@
                         </div>
                     </div>
 
-                    <div class="form-group mb-5">
+                    <div class="form-group mb-3">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" value="{{ auth()->user()->email }}" class="form-control" required>
+                        <input type="email" id="email" name="email" value="{{ auth()->user()->email }}" class="form-control" readonly>
+                    </div>
+
+                    <div class="form-group mb-5">
+                        <label class="form-label">Método de Pago:</label>
+                        <select class="form-control" name="pago" required>
+                            <option value="" disabled selected>Selecciona un método de pago</option>
+                            <option value="Paypal">Paypal</option>
+                            <option value="Efecty">Efecty</option>
+                            <option value="Visa">Visa</option>
+                            <option value="PSE">PSE</option>
+                        </select>
                     </div>
                     
                     <h5 class="">Información del pedido</h5>

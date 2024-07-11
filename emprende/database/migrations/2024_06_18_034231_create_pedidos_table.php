@@ -21,10 +21,10 @@ class CreatePedidosTable extends Migration
             $table->string('direccion');
             $table->string('ciudad');
             $table->bigInteger('telefono');
+            $table->string('pago');
             $table->string('total');
             $table->timestamps();
         });
-
     }
 
     /**

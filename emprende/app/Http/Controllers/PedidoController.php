@@ -104,6 +104,7 @@ class PedidoController extends Controller
             'telefono' => 'required|integer|min:1',
             'ciudad' => 'required|string',
             'total' => 'required|string',
+            'pago' => 'required|string|in:Paypal,Efecty,Visa,PSE',
             'carritoitemsArray' => 'required|array',
         ]);
 
@@ -113,6 +114,7 @@ class PedidoController extends Controller
         $direccion = $request->input('direccion');
         $ciudad = $request->input('ciudad');
         $telefono = $request->input('telefono');
+        $pago = $request->input('pago');
         $total = $request->input('total');
 
         $pedido = new Pedido();
@@ -122,6 +124,7 @@ class PedidoController extends Controller
         $pedido->direccion = $direccion;
         $pedido->ciudad = $ciudad;
         $pedido->telefono = $telefono;
+        $pedido->pago = $pago;
         $pedido->total = $total;
         $pedido->save();
 
