@@ -34,8 +34,15 @@
                     <input type="text" value="{{$productEditar->medida}}" class="form-control" name="medidaEdit">
                 </div>
                 <div class="col-lg-6 mb-4">
-                    <label for="categoriaProducto" class="form-label">Categoria</label>
-                    <input type="text" class="form-control" value="{{$productEditar->categoria}}" name="categoriaEdit">
+                    <label for="categoriaProducto" class="form-label">Categoría</label>
+                    <select class="form-control" name="categoriaEdit" required>
+                        <option value="" disabled>Selecciona una categoría</option>
+                        @foreach($categorias as $categoria)
+                            <option value="{{ $categoria->id }}" {{ $productEditar->categoria == $categoria->id ? 'selected' : '' }}>
+                                {{ $categoria->nombre }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-lg-6 mb-4">
                     <label for="imagen" class="form-label fw-semibold">Imagen</label>

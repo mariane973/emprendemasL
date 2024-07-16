@@ -11,7 +11,7 @@
 
         @foreach($ofertaCont as $ofertaVista)
         <div class="col-lg-3 col-sm-6 md-6 mt-3">
-            <div class="card mb-3" style="max-width: 280px; border-color: transparent;">
+            <div class="card mb-3" style="max-width: 280px; height: 450px; border-color: transparent;">
                 <div class="m-auto ps-2 py-2">
                     <div class="descuento  fst-italic">{{$ofertaVista->descuento}}% off</div>
                     <img src="imagenes/productos/{{$ofertaVista->imagen}}" class="img-fluid rounded-start rounded-end mt-2 me-2" alt="..." style="height: 130px; width: 170px; object-fit: cover;">

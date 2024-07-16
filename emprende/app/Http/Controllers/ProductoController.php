@@ -130,10 +130,13 @@ class ProductoController extends Controller
     public function edit($id)
     {
         $productoEditar = Producto::findOrFail($id);
+        $categorias = Categoria::all();
         return view('productos.edit', [
-            'productEditar' => $productoEditar
+            'productEditar' => $productoEditar,
+            'categorias' => $categorias
         ]);
     }
+
 
     /**
      * Update the specified resource in storage.
