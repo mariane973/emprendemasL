@@ -50,7 +50,7 @@
 
                             @if ($ofertaVista->stock <= 10)
                                 @can('editarProducto')
-                                    <p class="text-warning"><strong>¡Quedan {{ $ofertaVista->stock }} unidades disponibles!</strong></p>
+                                    <p class="text-warning"  style="font-size: 0.9rem;"><strong>¡Quedan {{ $ofertaVista->stock }} unidades disponibles! </strong></p>
                                 @endcan                    
                             @endif
                         @else
